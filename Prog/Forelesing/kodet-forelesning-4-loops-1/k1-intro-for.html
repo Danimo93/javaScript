@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro for</title>
+    <!--
+        Intro til for-løkke
+        Forstå de tre argumentene i parantesen til for-løkken: teller, betingelse, inkrementering
+        Skrive ut x antall bilder med for-løkke        
+    -->
+</head>
+<body>
+
+    <div id="output-div"></div>
+    <script>
+        // Reserverte ord: var, for, if, else, document osv.
+        var outputDiv = document.getElementById("output-div");
+
+        // i++ i--
+        // ++i i++; === i = i + 1;
+        //1. teller, 2. betingelse, 3. inkrementering
+        for(var i = 10; i >= 0; i--){   
+            outputDiv.innerHTML += `i: ${i}, `;
+        }
+        for(var i2 = 0; i2 < 100; i2++ ){
+            outputDiv.innerHTML += `
+                <img src="images/palm.jpg">
+            `;
+        }
+
+    </script>
+
+
+
+
+    <script>
+        
+        var teddybearsInStock = 0;
+        teddybearsInStock++; // øker med 1
+        teddybearsInStock += 5; // teddybearsInStock = teddybearsInStock + 5;
+
+
+
+    </script>
+    
+</body>
+</html>

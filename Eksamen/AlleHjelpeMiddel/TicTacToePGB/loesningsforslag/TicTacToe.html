@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+
+<style>
+
+#div-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    grid-area: auto;
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    left: 445px;
+    top: 200px;
+}
+
+.boxes {
+
+    background-color: #F4976C;
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    border: black 1px solid;
+    overflow: hidden;
+}
+.boxes:hover {
+    cursor: pointer;
+}
+p {
+   position: relative;
+   font-size: 2600%;
+   text-align: center;
+   bottom: 470px;
+   font-family: monospace;
+   color: #B4dfe5;
+}
+body {
+    background-color: #FBE8A6;
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+    <h1 id="title" style="text-align: center;">TicTacToe</h1>
+
+
+<div id="div-container">
+    <div id="div-box-1" class="boxes"></div>
+    <div id="div-box-2" class="boxes"></div>
+    <div id="div-box-3" class="boxes"></div>
+    <div id="div-box-4" class="boxes"></div>
+    <div id="div-box-5" class="boxes"></div>
+    <div id="div-box-6" class="boxes"></div>
+    <div id="div-box-7" class="boxes"></div>
+    <div id="div-box-8" class="boxes"></div>
+    <div id="div-box-9" class="boxes"></div>
+</div>
+
+
+<script>
+
+var turnDecider = ["x", "o", "x", "o", "x", "o", "x", "o", "x"]
+var divArray = document.getElementById("div-container").getElementsByTagName("div");
+
+for(var i = 0; i < divArray.length; i++){
+    divArray[i].onclick = clicked;
+}
+
+function clicked() {
+
+    this.onclick = null;
+    this.innerHTML = `<p>${turnDecider[0]}</p>`;
+    turnDecider.shift();
+
+    if(turnDecider.length == 0) {document.getElementById("title").innerHTML = "Uavgjort! Godt spilt!"}
+
+    if(divArray[0].innerHTML == "<p>x</p>" && divArray[1].innerHTML == "<p>x</p>" && divArray[2].innerHTML == "<p>x</p>" || divArray[3].innerHTML == "<p>x</p>" && divArray[4].innerHTML == "<p>x</p>" && divArray[5].innerHTML == "<p>x</p>" || divArray[6].innerHTML == "<p>x</p>" && divArray[7].innerHTML == "<p>x</p>" && divArray[8].innerHTML == "<p>x</p>" || divArray[0].innerHTML == "<p>x</p>" && divArray[4].innerHTML == "<p>x</p>" && divArray[8].innerHTML == "<p>x</p>" || divArray[2].innerHTML == "<p>x</p>" && divArray[4].innerHTML == "<p>x</p>" && divArray[6].innerHTML == "<p>x</p>" || divArray[0].innerHTML == "<p>x</p>" && divArray[3].innerHTML == "<p>x</p>" && divArray[6].innerHTML == "<p>x</p>" ||
+    divArray[1].innerHTML == "<p>x</p>" && divArray[4].innerHTML == "<p>x</p>" && divArray[7].innerHTML == "<p>x</p>" ||
+    divArray[2].innerHTML == "<p>x</p>" && divArray[5].innerHTML == "<p>x</p>" && divArray[8].innerHTML == "<p>x</p>") {
+
+        document.getElementById("title").innerHTML = "Gratulerer, X spiller vant!";
+        for(i = 0; i < divArray.length; i++){
+            divArray[i].style.pointerEvents = "none"; }}
+
+    if(divArray[0].innerHTML == "<p>o</p>" && divArray[1].innerHTML == "<p>o</p>" && divArray[2].innerHTML == "<p>o</p>" || divArray[3].innerHTML == "<p>o</p>" && divArray[4].innerHTML == "<p>o</p>" && divArray[5].innerHTML == "<p>o</p>" || divArray[6].innerHTML == "<p>o</p>" && divArray[7].innerHTML == "<p>o</p>" && divArray[8].innerHTML == "<p>o</p>" || divArray[0].innerHTML == "<p>o</p>" && divArray[4].innerHTML == "<p>o</p>" && divArray[8].innerHTML == "<p>o</p>" || divArray[2].innerHTML == "<p>o</p>" && divArray[4].innerHTML == "<p>o</p>" && divArray[6].innerHTML == "<p>o</p>" || divArray[0].innerHTML == "<p>o</p>" && divArray[3].innerHTML == "<p>o</p>" && divArray[6].innerHTML == "<p>o</p>" ||
+    divArray[1].innerHTML == "<p>o</p>" && divArray[4].innerHTML == "<p>o</p>" && divArray[7].innerHTML == "<p>o</p>" ||
+    divArray[2].innerHTML == "<p>o</p>" && divArray[5].innerHTML == "<p>o</p>" && divArray[8].innerHTML == "<p>o</p>") {
+
+        document.getElementById("title").innerHTML = "Gratulerer, O spiller vant!"
+        for(i = 0; i < divArray.length; i++){
+            divArray[i].style.pointerEvents = "none"; }
+    }
+
+
+  
+}
+
+
+</script>
+
+
+</body>
+</html>

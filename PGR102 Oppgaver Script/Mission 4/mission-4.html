@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <h3>Food Guest</h3>
+    <h4 id="output-h4"></h4>
+    <ul id="output-ul"></ul>
+    <!-- ul er HTML for å lage lister -->
+
+    <script>
+        var outputH4 = document.getElementById("output-h4");
+        var outputP = document.getElementById("output-ul");
+        
+    /*  variabler over mat produkter 
+    */
+        
+        var arranger = "Dan Abramov";
+        var numberOfPizzas;
+        var numberOfSodas;
+        var numberOfChocolates;
+        var numberOfGuests;
+    /*  Prompt vindu på html
+    */  
+        numberOfGuests = prompt("How Many will U Be in my hotel ? ");
+
+        numberOfPizzaSlices = numberOfGuests * 4;
+        numberOfSodas = numberOfGuests * 2;
+        numberOfChocolates = numberOfGuests * 5;
+    /* Innen i Html side 
+    */
+        outputH4.innerHTML = `There be will ${numberOfGuests} in my hotel`;
+
+        outputP.innerHTML = `
+            <li>We need: ${numberOfPizzaSlices} Pizza Slices</li>
+            <li>We need: ${numberOfSodas} Sodas</li>
+            <li>We need: ${numberOfChocolates} Chocolates</li>
+        `; 
+    </script>
+
+</body>
+</html>

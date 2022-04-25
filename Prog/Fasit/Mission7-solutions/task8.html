@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilfeldig regnestykke</title>
+</head>
+<body>
+    
+    <script>
+            
+        var number1 = Math.floor( Math.random() * 10 );
+        var number2 = Math.floor( Math.random() * 10 );
+        
+        var result = number1 * number2;
+        
+        var multiplicationTask = `Hvor mye er ${number1} * ${number2}?`;
+        
+        var userResult = parseInt( prompt(multiplicationTask) );
+        
+        if( result === userResult){
+           alert("Riktig svar!");
+        }else{
+            alert("Feil svar!");
+        }
+        
+    </script>
+    
+</body>
+</html>

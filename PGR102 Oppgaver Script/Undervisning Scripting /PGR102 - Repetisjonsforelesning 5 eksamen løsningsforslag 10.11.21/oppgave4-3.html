@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic-tac-toe</title>
+</head>
+<body>
+	<div id="game-container">
+        <div id="square-number-1" class="square"></div>
+        <div id="square-number-2" class="square"></div>
+        <div id="square-number-3" class="square"></div>
+        <div id="square-number-4" class="square"></div>
+        <div id="square-number-5" class="square"></div>
+        <div id="square-number-6" class="square"></div>
+        <div id="square-number-7" class="square"></div>
+        <div id="square-number-8" class="square"></div>
+        <div id="square-number-9" class="square"></div>
+    </div>
+    
+    <p id="score">
+    Score:
+        <br>
+        Player: <span id="player">0</span>
+        <br>
+        AI: <span id="AI">0</span>
+    </p>
+    
+    <input id="reset-btn" type="button" value="Reset">
+    
+    <script>
+        
+        // Jeg vil anta at det kan gjøres en del forbedringer og optimaliseringer i denne koden, spesielt når det kommer til modularisering, og hvor enkelt AI-et er nå.
+        
+        // Da jeg endte opp med å bruke ganske lang tid på denne oppgaven, velger jeg heller å levere den som den er.
+        
+        // Med den store mengden relativt like for-løkker, kunne jeg sannsynligvis ha kortet ned koden ved å være flinkere å bruke funksjoner med parametre. Når det kommer til AI, er jeg sikker på at det er mulig å la programmet velge et åpenbart vinnende trekk gjennom sjekking av vinnerkombinasjons-arrayene underveis - om to ruter er merket med sirkel og den tredje er ledig, burde valget være åpenbart for programmet.
+        
+        // Må si dette har vært en veldig gøy utfordring. Jeg kan godt tenke meg å finpusse på denne i løpet av juleferien.
+        
+        
+        
+        
+        
+        // VARIABLER
+        
+        // relevante variabler som inneholder html-elementer
+        var gameContainer = document.getElementById("game-container");
+        var resetBtn = document.getElementById("reset-btn");
+        
+        // et array med objekter som brukes for å gjenkjenne rutene på spillebrettet, og registrere hvem som har spilt hvor
+        // elemId-propertyen inneholder html-taggen for boksen
+        // ownership-propertyen inneholder hvem som har klikket på den. "unowned" vil si at ingen har klikket
+        var gameBoard = [
+            {
+                elemId: document.getElementById("square-number-1"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-2"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-3"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-4"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-5"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-6"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-7"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-8"),
+                ownership: "unowned"
+            },
+            {
+                elemId: document.getElementById("square-number-9"),
+                ownership: "unowned"
+            }
+        ];
+        
+
+
+        // arrays som inneholder vinnerkombinasjoner (rader, kolonner, og diagonaler)
+
+        // øvre rad
+        var rowA = [gameBoard[0], gameBoard[1], gameBoard[2]];
+
+        // midtre rad
+        var rowB = [gameBoard[3], gameBoard[4], gameBoard[5]];
+
+        // nedre rad
+        var rowC = [gameBoard[6], gameBoard[7], gameBoard[8]];
+
+        // venstre kolonne
+        var column1 = [gameBoard[0], gameBoard[3], gameBoard[6]];
+
+        // midtre kolonne
+        var column2 = [gameBoard[1], gameBoard[4], gameBoard[7]];
+
+        // høyre kolonne
+        var column3 = [gameBoard[2], gameBoard[5], gameBoard[8]];
+
+        // diagonal fra øvre venstre til nedre høyre
+        var diagonalTLBR = [gameBoard[0], gameBoard[4], gameBoard[8]];
+
+        // diagonal fra nedre venstre til øvre høyre
+        var diagonalBLTR = [gameBoard[6], gameBoard[4], gameBoard[2]];
+        
+
+
+        // et array som inneholder alle mulige vinnerkombinasjoner, for enklere tilgjengelighet senere
+        var victoryChances = [rowA, rowB, rowC, column1, column2, column3, diagonalTLBR, diagonalBLTR];
+        
+
+
+        // sjekkvariabel for stopping av enkelte deler av funksjoner
+        var gameIsOver = false;
+        
+        
+        
+        
+        
+        // FUNKSJONER
+        
+        // sjekker om spillet har en vinner; tar en string som argument i parameteren "participant"
+        // participant kan enten være "player" eller "AI"
+        function victoryCheck(participant) {
+            
+            // lokal variabel for å legge til score
+            // Dette var ikke nødvendig for oppgaven
+            var scoreBoard = document.getElementById(participant);
+            
+            // en for-løkke som sjekker om en deltaker har tre på rad
+            for (i = 0; i < victoryChances.length; i++) {
+                
+                // sjekker om alle tre felt i en vinnerkombinasjon har participant (enten "player" eller "AI") som eier
+                if (
+                    victoryChances[i][0].ownership == participant &&
+                    victoryChances[i][1].ownership == participant &&
+                    victoryChances[i][2].ownership == participant
+                ) {
+                    // legger til score, og oppdaterer spillet til å regnes som over
+                    alert(`Game over! The ${participant} won!`);
+                    gameIsOver = true;
+                    scoreBoard.innerHTML = parseInt(scoreBoard.innerHTML) + 1;
+                    
+                    // Setter onclick på alle felt til å være gameOver-funksjonen (se linje 173)
+                    for (i = 0; i < 9; i++) {
+                        gameBoard[i].elemId.onclick = gameOver;
+                    }
+                }
+            }
+        }
+        
+        
+        // stopper en deltaker fra å spille i en opptatt rute 
+        function occupiedSquare() {
+            alert("This square is taken!");
+        }
+        
+        
+        // stopper en deltaker fra å spille når spillet er over
+        function gameOver() {
+            alert("The game is over. Click the Reset button to play again.");
+        }
+        
+        
+        // resetter spillet til utgangsposisjon, uten å slette score
+        function resetGame() {
+            
+            for (i = 0; i < 9; i++) {
+
+                // setter alle felt til å ikke være klikket på
+                gameBoard[i].ownership = "unowned";
+
+                // fjerner bildet i hvert felt 
+                gameBoard[i].elemId.style.backgroundImage = "";
+
+                // setter onclick på hvert felt til å være playMove;
+                gameBoard[i].elemId.onclick = playMove;
+            }
+
+            // setter spillet til å IKKE være over
+            gameIsOver = false;
+        }
+        
+        
+        // lar både spiller og AI gjøre et trekk; spiller er alltid først
+        function playMove() {
+
+            // plasserer et blått kryss der spilleren klikker, og markerer ruten som "eid" av spilleren
+            for (i = 0; i < 9; i++) {
+                if (this == gameBoard[i].elemId) {
+                    gameBoard[i].ownership = "player";
+                    gameBoard[i].elemId.style.backgroundImage = "url('images/blue.png')";
+                }
+            }  
+            
+            // lokal variabel og for-løkke for å unngå en evig while-løkke senere
+            var unownedSquaresRemaining = 0;
+            
+            for (i = 0; i < gameBoard.length; i++) {
+                if (gameBoard[i].ownership == "unowned") {
+                    unownedSquaresRemaining++;
+                }
+            }
+            
+            // sjekker om spiller har vunnet
+            victoryCheck("player");
+            
+            // sjekker om det er nok ledige ruter til å la motstanderen få et trekk etter spilleren, og om spilleren ikke allerede har vunnet
+            // fortsetter så å velge tilfeldige tall til AI velger en rute den kan spille i
+            if (unownedSquaresRemaining > 0 && gameIsOver == false) {
+                
+                // plukker et tilfeldig tall mellom 0 og 8, som vil tilsvare rutene 1-9
+                var randomSquare = Math.floor(Math.random() * 9);
+                
+                // hvis det tilfeldige tallet peker på en rute som allerede er klikket på, velg et nytt tilfeldig tall
+                while (gameBoard[randomSquare].ownership != "unowned") {
+                    randomSquare = Math.floor(Math.random() * 9);
+                }
+            
+                // plasserer en rød sirkel der AI har valgt, og markerer ruten som "eid" av AI
+                gameBoard[randomSquare].elemId.style.backgroundImage = "url('images/red.png')";
+                gameBoard[randomSquare].ownership = "AI";
+            }
+            
+            // sørger for at spilte ruter ikke kan klikkes på
+            for (i = 0; i < 9; i++) {
+                if (gameBoard[i].ownership != "unowned") {
+                    gameBoard[i].elemId.onclick = occupiedSquare;
+                };
+            }
+            
+            // sjekker om AI har vunnet
+            victoryCheck("AI");   
+        }
+        
+        
+        
+        
+        
+        // ONCLICK
+        
+        // setter playMove() på alle rute-div'er
+        for (i = 0; i < gameBoard.length; i++) {
+            gameBoard[i].elemId.onclick = playMove;
+        }
+        
+        // setter resetGame() på reset-knappen
+        resetBtn.onclick = resetGame;
+        
+        
+        
+        
+        
+        // STILSETTING
+        
+        // stilsetter div-elementet rutene er plassert i gjennom JS
+        gameContainer.style.height = "330px";
+        gameContainer.style.width = "330px";
+        gameContainer.style.backgroundColor = "gray";
+        gameContainer.style.display = "flex";
+        gameContainer.style.flexWrap = "wrap";
+        
+        // stilsetter rutene gjennom en for-løkke istedenfor å gjøre det en og en; også gjennom JS
+        for (i = 0; i < gameBoard.length; i++) {
+            gameBoard[i].elemId.style.height = "100px";
+            gameBoard[i].elemId.style.width = "100px";
+            gameBoard[i].elemId.style.backgroundColor = "white"
+            gameBoard[i].elemId.style.backgroundImage = "";
+            gameBoard[i].elemId.style.margin = "5px";
+        }
+        
+    </script>
+</body>
+</html>

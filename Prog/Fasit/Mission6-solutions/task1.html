@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task: Funny story</title>
+</head>
+<body>
+    
+    <input id="show-funny-story-btn" type="button" value="Vis meg en morsom kort historie">
+    <p id="funny-story-p">Default-melding: Her kommer en morsom historie etter at du har klikket på knappen.</p>    
+    
+    <script>
+        
+        var showFunnyStoryBtn = document.getElementById("show-funny-story-btn");        
+        showFunnyStoryBtn.onclick = showFunnyStory;
+                
+        function showFunnyStory(){
+            var funnyStoryP = document.getElementById("funny-story-p");
+            funnyStoryP.innerHTML = "Dette er en morsom, men uavsluttet historie: En katt...";
+        }
+        
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="er-du-synsk.css">
+    <title>Er du synsk?</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Er du synsk?</h1>
+    </header>
+
+    <label>Hvilken vanskelighetsgrad ønsker du?</label>
+    
+   
+        <p>Klikk på en av boksene for å begynne spillet</p> 
+
+    <!-- Det er lov å endre HTML og id'er -->
+
+    <section>
+        <div id="box1-div">Denne?</div>
+        <div id="box2-div">Eller denne?</div>
+    </section>
+
+    <div id="number-of-lives-div"></div>
+
+    <div id="number-of-right-answers-div">
+        <p>Antall riktige: 0 </p>
+    </div>
+
+    <div id="number-of-wrong-answers-div">
+        <p>Antall feil: 0 </p>
+    </div>    
+
+    <div id="output-div"></div>
+
+    <script>
+        
+        //HTML-objekter
+            var buttonOne = document.getElementById("box1-div");
+            var buttonTwo = document.getElementById("box2-div");
+
+            var numOfLivesDiv = document.getElementById("number-of-lives-div");
+            var numOfRightAnswersDiv = document.getElementById("number-of-right-answers-div");
+        
+            var numOfWrongAnswersDiv = document.getElementById("number-of-wrong-answers-div");
+            var outputDiv = document.getElementById("output-div");
+            
+        // Variabler
+
+            var howManyLives = 5;
+
+            var numOfRightAnw = 0;
+            var numOfWrongAnw = 0;
+
+            var buttonOne;
+            var buttonTwo;
+
+            
+        // Funksjoner
+
+        function ifButtonClick(){
+            randomNum = Math.floor(Math.random() * 2 + 1);
+            
+            for(var i = 0; i < howManyLives; i++ ){
+            numOfLivesDiv.innerHTML += `<img src="images/person1.jpg" />`;
+            }
+            if(randomNum > 1){
+                numOfRightAnw++
+                numOfRightAnswersDiv.innerHTML =`<p> Antall riktige: ${numOfRightAnw}</p>`;
+            }
+            else{
+                numOfWrongAnw++
+                numOfWrongAnswersDiv.innerHTML = `<p> Antall feil: ${numOfWrongAnw} </p>`;
+                }
+            }
+
+        /*function lifeDrop(){
+            if(numOfWrongAnw > 0){
+            howManyLives--
+            numOfLivesDiv.innerHTML = `Du har så mange liv: ${howManyLives}`;
+            }
+        }
+
+        function extraLife(){
+            if(numOfRightAnw = 3 ||= 5 ||= 7){
+            howManyLives++
+            }
+        }
+          */  
+        // Events
+            
+            
+            buttonOne.onclick = ifButtonClick;
+            buttonTwo.onclick = ifButtonClick;
+
+            
+           
+    </script>
+    
+</body>
+</html>

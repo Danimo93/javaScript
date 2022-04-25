@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro switch</title>
+    <!--
+        Intro til switch
+        --
+        Switch er en teknikk for å sjekke flere alternative valg.
+        Switch er bra, istedenfor if-else, for de tilfeller hvor det er flere enkle betingelser som tilsvarer likhetssjekk ===
+        Følgende hovedteknikker er inkludert med switch:
+        - switch
+        - variable to check
+        - case
+        - break
+        - default                
+    -->
+</head>
+<body>
+
+    <h3>Burger King</h3>
+    <h4>Hva vil du ha idag?</h4>
+
+    <select id="course-select">
+        <option value="burger">Burger</option>
+        <option value="salad">Salat</option>
+        <option value="dessert">Dessert</option>
+        <option value="drinks">Drikke</option>
+    </select>
+    <input id="select-course-btn" type="button" value="Velg"> 
+
+    <div id="output-div"></div>
+
+    <script>
+        var courseSelect = document.getElementById("course-select");
+        var selectCourseBtn = document.getElementById("select-course-btn");
+        var outputDiv = document.getElementById("output-div");
+
+        function selectCourse(){
+            var choice = courseSelect.value;
+            switch( choice ){
+                case "burger": 
+                    outputDiv.innerHTML = `
+                        <ul>
+                            <li>Cheeseburger</li>
+                            <li>Jalapenoburger</li>
+                        </ul>
+                    `;
+                break;
+                case "salad": 
+                case "salat":                    
+                    outputDiv.innerHTML = `
+                        <ul>
+                            <li>Rekesalat</li>
+                            <li>Waldorfsalat</li>
+                        </ul>
+                    `;
+                break;
+            }
+            console.log( courseSelect );
+        }
+        selectCourseBtn.onclick = selectCourse;
+
+    </script>
+
+</body>
+</html>

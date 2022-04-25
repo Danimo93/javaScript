@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Løsningsforslag</title>
+</head>
+<body>
+    
+    <h1>Do you win a Jackpot</h1>
+    <p>Enter a seven digit number to play with and see how much you win!</p>
+
+    <input id="input-user-lotto" type="text">
+    <input id="button" type="button" value="Spill!">
+    <p id="p-lotto-number"></p>
+    <p id="p-amount-of-simulare"></p>
+    <p id="p-user-reward"></p>
+
+    <script>
+        var inputUserLotto = document.getElementById("input-user-lotto");
+        var button = document.getElementById("button"); 
+        var pLottoNumber = document.getElementById("p-lotto-number");
+        var pAmountOfSimulare = document.getElementById("p-amount-of-simulare");
+        var pUserReward = document.getElementById("p-user-reward"); 
+
+        var arrayLottoNumber = [];
+        var arrayUserLotto = [];
+        var lottoNumber;
+        var lottoCorrect;
+        var lottoPrize;
+
+        function lottoNumberFunction(){//Hvis noen vet hvordan man koder en tallgenerator som fast gir et tall mellom 0000000 - 9999999 så gjerne send det på mattermost. Denne kan gi tall som ikke alltid er 7 siffer...
+            lottoNumber = Math.floor(Math.random()*10000000);
+            lottoNumber = lottoNumber.toString();
+            arrayLottoNumber = Array.from(lottoNumber);
+        }
+
+        function compareLottoFunction(){
+            lottoCorrect = 0;
+            if (arrayUserLotto[0] == arrayLottoNumber[0]) {
+                lottoCorrect ++;
+            }else if (arrayUserLotto[1] == arrayLottoNumber[1]){
+                lottoCorrect ++;
+            }else if (arrayUserLotto[2] == arrayLottoNumber[2]){
+                lottoCorrect ++;
+            }else if (arrayUserLotto[3] == arrayLottoNumber[3]){
+                lottoCorrect ++;
+            }else if (arrayUserLotto[4] == arrayLottoNumber[4]){
+                lottoCorrect ++;
+            }else if (arrayUserLotto[5] == arrayLottoNumber[5]){
+                lottoCorrect ++;
+            }else if (arrayUserLotto[6] == arrayLottoNumber[6]){
+                lottoCorrect ++;
+            }
+        }
+
+        function htmlOutputFunction(){
+            pLottoNumber.innerHTML = `${lottoNumber} is the lotto number`;
+            pAmountOfSimulare.innerHTML = ``;
+            if (lottoCorrect == 0) {
+                lottoPrize = "You did not win anything this time..."
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 1){
+                lottoPrize = "You did WIN 10,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 2){
+                lottoPrize = "You did WIN 100,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 3){
+                lottoPrize = "You did WIN 500,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 4){
+                lottoPrize = "You did WIN 2 500,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 5){
+                lottoPrize = "You did WIN 10 000,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }else if (lottoCorrect == 6){
+                lottoPrize = "You did WIN 50 000,-"
+                pAmountOfSimulare.innerHTML = `You had ${lottoCorrect} correct`;
+            }
+
+            pUserReward.innerHTML = `${lottoPrize}`;
+
+            
+        }
+
+        function lottoFunction(){
+            inputUserLotto = document.getElementById("input-user-lotto").value;
+            lottoNumberFunction();
+            arrayUserLotto = Array.from(inputUserLotto);
+            compareLottoFunction();
+            htmlOutputFunction();
+
+        }
+
+        button.onclick = lottoFunction;
+    </script>
+
+</body>
+</html>

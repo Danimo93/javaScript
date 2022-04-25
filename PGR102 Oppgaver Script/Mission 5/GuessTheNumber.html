@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Dørvekter ID Sjekk</h3>
+    <p id="status-p"></p>
+    <script>
+        var statusP = document.getElementById("status-p")
+        var number = 6;
+
+        var drunk = window.prompt("Guess a number between 1 to 10 ");
+        
+
+        if(drunk => number){
+            alert("That is currect, Welcome to the pub")
+        }
+        if(drunk < number){
+            alert("I need check your ID")
+        }
+        if(drunk > number) {
+            alet("You are too young");
+        }
+
+    </script>
+
+</body>
+</html>

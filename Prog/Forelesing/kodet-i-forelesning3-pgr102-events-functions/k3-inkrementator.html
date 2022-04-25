@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inkrementator</title>
+    <!--
+        En nettside hvor man kan klikke på en knapp for å inkrementere (øke) et tall
+        Evt. 
+        - også dekrementere
+        - if for å sjekke om klikket mer enn x ganger
+    -->
+</head>
+<body>
+    
+    <input id="increment-btn" type="button" value="Øk tallet">
+    <p id="number-p">0</p>
+
+    <script>
+
+        var incrementBtn = document.getElementById("increment-btn");
+        var numberP = document.getElementById("number-p");
+
+        //var number = 0;
+
+        function incrementNumber(){
+
+            var number = parseInt( numberP.innerHTML );
+            number += 100;
+            numberP.innerHTML = number;
+
+            //number += 10; //number++;
+            //numberP.innerHTML = number;
+        }
+
+        incrementBtn.onclick = incrementNumber;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 3 - Middelalderbygninger</title>
+</head>
+<body>
+
+    <!-- Det er lov å endre/legge til HTML -->
+
+    <h1>Middelalderbygninger</h1>
+    <p>Lyst til å bo i en middelalderbygning? Vi har de beste middelalderbygningene! :)</p>
+
+    <input id="show-all-btn" type="button" value="Vis alle">
+
+    <hr>
+
+    <label>Minimum pris</label>
+    <input id="min-price-input" type="text">
+    <label>Maksimum pris</label>
+    <input id="max-price-input" type="text">
+
+    <input id="show-by-price-btn" type="button" value="Vis etter pris">
+
+    <hr>
+
+    <!-- Hint: Å hente value fra valgt <option> fungerer på samme måte som å hente value fra en tekstboks -->
+    <select id="category-select"><!-- Du endrer på options for å tilpasse til din løsning -->
+        <option>--Velg kategori--</option>
+        <option value="">Turn on javascript</option>
+    </select>
+    <input id="show-by-category-btn" type="button" value="Vis etter kategori">
+
+    <hr>
+
+    <div id="output-div">
+
+    </div>
+
+    <script>
+
+        // HTML Elements
+        const categorySelectDropdown = document.getElementById("category-select");
+        const outputDiv = document.getElementById("output-div");
+        const showAllBuildingsBtn = document.getElementById("show-all-btn");
+        const showByPriceBtn = document.getElementById("show-by-price-btn");
+        const maxPriceInput = document.getElementById("max-price-input");
+        const minPriceInput = document.getElementById("min-price-input");
+        const showByCategoryBtn = document.getElementById("show-by-category-btn");
+
+        // The path to images
+        const imagePath = "./images/";
+
+        // The categories
+        let categoryArray = [
+            "hut",
+            "room",
+            "castle",
+            "palace"
+        ]
+
+        // Declaring all the buildings for rent at the moment
+        const smallHutBuilding = newBulding("small hut", 1200, "building-1.png", categoryArray[0]);
+        const mediumHutBuilding = newBulding("medium hut", 1800, "building-2.png", categoryArray[0]);
+        const bigHutBuilding = newBulding("big hut", 2500, "building-3.png", categoryArray[0]);
+        const roomInStabburBuilding = newBulding("room in modern stabbur",  200, "building-4.png", categoryArray[1]);
+        const palaceBuilding = newBulding("palace",  7500, "building-5.png", categoryArray[3]);
+        const castleBuilding = newBulding("fortified castle",  6500, "building-6.png", categoryArray[2]);
+
+        // Creating an array containing the buildings - use buildingArray.push(newBuilding()) to add buildings in the future
+        let buildingArray = [
+            smallHutBuilding,
+            mediumHutBuilding,
+            bigHutBuilding,
+            roomInStabburBuilding,
+            palaceBuilding,
+            castleBuilding
+        ];
+
+        // Helper function to create new buildings fast without needing to create all the objects manually
+        function newBulding(name, price, imageName, category) {
+            const building = {
+                name: name,
+                price: price,
+                imageName: imageName,
+                category: category
+            }
+            return building;
+        }
+
+        // Helper function to clear HTML from a html element
+        function clearHtml(htmlElement) {
+            htmlElement.innerHTML = "";
+        }
+
+        // Helper function to create select element
+        function createSelectOption(text, value) {
+            let option = document.createElement("option");
+            option.value = value;
+            option.text = text;
+            return option;
+        }
+
+        // Generate HTML to avoid hard coding the values, making it faster to add content in the future
+        function dropDownAppendOptions() {
+            // Remove the first child, so the "Enable Javascript"-message disappears
+            categorySelectDropdown.removeChild(categorySelectDropdown[1]);
+            for (i = 0; i < categoryArray.length; i++) {
+                displayText = categoryArray[i];
+                let option = createSelectOption(displayText, categoryArray[i]);
+                categorySelectDropdown.appendChild(option);
+            }
+        }
+
+        // Returns an array of buildings that matches the min and max price
+        function filteredBuildingsByPrice(minPrice, maxPrice) {
+            let priceMatchedBuildingsArray = [];
+
+            buildingArray.forEach(element => {
+                if (element.price >= minPrice && element.price <= maxPrice) {
+                    priceMatchedBuildingsArray.push(element);
+                }
+            });
+
+            return priceMatchedBuildingsArray;
+        }
+
+        // The categories are the names of the building objects
+        function filterByCategory() {
+            clearHtml(outputDiv);
+            let selectedCategory = categorySelectDropdown.value;
+            console.log(selectedCategory);
+            let filteredBuildings = [];
+            buildingArray.forEach(element => {
+                if (element.category === selectedCategory) {
+                    filteredBuildings.push(element);
+                }
+            });
+            filteredBuildings.forEach(element => {
+                displayBuilding(element.name);
+            });
+        }
+
+        // Display the image corresponding to the building - testing out the new @param thing
+        /**
+        *    @param {bool} filterByName filter by name or by category
+        */
+        function displayBuilding(value) {
+            let image;
+            if (filterByName) {
+                image = buildingArray.find(obj => obj.name === value);
+            }
+
+            let imgHTML = document.createElement("img");
+            imgHTML.src = imagePath + image.imageName;
+            imgHTML.width = 100;
+
+            outputDiv.appendChild(imgHTML);
+        }
+
+        // Button onclick functions
+
+        // Show the buildings filtered by price
+        function showPriceFilteredBuildings() {
+            clearHtml(outputDiv);
+            let min = minPriceInput.value;
+            let max = maxPriceInput.value;
+            let filteredBuildings = filteredBuildingsByPrice(min, max);
+            filteredBuildings.forEach(element => {
+                displayBuilding(element.name, true);
+            });
+        }
+
+        // Show all the buildings
+        function showAllBuildings() {
+            clearHtml(outputDiv);
+            buildingArray.forEach(element => {
+                displayBuilding(element.name, true);
+            });
+        }
+
+        // Adding onclick functions
+        showByPriceBtn.onclick = showPriceFilteredBuildings;
+        showAllBuildingsBtn.onclick = showAllBuildings;
+        showByCategoryBtn.onclick = filterByCategory;
+
+        // Add the options in dropdown menu
+        dropDownAppendOptions();
+
+        </script>
+
+</body>
+</html>

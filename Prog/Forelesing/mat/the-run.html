@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheRun</title>
+</head>
+<body>
+    
+    <h1>TheRun</h1>
+    <h2>Er du for gammel til å være med på TheRun?</h2>
+
+    <div id="status-div"></div>
+
+    <script>
+
+        /*
+            HTML-objekter/elementer
+        */
+        var statusDiv = document.getElementById("status-div");
+
+        /*
+            Variabler
+        */
+        var userAge; 
+        var message;
+        
+        userAge = parseInt( prompt("Hva er din alder?") );
+
+        if( userAge < 60 ){
+            message = `
+                <p>Du er bare ${userAge} år og får vært med i løpet</p>
+                <img src="images/thumbs-up.jpg">
+            `;
+        }else{
+            message = `<p>Du får ikke vært med i løpet. Det er altfor farlig for en som er ${userAge}</p>`;
+        }
+
+        statusDiv.innerHTML = message;
+
+    </script>
+
+</body>
+</html>

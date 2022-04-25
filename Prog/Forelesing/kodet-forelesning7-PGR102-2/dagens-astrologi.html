@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagens astrologi</title>
+    <!--
+        Dagens astrologi
+        - Et array inneholder forskjellige forutsigelser om hva som skal skje i dag.
+        - Et tilfeldig tall opprettes og en tilfeldig forutsigelse fra arrayet vises.
+        - Noen av forutsigelsene kan være et bilde
+    -->
+
+</head>
+<body>
+
+    <h1>Dagens astrologi</h1>
+    <input id="show-fate-btn" type="button" value="Vis skjebne">
+    <div id="output-div"></div>
+    
+    <script>
+
+        // HTML objects
+        var showFateBtn = document.getElementById("show-fate-btn");
+        var outputDiv = document.getElementById("output-div");
+                
+        // Variables
+        var randomIndex; // undefined
+        var fortuneArray = [
+            "Du bør ikke hoppe i fallskjerm idag!", // index-plass 0
+            "Du burde kjøpe et flakslodd",
+            "Du møter den rette idag",
+            "Du bør se etter jobb på finn.no idag", // index-plass 3
+            "prison.jpg",
+            "dresses.jpg",
+            "f1-car.jpg",
+            "Du burde være i forelesningen idag",
+            "Idag bør du trene!"
+        ];
+
+        // Functions
+        function setRandomIndex(){
+            randomIndex = Math.floor( Math.random() * fortuneArray.length );
+        }
+
+        var fortune = fortuneArray[randomIndex]; // utenfor funksjon, skjer umiddelbart og 1 gang når siden laster
+
+        function showFortune(){ // prettier
+
+            var fortune = fortuneArray[randomIndex]; // inni funksjon skjer hver gang funksjonen blir kalt på
+
+            if( fortune.includes(".jpg") === true  ){
+                outputDiv.innerHTML = `
+                    <img src="images/${fortune}">
+                `;
+            }else{
+                outputDiv.innerHTML = fortune;
+            }            
+        }
+
+        function initApplication(){
+            setRandomIndex();
+            showFortune();
+        }
+
+        // Events
+        showFateBtn.onclick = initApplication;
+        
+    </script>
+
+</body>
+</html>

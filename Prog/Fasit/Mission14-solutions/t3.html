@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        var outputDiv = document.getElementById("output-div");
+        
+        var bokstavBox, bokstavBox2;
+        
+        var bokstavArray = ["a", "t", "k", "t"];
+        
+        outputDiv.innerHTML += `<p>Usortert: ${bokstavArray}</p`;
+        
+        bokstavBox = bokstavArray[0];
+        bokstavBox2 = bokstavArray[2];
+        
+        bokstavArray[0] = bokstavBox2; 
+        bokstavBox2 = bokstavArray[1]; 
+        
+        bokstavArray[1] = bokstavBox;
+        bokstavArray[2] = bokstavBox2;
+        
+        outputDiv.innerHTML += `<p>Sortert ferdig: ${bokstavArray}</p`;
+        
+       
+        
+        
+    </script>
+    
+</body>
+</html>

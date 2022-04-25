@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro for</title>
+    <!--
+        Intro til for-løkke
+        Forstå de tre argumentene i parantesen til for-løkken: teller, betingelse, inkrementering
+        Skrive ut x antall bilder med for-løkke        
+    -->
+</head>
+<body>
+    <div id="output-div"></div>
+
+    <script>
+
+
+    
+        // Reserverte ord: var, for, if, else, docment osv..
+
+        var outputDiv = document.getElementById("output-div");
+
+
+        // i++ i--
+        // ++i i++; === 1 = i + 1;  
+        //1. variabel /teller, 2. betingelse, 3. inkrementering av teller
+
+        // så lenge variable som het i er mindre enn 100 utfør det i krøllparanteser 
+        for(var i = 0; i <= 1; i++){
+            outputDiv.innerHTML += `i: ${i}, `;
+            
+        }
+        
+
+        for(var teller = 0; teller < 1; teller ++){
+            outputDiv.innerHTML += `<img src="images/robot.jpg">`;
+
+          }
+        
+        for(var i = 1; i > 0; i--){
+            outputDiv.innerHTML += `Daniel: ${i}, `; 
+
+
+        }
+        
+        
+        
+        
+    //så lenge i2 er større eller lik 0 forsette 
+        for(var i2 = 0; i2 < 1; i2++){
+           outputDiv.innerHTML += `<img src="images/palm.jpg">`;
+        }
+    </script>
+
+    <script>
+//var teddyBearsInStock = 0;
+
+//teddyBearsInStock++; // øker med 1
+
+//teddyBearsInStock += 5; // teddyBearsInStock = teddyBearsInStock + 5;
+
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click maniac!</title>
+</head>
+<body>
+    
+    <h3>Hvor mange ganger greier du å klikke?</h3>
+    <input id="increment-counter-btn" type="button" value="Tell opp">
+    <p id="number-of-clicks-p">Antall ganger klikket: 0</p>
+    
+    <script>
+        var counter = 0;
+        
+        var incrementCounterBtn = document.getElementById("increment-counter-btn");
+        incrementCounterBtn.onclick = incrementCounter;
+        
+        var numberOfClicksP = document.getElementById("number-of-clicks-p");
+        
+        function incrementCounter(){
+            counter++;
+            
+            numberOfClicksP.innerHTML = `Antall ganger klikket: ${counter}`;            
+        }
+    </script>
+    
+</body>
+</html>

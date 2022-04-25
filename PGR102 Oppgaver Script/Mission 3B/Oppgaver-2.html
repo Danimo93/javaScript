@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="result-p"></p>
+    <p id="result2-p"></p>
+    <div id="img-div" ></div>
+    <script>
+
+
+        var resultP = document.getElementById("result-p");
+        var result2P = document.getElementById("result2-p");
+        var imgdiv    = document.getElementById("img-div")
+
+        var number = prompt("Give me a number");
+        var number2 = prompt("Give another number");
+
+        var result1 = number + number2; 
+        var result2 = parseInt(number) + parseInt(number2)
+        
+        resultP.innerHTML = `Result without pareInt:  ${result1}`;
+        result2P.innerHTML = `Result with PareInt: ${result2}`;
+        imgdiv.innerHTML = `<img src="Screenshot 2021-09-06 at 12.32.35.png" alt="Photo">`
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    
+    <h1>Byer i verden</h1>
+    <p id="number-of-pictures-p"></p>
+    <div id="output-div"></div>
+    
+    <script>
+        var numberOfPicturesP = document.getElementById("number-of-pictures-p");
+        var outputDiv = document.getElementById("output-div");
+        
+        var images = ["barcelona.jpg", "lasvegas.jpg", "london.jpg", "louvre.jpg", "oslo.jpg", "paris.jpg", "tenerife.jpg", "tokyo.jpg"];
+        var numberOfImages = images.length;
+        
+        numberOfPicturesP.innerHTML = `Antall bilder i arrayet: ${numberOfImages}`;
+        
+        for(var i = 0; i < numberOfImages; i++){
+            outputDiv.innerHTML += `<img src="images/${images[i]}" />`;    
+        }        
+        
+    </script>
+    
+</body>
+</html>

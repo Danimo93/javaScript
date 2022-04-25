@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Testing av toUpperCase / toLowerCase</title>
+</head>
+<body>
+
+	<h1>Skriv inn et ord og få det skrevet ut med store og små bokstaver</h1>	
+	<label>Ditt navn</label>
+	<input id="word-txt" type="text">
+	<input id="change-case-btn" type="button" value="Vis ord i store/små bokstaver">
+	<div id="output-div"></div>
+	
+	<script>
+		
+		/*
+			HTML objects
+		*/
+		var wordTxt = document.getElementById("word-txt");
+		var changeCaseBtn = document.getElementById("change-case-btn");
+		var outputDiv = document.getElementById("output-div");
+		
+		/*
+			Variables
+		*/
+		var word;
+		
+		
+		/*
+			Functions
+		*/
+		function changeCase(){
+			word = wordTxt.value;
+			
+			outputDiv.innerHTML = `
+				<ul>
+					<li>Slik du skrev det: ${ word }</li>
+					<li>Upper case: ${ word.toUpperCase() }</li>
+					<li>Lower case: ${ word.toLowerCase() }</li>
+				</ul>
+			`;
+			
+		}
+		
+		
+		/*
+			Events
+		*/
+		changeCaseBtn.onclick = changeCase;
+		
+		
+	</script>
+	
+</body>
+</html>

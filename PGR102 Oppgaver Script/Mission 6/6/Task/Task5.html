@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <h1>Your Answer</h1>
+    <input id="add-a-up" type="button" value="Add Number">
+    <p id="output"></p>
+    <script>
+        /*
+            Html-elemente
+        */
+       var add = document.getElementById("add-a-up");
+       var output = document.getElementById("output");
+  
+        /*
+            Funksjoner
+        */
+
+        function addNum(){
+            var number1 = window.prompt("Jeg trenger første nummer ");
+            var number2 = window.prompt("Skriv andre nummer");
+            var total=Number(number1) + Number(number2);
+            output.innerHTML = `${number1} + ${number2} = ${total}`;
+        }
+        /*
+            Event
+        */
+        add.onclick = addNum;
+
+    </script>
+</body>
+</html>

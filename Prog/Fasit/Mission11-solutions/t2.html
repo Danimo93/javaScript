@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient i gråtoner</title>
+</head>
+<body>
+    
+    <div>
+        
+        <header>
+            <h1>Gradient i gråtoner</h1>
+        </header>
+       
+        <section id="menu">
+            <input id="add-divs-btn" type="button" value="Steg 1: Skape 256 div'er">
+            <input id="style-divs-btn" type="button" value="Steg 2: Stilsette de 256 div'ene">
+        </section>
+
+        <div id="output-div"></div>
+        
+    </div>
+    
+    <script>       
+        var addDivsBtn = document.getElementById("add-divs-btn");
+        var styleDivsBtn = document.getElementById("style-divs-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        addDivsBtn.onclick = addDivs;
+        styleDivsBtn.onclick = styleDivs;
+            
+        function addDivs(){
+            var htmlTxt = "";
+            for(var i = 0; i < 256; i++){
+                htmlTxt += `<div>${i}</div>`;
+            }
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+        function styleDivs(){
+            var divArray = document.getElementById("output-div").getElementsByTagName("div");
+            var numberOfDivs = divArray.length;
+            
+            for(var i = 0; i < numberOfDivs; i++){
+                divArray[i].style.width = "50px";
+                divArray[i].style.height = "50px";
+                divArray[i].style.backgroundColor = `rgb(${i}, ${i}, ${i})`;
+                divArray[i].style.display = "inline-block";
+                if(i < 100){
+                    divArray[i].style.color = "white";
+                }
+            }            
+        }
+    </script>
+    
+</body>
+</html>

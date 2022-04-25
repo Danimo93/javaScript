@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enkel bruk av parameter</title>
+</head>
+<body>
+    
+    <div id="output-div"></div>
+    
+    <script>
+        var outputDiv = document.getElementById("output-div");
+        
+        function multiplicate(number1, number2){
+            var result = number1 * number2;
+            return `${number1} * ${number2} = ${result}`;
+        }
+        
+        outputDiv.innerHTML = `<p>${multiplicate(7, 9)}</p>`;
+        outputDiv.innerHTML += `<p>${multiplicate(4, 3)}</p>`;
+        outputDiv.innerHTML += `<p>${multiplicate(88, 3)}</p>`;
+    </script>
+    
+</body>
+</html>

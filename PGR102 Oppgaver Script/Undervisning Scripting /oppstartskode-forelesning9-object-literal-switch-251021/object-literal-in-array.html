@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object literal in array</title>
+    <!--
+        Bruk av object literal i array
+        --
+        Opprette array som inneholder x antall object literals
+        Bruke for-løkke for å genere innhold fra array med object literals
+    -->
+</head>
+<body>
+
+    <h3>Burger King</h3>
+    <h4>Hva vil du ha idag?</h4>
+
+    <select id="course-select">
+        <option value="burger">Burger</option>
+        <option value="Salad">Salat</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Drinks">Drikke</option>
+    </select>
+    <input id="select-course-btn" type="button" value="Velg">
+    
+    <div id="output-div"></div>
+
+    <script>
+        var courseSelect = document.getElementById("course-select");
+        var selectCourseBtn = document.getElementById("select-course-btn");
+        var outputDiv = document.getElementById("output-div");
+
+        function selectCourse() {
+            
+            var choice = courseSelect.value;
+
+            switch( choice ){
+                case "burger":
+                    outputDiv.innerHTML = `
+                        <ul>
+                            <li>Hawaiian burger</li>
+                            <li>whopper cheese</li>
+                        </ul>
+                    `;
+                break;
+                case "Salad":
+                outputDiv.innerHTML =`
+                        <ul>
+                            <li> yo mama</li>
+                            <li> Caesar salad</li>
+                        </ul>
+                    `;
+                
+                break;
+                case "Dessert":
+                    outputDiv.innerHTML =`
+                        <ul>
+                            <li>Fudge</li>
+                            <li>Cheesecake</li>
+                        </ul>
+                    `;
+                break;
+                case "Drinks":
+                    outputDiv.innerHTML =`
+                        <ul>
+                            <li> may I have some your sprite to wash down the Hawaiian burger</li>
+                            <li> coke</li>
+                        </ul>
+                    `;
+                    
+                break;
+
+            }
+            
+            console.log( courseSelect );
+        }
+
+        selectCourseBtn.onclick = selectCourse;
+
+    </script>
+
+</body>
+</html>

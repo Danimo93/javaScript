@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Byer i Europa</title>
+</head>
+<body>
+    
+    <h3>Hvilke byer i Europa husker du?</h3>
+    <input id="add-city-to-list-btn" type="button" value="Legg til by">
+    <ul id="cities-in-europe-ul"></ul>
+    
+    <script>
+    
+        var addCityToListBtn = document.getElementById("add-city-to-list-btn")
+        addCityToListBtn.onclick = addCityToList;
+        
+        var citiesInEuropeUl = document.getElementById("cities-in-europe-ul")
+        
+        function addCityToList(){
+            var newCity = prompt("Tast inn navnet på en by i Europa");    
+            citiesInEuropeUl.innerHTML += `<li>${newCity}</li>`;
+        }
+        
+    </script>
+    
+</body>
+</html>

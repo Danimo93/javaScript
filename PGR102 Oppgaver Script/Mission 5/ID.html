@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Dørvekter ID Sjekk</h3>
+    <p id="status-p"></p>
+
+    <script>
+        var statusP = document.getElementById('status-p');
+
+        var iDsjekk;
+        var message;
+
+
+        iDsjekk = prompt("Are you drunk? ");
+
+        if(iDsjekk === "No"){
+            message = `Welcome to the pub`;
+        }
+        else{
+            
+            message = `Sorry, You are drunk`;
+        }
+
+        statusP.innerHTML = message;
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

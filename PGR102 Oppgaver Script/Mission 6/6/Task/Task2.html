@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <h1>How many time can you press</h1>
+    <input id="add-a-up" type="button" value="Up">
+    <p id="box-p">0</p>
+    <script>
+        /*
+            Html-elemente
+        */
+
+        var countUp = document.getElementById("add-a-up");
+        var numberP = document.getElementById("box-p");
+        var number = 0;
+
+       
+        /*
+            Funksjoner
+        */
+
+        function addNum(){
+            number += 10;
+            numberP.innerHTML = number;
+        }
+
+        /*
+            Event
+        */
+        countUp.onclick = addNum;
+        numberP.onclick = addNum;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverser Meg!</title>
+</head>
+<body>
+
+    <input id="user-input" value="">
+    <button id="user-input-btn">Reverser meg!</button>
+    <p id="reverse-input"></p>
+
+    <script>
+
+        var reverseInput = document.getElementById("reverse-input");
+        var userInput = document.getElementById("user-input");
+        var userInputBtn = document.getElementById("user-input-btn");
+
+        userInputBtn.onclick = reverseMe;
+
+        function reverseMe(){
+
+            var userInputVal = userInput.value;
+            var inputLength = userInputVal.length;
+
+            reverseInput.innerHTML = "";
+            for (var i = inputLength-1; i >= 0; i--){
+                reverseInput.innerHTML += userInputVal[i];
+        }
+    }
+    
+    </script>
+    
+</body>
+</html>

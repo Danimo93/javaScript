@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <h1>How many time can you press</h1>
+    <input id="subJumbo" type="Image" img src="/Img/superJumbo.jpeg" alt="superJumbo" width="300" height="300">
+    <input id="deadpool" type="Image" img src="/Img/deadpool.jpeg" alt="Deadpool" width="300" height="300">
+    <input id="irondome" type="Image" img src="/Img/irondome.png" alt="irondome" width="300" height="300">
+    <input id="spidershoe" type="Image" img src="/Img/spidershoe.jpeg" alt="spidershoe" width="300" height="300">
+    <p id="output"></p>
+
+    <script>
+        /*
+            Html-elemente
+        */
+       var sub = document.getElementById("subJumbo");
+       var dead = document.getElementById("deadpool");
+       var iron = document.getElementById("irondome");
+       var spide = document.getElementById("spidershoe");
+       var text = document.getElementById("output");
+
+
+
+       
+        /*
+            Funksjoner
+        */
+
+        function Hero1(){
+            text.innerHTML = "Dette er ei Jente"
+            
+        }
+        function Hero2(){
+            text.innerHTML = "Dette er en Mann"
+            
+        }
+        function Hero3(){
+            text.innerHTML = "Dette er en Robot"
+            
+        }
+        function Hero4(){
+            text.innerHTML = "Dette er SpiderMann"
+            
+        }
+
+        /*
+            Event
+        */
+        sub.onclick = Hero1;
+        dead.onclick = Hero2;
+        iron.onclick = Hero3;
+        spide.onclick = Hero4;
+
+    </script>
+</body>
+</html>

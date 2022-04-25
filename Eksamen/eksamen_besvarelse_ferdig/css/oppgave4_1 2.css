@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#title {
+    font-size: 42px;
+}
+
+#logged-in-div {
+    display: none;
+    flex-direction: column;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funksjon med parametere</title>
+
+</head>
+<body>
+    
+
+    <div id="box-div-1">boks1 :)</div>
+    <div id="box-div-2">boks2 :)</div>
+    <div id="box-div-3">boks3 :)</div>
+    
+    <script>
+
+        function styleBox(boxId, top, left, back, color) {
+            var box = document.getElementById(boxId);
+            box.style.position = 'absolute';
+            box.style.top = top;
+            box.style.left = left;
+            box.style.background = back;
+            box.style.color = color;
+            
+            
+            
+        
+        
+
+        }
+        styleBox("box-div-1", "300px", "100px", "rgb(20, 50, 40)", "yellow");
+        styleBox("box-div-2", "50px", "900px", "rgb(200, 210, 80)", "white");
+        styleBox("box-div-3", "90px", "90px", "rgb(70, 90, 200)",);
+
+
+    </script>
+
+</body>
+</html>

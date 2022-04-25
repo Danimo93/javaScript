@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste to betingelser med &amp;&amp;</title>
+</head>
+<body>
+
+	<h1>Tast inn passordene for å komme inn i hvelvet</h1>
+	
+	<label>Passord 1</label>
+	<input id="password1-txt" type="password">
+	<label>Passord 2</label>
+	<input id="password2-txt" type="password">
+	<input id="check-input-btn" type="button" value="OK">
+	
+	<div id="output-div"></div>
+	
+	<script>
+	
+		/*
+			HTML objects
+		*/
+		var password1Txt = document.getElementById("password1-txt");
+		var password2Txt = document.getElementById("password2-txt");
+		
+		var checkInputBtn = document.getElementById("check-input-btn");
+		var outputDiv = document.getElementById("output-div");
+		
+		/*
+			Variables
+		*/
+		var password1 = "123";
+		var password2 = "456";
+		
+		var passwordUser1 = "";
+		var passwordUser2 = "";
+		
+		/*
+			Functions
+		*/
+		function checkInput(){
+			
+			passwordUser1 = password1Txt.value;
+			passwordUser2 = password2Txt.value;
+			
+			if( passwordUser1 === password1 && passwordUser2 === password2 ){
+				outputDiv.innerHTML = `
+					<h3>Gratulerer! Dere er rike!</h3>
+					<img src="images/treasure-hunters.jpg">
+				`;
+			}else{
+				outputDiv.innerHTML = "Dere tastet inn feil kode og hvelvet vil være låst for evig tid!";
+			}
+		}
+		
+		/*
+			Events
+		*/
+		checkInputBtn.onclick = checkInput;
+		
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siste programmeringsnytt</title>
+</head>
+<body>
+   
+    <input id="show-news-article-btn" type="button" value="Vis nyhet">
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        var showNewsArticleBtn = document.getElementById("show-news-article-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        var newsArticle = {
+            title: "Hans og Peter fant bug!",
+            content: "Hans og Peter fant ut at de hadde en bug i sin kode veldig sent mandag kveld.",
+            image: "programmering.jpg",
+            author: "Marianne Nielsen",
+            date: new Date().toLocaleDateString()
+        };
+        
+        showNewsArticleBtn.onclick = showNewsArticle;
+        
+        function showNewsArticle(){
+            var htmlTxt = `
+                <article>
+                    <h3>${newsArticle.title}</h3>
+                    <p>Skrevet ${newsArticle.date} av ${newsArticle.author}</p> 
+                    <img src="images/${newsArticle.image}">
+                    <p>${newsArticle.content}</p>
+                </article>
+            `;
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+    </script>
+    
+</body>
+</html>

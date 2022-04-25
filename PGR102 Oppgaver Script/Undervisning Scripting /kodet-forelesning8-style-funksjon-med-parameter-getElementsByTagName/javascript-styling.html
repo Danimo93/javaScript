@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stilsetting med JavaScript</title>
+    <!--
+        Bruk av "element.style.property" for dynamisk stilsetting gjennom JavaScript.
+        Properties (CSS-egenskaper i denne konteksten) i JavaScript skrives i camelCasing.
+        Eksempelvis blir CSS-egenskapen font-family til fontFamily i JavaScript.
+        Liste med vanlig bruke CSS-egenskaper: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
+    -->
+    <style>
+        img{
+            border-top: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="box-div">Jeg er en boks som skal bli stilsatt :)</div>
+    
+    <script>
+
+        var boxDiv = document.getElementById("box-div");
+
+        // malen for å stilsette er: element.style.property
+        boxDiv.style.backgroundColor = "black";
+        boxDiv.style.color = "#F00";
+        boxDiv.style.padding = "10px";
+        boxDiv.style.textAlign = "center";
+        boxDiv.style.fontFamily = "sans-serif";
+        boxDiv.style.width = "300px";
+        boxDiv.style.margin = "auto";
+
+    </script>
+
+</body>
+</html>

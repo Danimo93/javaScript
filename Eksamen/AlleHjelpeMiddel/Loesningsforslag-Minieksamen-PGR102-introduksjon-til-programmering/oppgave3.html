@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 byer</title>
+</head>
+<body>
+
+    <h1>10 byer</h1>
+    <ul id="cities-ul"></ul>
+
+    <script>
+        
+        var citiesUl = document.getElementById("cities-ul");
+
+        var capitalArray = [
+            "Oslo", 
+            "Stockholm", 
+            "Helsingfors", 
+            "Berlin",
+            "Paris",
+            "Madrid",
+            "Riga",
+            "Vienna",
+            "Minsk",
+            "Moskva"
+        ];
+
+        var htmlTxt = "";
+        for(var i = 0; i < capitalArray.length; i++){
+            htmlTxt += `
+                <li>${capitalArray[i]}</li>
+            `;
+        }
+        citiesUl.innerHTML = htmlTxt;
+
+    </script>
+    
+</body>
+</html>

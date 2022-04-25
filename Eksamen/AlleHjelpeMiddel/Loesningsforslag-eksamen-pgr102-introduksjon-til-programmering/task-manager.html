@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task manager</title>
+</head>
+<body>
+	
+	<div>
+		<h1>Task manager</h1>
+
+		<label>Tittel</label>
+		<input id="title-txt" type="text">
+
+		<label>Estimert tid i minutter</label>
+		<input id="estimated-time-txt" type="text">
+
+		<input id="add-task-btn" type="button" value="Legg til task">
+
+		<div id="output-div"></div>
+	</div>
+	
+	<script>
+		// HTML OBJECTS
+		var titleTxt = document.getElementById("title-txt");
+		var estimatedTimeTxt = document.getElementById("estimated-time-txt");
+		var addTaskBtn = document.getElementById("add-task-btn");
+		var outputDiv = document.getElementById("output-div");
+	
+		// VARIABLES AND ARRAYS
+		var taskArray = [];
+		
+		// FUNCTIONS
+		function addTask(){
+			var title = titleTxt.value;
+			var estimatedTime = estimatedTimeTxt.value;
+			
+			taskArray.push( { title: title, estimatedTime: estimatedTime } );
+			
+			showAllTasks();
+		}
+				
+		function showAllTasks(){
+			var htmlTxt = "";
+			var totalTime = 0;
+			for(var i = 0; i < taskArray.length; i++){
+				htmlTxt += `
+					<article>
+						<h3>${ taskArray[i].title }</h3>
+						<p>Tid: ${ taskArray[i].estimatedTime } minutter</p>
+					</article>
+				`;
+
+				totalTime += parseInt(taskArray[i].estimatedTime);
+			}
+			outputDiv.innerHTML = `
+				<p>Antall tasks: ${taskArray.length}. Totalt estimert tid: ${totalTime}</p>
+				${htmlTxt}
+			`;
+		}
+		/* 
+			MERKNAD showAllTasks: man kunne også kodet det slik at man kun legger til siste task og ikke kjører utskrift av alle tasks på nytt hver gang.
+			Det ville gjort koden mer effektiv.
+		*/
+		
+		// EVENTS
+		addTaskBtn.onclick = addTask;
+		
+	</script>
+	
+</body>
+</html>

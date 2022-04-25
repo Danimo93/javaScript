@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Oppgave 3. Matlageret (25%)</title>
+</head>
+<body>
+
+	<h3>Matlageret</h3>
+	<label>Produktnavn</label>
+	<input id="product-name-txt" type="text"><br>
+	<label>Antall på lager</label>
+	<input id="product-amount-txt" type="text"><br>
+	<input id="add-product-btn" type="button" value="Legg til produkt i array">
+	<input id="show-products-btn" type="button" value="Vis produkter du har lagt til">
+    <div id="output-div">
+        <ul id="product-list"></ul>
+    </div>
+	
+	<script>	
+		
+		// VARIABLER
+        
+        // relevante variabler som inneholder html-elementer
+        var productNameTxt = document.getElementById("product-name-txt");
+        var productAmountTxt = document.getElementById("product-amount-txt");
+        var addProductBtn = document.getElementById("add-product-btn");
+        var showProductsBtn = document.getElementById("show-products-btn");
+        var productList = document.getElementById("product-list");
+        
+        // tomt array til senere bruk
+        var productsArray = [];
+        
+        
+        
+        
+        
+        // FUNKSJONER
+		
+        // Funksjonen sortByAmount tar objekter som argumenter inn
+        // i sine to parametre, og sjekker hvilken av objektene har
+        // den høyeste verdien i propertyen amount. Deretter returnerer
+        // den verdien 1 om b har høyere amount, -1 om a har høyere
+        // amount, eller 0 om a og b har lik amount. Funksjonen kan
+        // brukes som en del av en enkel sorteringsalgoritme i en nøstet
+        // for-løkke.
+        
+		function sortByAmount(a, b) {
+		  if (a.amount < b.amount) {
+			return 1;
+		  }
+		  if (a.amount > b.amount) {
+			return -1;
+		  }
+		  return 0;
+		}
+        
+        // legger til produkt i productsArray
+        function addProduct() {
+            
+            // lokal variabel for bruk av Number.isNaN()
+            var productAmount = parseInt(productAmountTxt.value);
+            
+            // sjekker om verdien vi prøver å legge inn som amount er et tall
+            // se oppgave1.html, linje 90 for forklaring på Number.isNan()
+            if (Number.isNaN(productAmount)) {
+                alert("Antall på lager må være et tall!");
+            } else {
+            productsArray.push(
+                {
+                    productName: productNameTxt.value,
+                    amount: parseInt(productAmountTxt.value)
+                }
+                );
+            }
+        }
+        
+        // printer productsArray
+        function printProducts() {
+
+            // tømmer først produktlisten på nettsiden
+            productList.innerHTML = "";
+
+            // går så gjennom arrayet av produkter, og printer hvert produkt
+            for (i = 0; i < productsArray.length; i++) {
+                productList.innerHTML += `
+                    <li>Produkt: ${productsArray[i].productName}<br>
+                    På lager: ${productsArray[i].amount}</li>
+                `
+            }
+        }
+        
+        // sorterer objektene i productsArray fra lavest til høyest amount, (ved
+        // bruk av Bubble Sort . Søk det gjerne opp på google for å se flinkere folk enn meg forklare det)
+        // Det ble en del grubling under løsningen av denne oppgaven. Jeg mistenker
+        // at jeg kjører den indre løkka flere ganger enn jeg trenger
+        function sortProducts() {            
+            for (i = 0; i < productsArray.length - 1; i++) {
+
+                for (j = 0; j < productsArray.length - 1; j++) {
+                    
+                    // sjekker hva som har størst amount via sortByAmount
+                    if (sortByAmount(productsArray[j], productsArray[j+1]) == -1) {
+                        
+                        // bytter plass på objekter innad i arrayet gjennom en lokal variabel som midlertidig oppbevaring
+                        var tempContainer = productsArray[j];
+                        productsArray[j] = productsArray[j+1];
+                        productsArray[j+1] = tempContainer;
+                    }
+                }
+            }
+            
+            // printer til slutt arrayet
+            printProducts();
+        }
+        
+        
+        
+        
+        
+        // ONCLICK
+        
+        addProductBtn.onclick = addProduct;
+        
+        showProductsBtn.onclick = sortProducts;
+
+	</script>
+</body>
+</html>
+
+

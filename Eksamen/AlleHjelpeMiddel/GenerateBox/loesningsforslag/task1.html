@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Boxes</title>
+</head>
+<body>
+    
+    <input type="button" value="Generate Random Box" id="style-btn">
+    <div></div>
+
+    <script>
+
+        var div = document.getElementsByTagName("div");
+        var styleBtn = document.getElementById("style-btn");
+        
+        var borderStyle = [
+                "dotted",
+                "dashed",
+                "solid",
+                "double",
+                "none"
+            ] 
+
+        function styleBox(w, h, b, bowi, boco, p, bc){
+            div[0].style.width = w;
+            div[0].style.height = h;
+            div[0].style.border = b;
+            div[0].style.borderWidth = bowi;
+            div[0].style.borderColor = boco
+            div[0].style.padding = p;
+            div[0].style.backgroundColor = bc;
+        }
+
+        function generateRandomValues(){
+            
+            width = Math.floor(Math.random() * 150 + 50);
+            height = Math.floor(Math.random() * 150 + 50);
+            borderWidth = Math.floor(Math.random() * 50 + 1);
+            bcr = Math.floor(Math.random() * 256);
+            bcg = Math.floor(Math.random() * 256);
+            bcb = Math.floor(Math.random() * 256);
+            borderColor = `rgb(${bcr}, ${bcg}), ${bcb}`;
+            borderStyleIndex = Math.floor(Math.random() * borderStyle.length);
+            padding = Math.floor(Math.random() * 101);
+            r = Math.floor(Math.random() * 256);
+            g = Math.floor(Math.random() * 256);
+            b = Math.floor(Math.random() * 256);
+            backgroundColor = `rgb(${r}, ${g}, ${b})` 
+        }
+
+        function generateBox(){
+            generateRandomValues();
+            styleBox(
+                `${width}px`, 
+                `${height}px`, 
+                `${borderStyle[borderStyleIndex]}`,
+                `${borderWidth}px`,
+                `${borderColor}`,
+                `${padding}px`,
+                `${backgroundColor}` 
+            );
+        }
+
+        styleBtn.onclick = generateBox;
+
+    </script>
+
+</body>
+</html>

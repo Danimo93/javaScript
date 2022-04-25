@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The Corrupt Presidents</title>
+    <link rel="stylesheet" href="presidentgame.css">
+
+</head>
+<body>
+    
+<!--  Drawing the context of the mission   -->
+
+    <header>
+        <h1>  CORRUPT PRESIDENTS  </h1>
+    </header>
+    
+        <p id="index1">Trykk på knappen for å velge vanskelighets nivået</p>
+
+ 
+
+<!--  Loading Bar of Patience   -->
+
+ 
+
+
+<!--  1 div that contains the images   -->
+
+
+
+
+
+    <div id="theBigDiv">
+
+        <div id="index">
+
+            <select id="difficultyLevel">
+
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="difficult">Hard</option>
+            
+            </select>
+
+            <button id="startGame" type="menu">Start Game</button>
+
+        </div>
+
+        <div id="hungerGame">
+        
+            <div id="levelPatience>
+            
+            <section class="imageParent">
+
+                <img src="./Bilder/foster_people.jpg" width="200px" height="200px" id="fosterPeople" class="foster_child"> 
+                <p class="myP">En tilfeldig person som trenger hjelp fra presidenten (asyl/beskyttelse). Denne personen trenger en signatur for å få utført prosedyren.</p>
+
+            </section>
+
+        </div>
+
+        <div id="corruptPresidents" class="child">
+
+            <img src="./Bilder/JOH.jpeg" width="200px" height="200px" id="president0" alt="joh" class="president"> 
+            <img src="./Bilder/Bolsonaro.jpeg" width="200px" height="200px" id="president1" alt="bolsonaro" class="president">
+            <img src="./Bilder/Maduro.jpeg" width="200px" height="200px" id="president2" alt="maduro" class="president"> 
+            <img src="Bilder/Mel_Zelaya.jpeg" width="200px" height="200px" id="president3" alt="zelaya" class="president"> 
+            <img src="./Bilder/biden.jpeg" width="200px" height="200px" id="president4" alt="presBiden" class="president"> 
+            <img src="./Bilder/Daniel-Ortega.jpeg" width="200px" height="200px" id="president5" alt="ortega" class="president">
+
+                <div id="theMessageArray" class="flexbox-container"></div>
+                    <p id="pChild">Message from the president:</p>
+                <span id="presidentialMessage"></span>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+    <div id="gameStatus"><p id="patienceStatBar">Patience Status</p></div>
+
+    <!-- Updating the patience bar  -->
+
+    <div id="patienceStatus" class="container" >
+
+        <div id="patienceBar1"></div>
+        <div id="patienceBar2" data-label="Loading Patience"></div>
+
+    </div>
+ 
+    <script>
+
+        var index = document.getElementById("index");
+        var hungerGame = document.getElementById("hungerGame");
+        var theMessageArray = document.getElementsByTagName("arrayMsg")
+
+        /* Updating patience status */
+
+        var patienceStatus = document.getElementById("patienceStatus");
+        var patienceStatBar = document.getElementById("patienceStatBar");
+        
+
+        
+        /*
+        hungerGame.style.display = "none"; */
+
+        var startGame = document.getElementById("startGame");
+        
+        /* Hiding the main content*/
+
+
+
+        // hide the main content
+        var emptyContent = document.getElementById('empty-content');
+ 
+
+        var levelSelector = document.getElementById('level-selector');
+
+        var easyLevel = document.getElementById('easy-level');
+        var mediumLevel = document.getElementById('medium-level');
+        var hardLevel = document.getElementById('hard-level');
+
+             
+
+        /* Create a var to input the patience level */
+
+        var patiencePerc = 0;
+        var fosterPeople = document.getElementById("fosterPeople");
+      
+
+        /* Function to get game started to retrieve content from select option and assign diffciulty level*/
+
+        function buttonFunc(){
+            var difficultyLevel = document.getElementById("difficultyLevel");
+            if(difficultyLevel.value == "easy"){
+                patiencePerc = 0.25;
+                index.style.display = "";
+                startGame.style.display = "";
+        
+            }
+            if(difficultyLevel.value == "medium") {
+                patiencePerc = 0.50;
+                index.style.display = "";
+                startGame.style.display = "";
+                
+            }
+            if(difficultyLevel.value == "difficult"){
+                patiencePerc = 0.75;
+                index.style.display = "";
+                startGame.style.display = "";
+            }
+
+            index.style.display = "none";
+            hungerGame.style.display = "";
+            startGame.style.display = "";
+            
+        }
+
+        startGame.onclick = buttonFunc;
+
+
+            /* declare the level of patience var */
+
+            var corruptPresidents = document.getElementById("corruptPresidents");
+
+            /* Array of messages */
+
+            var messageArray = ["Dere trodde aldri jeg var så korrupt, ikke sant?", "Prøv en annen president",  "I verste fall: Dere må vente 70 måneder for å få hjelp", "Du må flytte til et annet land for å få noen type hjelp", "Ja, jeg skal absolutt hjelpe dere", "Nei, jeg er opptatt akkurat nå med noen SVART BUSINESS"];
+
+            /* Span Message from President */
+
+            var presidentialMessage = document.getElementById("presidentialMessage");
+            presidentialMessage.innerHTML = [i];
+
+            /* None corrupt president */
+
+            var randomPresident = Math.floor(Math.random() * 6);
+
+            /* Assign a function that will later create an event on the clicked president with an argument */
+
+            function presidentFunc(event){
+                if(`president${randomPresident}` == event.target.id){
+                    var theBigDiv = document.getElementById("theBigDiv");
+                    theBigDiv.style.display = "none";
+                    var gameStatus = document.getElementById("gameStatus");
+                    gameStatus.innerHTML = "Game Won!"; /* add a message*/
+                } else {
+                    trackingPatience = trackingPatience - patiencePerc;
+                    var theMessageArray = document.getElementById("theMessageArray");
+                    var clickedPresident = event.target.id.substring(9);
+                    theMessageArray.innerHTML = messageArray[clickedPresident];
+                } 
+                if(trackingPatience <= 0) {
+                    var theBigDiv = document.getElementById("theBigDiv");
+                    theBigDiv.style.display = "none";
+                    var gameStatus = document.getElementById("gameStatus");
+                    gameStatus.innerHTML = "Alle presidentene du har klikket på er for korrupte til å hjelpe deg";
+                } else {
+                    myPatienceFunc();
+                    updateGame();
+                   
+                }
+            }
+
+            for (var i = 0; i < 6; i++) {
+                var president = document.getElementById(`president${i}`);
+                president.onclick = presidentFunc;
+            }
+
+            var trackingPatience = 1;
+
+            /* creating a function that will update screen after the images are clicked*/
+
+            function myPatienceFunc(){
+                    var levelPatience = document.getElementById("levelPatience");
+                    levelPatience.innerHTML += `${trackingPatience * 100}%`;       
+            }
+            myPatienceFunc();
+            trackingPatience.innerHTML = movePatience;
+             
+
+            /* Hide main context from index page */
+
+             
+            function updatePatienceBar() {
+                var patienceBar2 = document.getElementsByTagName("patienceBar2");
+                var width = 1;
+                var moveIt = setInterval (frame, 10);
+                function loadingBar2(){
+                    if (clickedPresident <= patiencePerc) {
+                        clearInterval(moveIt);
+                    } else {
+                        width--;
+                        patienceBar2.style.width = width - patienceStatus;
+                    }
+                }
+                
+            }  
+            updatePatienceBar();
+            index1.innerHTML = '';
+
+
+
+
+
+
+    </script>
+
+ 
+
+
+</body>
+</html>

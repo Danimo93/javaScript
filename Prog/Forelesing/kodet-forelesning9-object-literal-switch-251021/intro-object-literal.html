@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro til object literal</title>
+    <!--
+        Intro til object literal
+        --
+        Lære hvordan lage et objekt ved hjelp av object literal-teknikken
+        Skrive ut objekt i console.log?
+    -->
+</head>
+<body>
+
+    <div id="output-div"></div>
+    
+    <script>
+
+        var outputDiv = document.getElementById("output-div");
+        
+        // name, age, birthPlace, favoriteColor, powers, description, image
+        // { property1: "value", property2: "value" } property = attributt
+
+        var monster1 = {  
+            name: "Count Cutula",
+            age: 457,
+            favoriteColor: "Red",
+            powers: ["Flyr", "Lever evig", "Sterk", "Hypnose", "Hamskifte"],
+            description: "Kan forvandle seg til en flaggermus",
+            image: "cute-dracula.png",
+            parents: {  
+                father: "Vlad Dracul Sr.",
+                mother: "Vladitsa Dracula Sr."
+            }
+        }; //monster1.powers[0]
+
+        outputDiv.innerHTML = `
+            <article>
+                <h3>${ monster1.name }</h3>
+                <p>Alder: ${ monster1.age }</p>    
+                <p>Beskrivelse: ${ monster1.description }</p>
+                <p>Far: ${ monster1.parents.father }</p>
+            </article>
+        `;
+
+        var monster2 = {};
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/oppgave4_2.css">
+		<title>Oppgave 4 - Student 2</title>
+	</head>
+	<body>
+		<h1 id="title" width="100px">Tren minnet ditt!</h1>
+        <h2 id="number-text">0</h2>
+        <button id="main-button">START</button>
+        <div id="input-wrapper" style="display: none;">
+            <label for="number-input">Husker du tallet?</label>
+            <input type="number" id="number-input">
+        </div>
+	</body>
+
+
+	<script>
+        const numberText = document.getElementById("number-text");
+        const mainButton = document.getElementById("main-button");
+        const inputWrapper = document.getElementById("input-wrapper");
+        const userInput = document.getElementById("number-input");
+
+        // Variables
+        let difficulty = 10;
+        let correctNumber = 0;
+        let correctGuesses = 0;
+        let totalPlays = 0;
+        let guessMode = false;
+
+        // Outputs a random number to the screen
+        function outPutNumber() {
+            let num = Math.floor(Math.random() * difficulty);
+            numberText.innerText = num;
+            correctNumber = num;
+
+            // Set guessmode to false, in case the user has played at least once
+            guessMode = false;
+
+            // Remove the button to prevent double clicks
+            mainButton.hidden = true;
+
+            // Wait 3 seconds before doing the next code block
+            timer = setInterval(() => {
+                askForNumber();
+                clearInterval(timer);
+            }, 3000);
+        }
+
+        // Ask the user for the number previously displayed
+        function askForNumber() {
+            numberText.innerText = "?";
+
+            // Display the input box and button
+            inputWrapper.style.display = "block";
+            mainButton.hidden = false;
+
+            guessMode = true;
+            mainButton.textContent = "Check";
+            mainButton.onclick = checkNumber;
+        }
+
+        // Check if user types correct number
+        function checkNumber() {
+
+            // Not really neccessary to parse the string returned from the user input,
+            // as you could do a non-strict check in the if statement
+            // but I like to be explicit
+            let input = parseInt(userInput.value);
+
+            // Not implemented anything for this, it's for future proofing
+            totalPlays++;
+            inputWrapper.style.display = "none";
+
+            if (input === correctNumber) {
+                numberText.innerText = "Correct!";
+                correctGuesses++;
+                // If the input is correct, multiply the max number with 1.4
+                difficulty *= 1.4;
+            } else {
+                // If the input is wrong, reset the difficulty to 10
+                numberText.innerText = "Wrong..";
+                difficulty = 10;
+            }
+            mainButton.textContent = "New number";
+            mainButton.onclick = outPutNumber;
+            userInput.value = "";
+        }
+
+        mainButton.onclick = guessMode ? checkNumber : outPutNumber;
+    </script>
+</html>

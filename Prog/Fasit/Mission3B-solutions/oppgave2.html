@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addere to tall v.2.</title>
+</head>
+<body>
+    
+    <p id="result-p"></p>
+    <p id="result2-p"></p>
+    <div id="image-div"></div>
+    
+    <script>
+    
+        var resultP = document.getElementById("result-p");
+        var result2P = document.getElementById("result2-p");
+        var imageDiv = document.getElementById("image-div");
+        
+        var number1 = prompt("Gi meg et tall!");
+        var number2 = prompt("Gi meg et tall til!");
+        
+        var result1 = number1 + number2;
+        var result2 = parseInt(number1) + parseInt(number2);
+        
+        resultP.innerHTML = `Resultat uten parseInt: ${result1}`;
+        result2P.innerHTML = `Resultat med parseInt: ${result2}`;
+        imageDiv.innerHTML = `<img src="thumbs-up.jpg" alt="Foto. To personer gir tommel opp.">`
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilfeldigheter</title>
+    <!--
+        Kode med Math.random for å skape tilfeldig tall
+        Math.floor for å lage heltall
+        if else som sjekker hva tallet er blitt og skriver ut noe
+        funksjon kalles på for å få det til å skje
+        
+        Modularisering av funksjonalitet: 
+        - skape tilfeldig tall
+        - sette beskjed
+        - vise beskjed- 
+        - funksjon som setter alt i gang
+    -->
+</head>
+<body>
+
+    <h3>Hva får du idag?</h3>
+    <div id="output-div"></div>
+
+    <script>
+
+        // HTML-objekter
+        var outputDiv = document.getElementById("output-div");
+        
+        // Variabler
+        var randomNumber;
+        var message; 
+
+        // Funksjoner
+        function setRandomNumber(){
+            randomNumber = Math.floor( Math.random() * 100 + 1 ); //0.595 * 100 = 59
+        }
+        
+        // DRY - Don't Repeat Yourself
+        function setMessage(){
+            var image;
+
+            if( randomNumber <= 50 ){
+                image = "cat.jpg";
+            }else{
+                image = "fem-hundre-kroner.png";
+            }
+
+            message = `
+                    <h3>${image}</h3>
+                    <img src="images/${image}"/>
+            `;
+
+        }
+        function showMessage(){
+            outputDiv.innerHTML = message;
+        }
+        // Sette funksjoner i gang
+        function initLuckyDay(){
+            setRandomNumber();
+            setMessage();
+            showMessage();
+        }
+        initLuckyDay();
+
+    </script>
+    
+</body>
+</html>

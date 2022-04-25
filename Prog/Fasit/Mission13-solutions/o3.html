@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Informasjon</title>
+</head>
+<body>
+    
+    <div>
+        <h1>Få informasjon om forskjellige temaer</h1>
+       
+        <label>Topic</label>
+        <input id="topic-txt"
+         type="text" placeholder="programming / problem-solving">
+        
+        <input id="get-information-btn" type="button" value="Get information">
+        <p id="information-output"></p>        
+    </div>
+    
+    <script>
+        
+        var topicTxt = document.getElementById("topic-txt");
+        var getInformationBtn = document.getElementById("get-information-btn");
+        var informationOutput = document.getElementById("information-output");
+        
+        getInformationBtn.onclick = function(){
+            var information = getInformation( topicTxt.value );
+            
+            informationOutput.innerHTML = information;
+        }        
+        
+        function getInformation( type ){
+            
+            var information = "";
+            
+            switch( type ){
+                case "programming":
+                    information = "Computer programming is the process of designing and building an executable computer program for accomplishing a specific computing task. ";    
+                break;
+                case "problem-solving":
+                    information = "Problem-solving strategies are the steps that one would use to find the problems that are in the way to getting to one's own goal.";
+                break;
+                default:
+                    information = "Du kan bare taste inn programming eller problem-solving";
+            }
+            
+            return information;
+            
+        }
+        
+    </script>
+    
+</body>
+</html>

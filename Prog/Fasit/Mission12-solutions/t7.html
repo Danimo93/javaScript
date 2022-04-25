@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+</head>
+<body>
+   
+    <div>
+        <input type="button" value="1">       
+        <input type="button" value="2">
+        <input type="button" value="+">       
+        <input type="button" value="-">       
+        <input type="button" value="=">              
+    </div>
+    
+    <p id="output-number1-p"></p>
+    <p id="output-type-p"></p>
+    <p id="output-number2-p"></p>
+    <p id="output-result-p"></p>
+    
+    <script>
+        
+        /*
+            Henter HTML-objekter
+        */
+        var inputArray = document.getElementsByTagName("input");        
+        var outputNumber1P = document.getElementById("output-number1-p");
+        var outputTypeP = document.getElementById("output-type-p")
+        var outputNumber2P = document.getElementById("output-number2-p");
+        var outputResultP = document.getElementById("output-result-p")
+        
+        /*
+            Variabler
+        */
+        var numberOfInputs = inputArray.length;
+        var number1;
+        var number2;
+        var result;
+        var type = "";
+                
+        /*
+            Event-setting
+        */
+        for( var i = 0; i < numberOfInputs; i++ ){
+            inputArray[i].onclick = checkInput;
+        }
+        
+        /*
+            Funksjoner
+        */
+        function checkInput(){
+            var clicked = this.value;
+            switch( clicked ){
+                case "1":
+                case "2":
+                case "3":
+                    if( type.length === 0){
+                        outputNumber1P.innerHTML += clicked;                    
+                    }else{
+                        outputNumber2P.innerHTML += clicked;
+                    }
+                break;
+                
+                case "+":
+                    type = "+";      
+                    outputTypeP.innerHTML = type;
+                break;
+                
+                case "-": 
+                    type = "-";
+                    outputTypeP.innerHTML = type;
+                break;
+                
+                case "=":
+                    
+                    number1 = parseInt( outputNumber1P.innerHTML );
+                    number2 = parseInt( outputNumber2P.innerHTML );
+                    
+                    if( type === "+" ){
+                        result = number1 + number2;    
+                    }else if( type === "-" ){
+                        result = number1 - number2;
+                    }
+                    
+                    outputResultP.innerHTML = `= ${result}`;
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>

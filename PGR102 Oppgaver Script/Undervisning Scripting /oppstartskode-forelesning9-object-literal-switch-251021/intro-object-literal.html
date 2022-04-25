@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro til object literal</title>
+    <!--
+        Intro til object literal
+        --
+        Lære hvordan lage et objekt ved hjelp av object literal-teknikken
+        Skrive ut objekt i console.log?
+    -->
+</head>
+<body>
+    <h3></h3>
+    <div id="output-div"></div>
+    <img src="images">
+    <script>
+        var outputDiv = document.getElementById('output-div');
+        // name, age, birthPlace, favoriteColor, powers, description, image
+
+        // { property1: "value", property2: "value" } property = attributt
+        var monster1 = {
+            name: "Count Cutula",
+            age: 457,
+            favoriteColor: "RED",
+            powers: ["Flyr", "Lver evig", "Sterk", "Hypnose", "Hamskifte"],
+            description: "kan forvandle seg til en flaggermus",
+            image: "cute-dracula.png",
+            parents: {
+                father: "Vlad Dracul sr.",
+                mother: "Vladitsa Dracula Sr.",
+            }
+        };
+        
+
+        outputDiv.innerHTML = `
+            <article>
+                <h3>${monster1.name}</h3>
+                <p>Alder: ${monster1.age}</p>
+                <p>Beskrivelse: ${monster1.age}</p>
+                <p>Krefter: ${monster1.powers}</p>
+                <p>Forklarele: ${monster1.description}</p>
+                <p>Bilder: ${monster1.image}</p>
+                <p>Far: ${monster1.parents.father}</p>
+            </article>
+        `;
+
+        var monster2 = {
+            name: "Count fankenstein",
+            age: 162,
+            favoriteColor: "Green",
+            powers: ["He cant die", "strong"],
+            description: "his a live",
+            image: "cute-frankenstein.png"
+        };
+
+
+    </script>
+</body>
+</html>

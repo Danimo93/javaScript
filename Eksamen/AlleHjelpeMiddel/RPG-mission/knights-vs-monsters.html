@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knights vs. Monsters</title>
+    <link rel="stylesheet" type="text/css" href="css/rpg.css">
+</head>
+<body>
+
+    <div id="container">   
+
+        <img id="knight-img" src="images/knight.png">
+        
+        <!-- Fire monsters -->
+        <img id="fire-monster-1-img" src="images/fire-monster.png">
+        <img id="fire-monster-2-img" src="images/fire-monster.png">
+
+        <!-- Life -->
+        <div class="life-container container-1">
+            <div id="knight-life-div"></div>
+        </div>
+
+        <div class="life-container container-2">
+            <div id="fire-monster-1-life-div"></div>
+        </div>
+
+        <div class="life-container container-3">
+            <div id="fire-monster-2-life-div"></div>
+        </div>
+
+    </div><!-- end container -->
+    <div id="info-container"></div>
+    
+    <script>
+
+        // HTML elementer:
+        var knightImg = document.getElementById("knight-img");
+        var fireMonster1Img = document.getElementById("fire-monster-1-img");
+        var fireMonster2Img = document.getElementById("fire-monster-2-img");
+        var knightLifeDiv = document.getElementById("knight-life-div");
+        var fireMonster1LifeDiv = document.getElementById("fire-monster-1-life-div");
+        var fireMonster2LifeDiv = document.getElementById("fire-monster-2-life-div");
+        var infoContainer = document.getElementById("info-container");
+
+        // Variabler
+        var knightLife = 300;
+        var monster1Life = 300;
+        var monster2Life = 300;
+
+        var knightStrength = 70;
+        var fireMonsterStrength = 30;
+
+        var isKnightDead = false;
+        var isMonster1Dead = false;
+        var isMonster2Dead = false;
+
+        var cooldown = false;
+
+        // Start Function
+        initGame();
+
+        function setLifeBar ( element, life, backgroundColor ) {
+            element.style.width = `${life}px`;
+            element.style.backgroundColor = backgroundColor;
+        }
+
+        function initGame(){
+            setTimeout( function(){
+                setLifeBar(knightLifeDiv, knightLife, "red");
+                setLifeBar(fireMonster1LifeDiv, monster1Life, "yellow");
+                setLifeBar(fireMonster2LifeDiv, monster2Life, "yellow");
+            }, 500 );
+        }
+
+        function beginAttack(){
+            var monsterId = this.id;
+
+            if(cooldown === false){
+
+                // set onclick cooldown to true
+                cooldown = true;
+
+                switch (monsterId){
+                    case "fire-monster-1-img":
+                        if(monster1Life <= 0){
+                            fireMonster1Img.style.height = 0;
+                            fireMonster1LifeDiv.style.width = 0;
+                            cooldown = false;
+                        }
+                        else if(monster1Life > 0 && isKnightDead === false) {
+                            monster1Life -= Math.floor( Math.random() * knightStrength );
+                            fireMonster1LifeDiv.style.width = `${monster1Life}px`;
+                            setTimeout( function(){
+                                monsterAttack();
+                            }, 1000 );
+                        }
+                    break;
+
+                    case "fire-monster-2-img":
+                        if(monster2Life <= 0){
+                            fireMonster2Img.style.height = 0;
+                            fireMonster2LifeDiv.style.width = 0;
+                            cooldown = false;
+                        }
+                        else if(monster2Life > 0 && isKnightDead === false) {
+                            monster2Life -= Math.floor( Math.random() * knightStrength );
+                            fireMonster2LifeDiv.style.width = `${monster2Life}px`;
+
+                            setTimeout( function(){
+                                monsterAttack();
+                            }, 1000 );
+                        }
+                    break;
+                }
+            }
+        }
+
+        function monsterAttack(){
+
+            cooldown = false;
+
+            if (monster1Life !== 0 && isMonster1Dead === false){
+                knightLife -= Math.floor( Math.random() * fireMonsterStrength );
+                knightLifeDiv.style.width = `${knightLife}px`;
+            }
+            else if(monster2Life !== 0 && isMonster2Dead === false){
+                knightLife -= Math.floor( Math.random() * fireMonsterStrength );
+                knightLifeDiv.style.width = `${knightLife}px`;
+            }
+
+            if (knightLife <= 0){
+                knightDead();
+            }
+
+            if (monster1Life <= 0 && monster2Life <= 0){
+                infoContainer.innerHTML = `Congratulations! You won! <button onclick="restartGame();">Restart</button>`;
+            }
+
+        }
+
+        function knightDead(){
+            isKnightDead = true;
+            knightLifeDiv.style.width = 0;
+            infoContainer.innerHTML = `You have lost the game. Press here to restart. <button onclick="restartGame();">Restart</button>`;
+            knightImg.style.transform = `rotate(90deg) translateX(70px) translateY(-50px)`;
+        }
+
+        function restartGame(){
+            window.location.reload();
+        }
+
+        // Events
+        if(cooldown == false){
+            fireMonster1Img.onclick = beginAttack;
+            fireMonster2Img.onclick = beginAttack;
+        }
+
+    </script>
+
+</body>
+</html>

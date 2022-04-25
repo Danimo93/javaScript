@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siste programmeringsnytt</title>
+    <style>
+        img{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+   
+    <input id="show-news-articles-btn" type="button" value="Vis nyheter">
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        /*
+            Innhenting av HTML-objekter
+        */
+        var showNewsArticlesBtn = document.getElementById("show-news-articles-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        /*
+            Event-setting
+        */        
+        showNewsArticlesBtn.onclick = showNewsArticles;
+        
+        /*
+            Array med nyheter
+        */
+        var newsArray = [
+            {
+                title: "Hans og Peter fant bug!",
+                content: "Hans og Peter fant ut at de hadde en bug i sin kode veldig sent mandag kveld.",
+                image: "programmering.jpg"
+            },
+            {
+                title: "Katter kan kode!",
+                content: "Nina fikk seg en overraskelse da hun så at katten hennes hadde skrevet arbeidskravet ferdig for henne.",
+                image: "gray-cat.jpg"
+            },
+            {
+                title: "Switch eller if-else?",
+                content: "En del utviklere lurer ved en del tilfeller på om de skal bruke switch eller if-else.",
+                image: "woman-thinking.jpg"
+            }
+        ];          
+        
+        var numberOfArticles = newsArray.length;
+        
+                
+        function showNewsArticles(){
+            var htmlTxt = "";
+            
+            for( var i = 0; i < numberOfArticles; i++ ){
+                htmlTxt += `
+                <article>
+                    <h3>${newsArray[i].title}</h3>                    
+                    <img src="images/${newsArray[i].image}">
+                    <p>${newsArray[i].content}</p>
+                </article>
+                `;
+            }
+            
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+    </script>
+    
+</body>
+</html>

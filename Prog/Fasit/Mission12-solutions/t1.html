@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hvilket dyr vil du se bilde av?</title>
+    <style>
+        img{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Hvilket dyr vil du se bilde av?</h1>
+    
+    <label>Skriv inn dyret du vil se bilder av (katt, hund, fugl, fisk, hest)</label>    
+    <input id="animal-txt" type="text">
+    <input id="show-animals-btn" type="button" value="Vis dyrebilder">
+    
+    <div id="output-div"></div>
+    
+    <script>
+    
+        var animalTxt = document.getElementById("animal-txt");
+        var showAnimalsBtn = document.getElementById("show-animals-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        showAnimalsBtn.onclick = showAnimals;
+        
+        function showAnimals(){            
+            
+            var animal = animalTxt.value;
+            var htmlTxt = "";
+            
+            switch( animal ){
+                case "katt":
+                    htmlTxt = `<img src='images/cat-white.jpg'><img src='images/gray-cat.jpg'>`;
+                break;
+                case "hund":
+                    htmlTxt = `<img src='images/dog-1.jpg'><img src='images/dog-2.jpg'>`;
+                break;
+                default:
+                    htmlTxt = "<p>Du må velge en av dyrene som er listet opp</p>";
+            }   
+                    
+            outputDiv.innerHTML = htmlTxt;        
+            
+        }
+    
+    </script>
+    
+</body>
+</html>

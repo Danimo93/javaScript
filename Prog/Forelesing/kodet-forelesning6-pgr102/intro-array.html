@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro array</title>
+    <!-- 
+        Intro til konseptet array 
+        - Om indekser i array
+        - Legge inn verdier i array
+        - Hente ut verdier fra array 
+
+        PAUSE til 09:10
+    -->   
+</head>
+<body>
+    
+    <h3>PC-deler</h3>
+    <ul id="output-ul"></ul>
+
+    <script>
+        var outputUl = document.getElementById("output-ul");
+
+        // Arrays har index-plasser, første index-plass er 0
+        var pcPartArray = ["Tastarutu", "Skjerm", "Hodetelefoner", "CPU", "Hovedkort", "Hardisk"];
+        var movieArray = ["No time to die", "Shang-Chi", "Dune"];
+        var footballClubArray = ["Real Madrid", "Liverpool", "Manchester"];
+
+        // For å endre på et array må vi angi hvilken index-plass å oppdatere        
+        pcPartArray[0] = "Tastatur";
+        pcPartArray[2] = "Headset med mikrofon";
+
+        /* 
+            For å hente ut verdier fra array, trenger vi å angi 
+            index-plass til det vi skal hente ut
+        */ 
+        outputUl.innerHTML = `
+            <li>${pcPartArray[0]}, ${pcPartArray[4]}</li>
+            <li>${pcPartArray[1]}</li>
+            <li>${pcPartArray[2]}</li>
+            <li>${pcPartArray}</li>
+        `;
+
+        function printCities(){
+            var cityArray = ["Oslo", "Stockholm", "København"];
+        }
+
+
+    </script>
+
+</body>
+</html>

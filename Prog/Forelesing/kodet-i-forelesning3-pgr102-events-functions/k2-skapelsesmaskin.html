@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+
+    <input id="add-500-kr-btn" type="button" value="Legg til 500 kroner">
+    <input id="add-apple-btn" type="button" value="Legg til eple">
+    <div id="box-div"></div>
+
+    <script>
+        /*
+            HTML-elementer
+            var numberOfMilkBottlesInStock;
+            var number_of_milk_bottlesinstock;
+        */
+        var add500KrBtn = document.getElementById("add-500-kr-btn");
+        var addAppleBtn = document.getElementById("add-apple-btn");
+        var boxDiv = document.getElementById("box-div");
+        
+        /*
+            Funksjoner
+        */
+        function add500Kr(){
+            boxDiv.innerHTML += `
+                <img src="images/fem-hundre-kroner.png">
+            `;
+        }
+
+        function addApple(){
+            boxDiv.innerHTML += `
+                <img src="images/apple.jpg">
+            `;
+        }
+
+        /*
+            Events
+        */
+        add500KrBtn.onclick = add500Kr;
+        addAppleBtn.onclick = addApple;
+        boxDiv.onclick = add500Kr;
+
+
+    </script>
+
+</body>
+</html>

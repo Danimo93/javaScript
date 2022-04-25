@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TOPGAMES</title>
+</head>
+<body>
+   
+    <h1>TOPGAMES</h1>
+   
+    <section>
+        <div>
+            <label>Søk etter kategori</label>    
+            <input id="category-txt" type="text" placeholder="...action, rpg, strategi etc.">    
+            <input id="search-category-btn" type="button" value="Søk etter kategori" >
+        </div>
+
+        <div>
+           <h3>Søk etter pris</h3>
+           <label>Minimumspris</label>
+           <input id="minimum-price-txt" type="number">
+           <label>Maximumspris</label>
+           <input id="maximum-price-txt" type="number">
+           <input id="search-price-range-btn" type="button" value="Søk etter pris">
+        </div> 
+
+    </section>
+
+    <div id="output-div"></div>
+   
+    <script>
+        /*
+            Innhenting HTML-objekter
+        */
+        var categoryTxt = document.getElementById("category-txt");
+        var searchCategoryBtn = document.getElementById("search-category-btn");
+        var minimumPriceTxt = document.getElementById("minimum-price-txt");
+        var maximumPriceTxt = document.getElementById("maximum-price-txt");
+        var searchPriceRangeBtn = document.getElementById("search-price-range-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        /*
+            Event-setting
+        */
+        searchCategoryBtn.onclick = searchCategory;
+        searchPriceRangeBtn.onclick = searchPriceRange;
+        
+        /*
+            Array med spill
+        */
+        var gameArray = [
+            { 
+                title: "White Cat", 
+                description: "Play as the white cat in this amazing sand box game to rival GTA5", 
+                image: "cat-white.jpg", 
+                price: 89, 
+                category: "action" 
+            },
+            { 
+                title: "Dangerous Programming", 
+                description: "Strategy game where you must lead a group of programmers", 
+                image: "programmering.jpg", 
+                price: 29, 
+                category: "strategi" 
+            },
+            { 
+                title: "Doggy", 
+                description: "RPG-spill", 
+                image: "dog-1.jpg", 
+                price: 59, 
+                category: "rpg" 
+            }
+        ];        
+        var numberOfGames = gameArray.length;
+        
+        /*
+            Funksjoner for søk
+        */
+        function searchCategory(){
+            
+            var searchTerm = categoryTxt.value;
+            var htmlTxt = "";
+            
+            for(var i = 0; i < numberOfGames; i++){
+                if( searchTerm === gameArray[i].category ){
+                    htmlTxt += `
+                        <article>
+                            <h3>${gameArray[i].title}</h3>
+                            <p>${gameArray[i].description}</p>
+                            <img src="images/${gameArray[i].image}" />
+                        </article>
+
+                    `;
+                }
+            }
+            
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+        function searchPriceRange(){
+            var minPrice = parseInt( minimumPriceTxt.value );
+            var maxPrice = parseInt( maximumPriceTxt.value );
+            
+            var searchTerm = categoryTxt.value;
+            var htmlTxt = "";
+            
+            for(var i = 0; i < numberOfGames; i++){
+                if( gameArray[i].price > minPrice && gameArray[i].price < maxPrice ){
+                    htmlTxt += `
+                        <article>
+                            <h3>${gameArray[i].title}</h3>
+                            <p>${gameArray[i].description}</p>
+                            <img src="images/${gameArray[i].image}" />
+                        </article>
+
+                    `;
+                }
+            }
+            
+            outputDiv.innerHTML = htmlTxt;
+        }        
+        
+    </script>
+    
+</body>
+</html>

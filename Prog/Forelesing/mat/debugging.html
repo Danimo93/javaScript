@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorittfrukt</title>
+</head>
+<body>
+    
+    <h1>Favorittfrukt</h1>
+    <p id="favorite-fruit-p"></p>
+
+    <script>
+
+        // JavaScript navnekonvensjon: variabler skrives i Lower Camel Casing (dromedar-case)
+
+        var favoriteFruitP = document.getElementById("favorite-fruit-p");
+
+        var usersFavoriteFruit; //deklarere variabelen favoriteFruit
+
+        usersFavoriteFruit = window.prompt("Hva er din favorittfrukt? :)");
+
+        favoriteFruitP.innerHTML = usersFavoriteFruit;
+
+    </script>
+
+
+</body>
+</html>

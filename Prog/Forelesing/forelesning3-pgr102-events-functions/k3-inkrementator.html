@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inkrementator</title>
+    <!--
+        En nettside hvor man kan klikke på en knapp for å inkrementere (øke) et tall
+        Evt. 
+        - også dekrementere
+        - if for å sjekke om klikket mer enn x ganger
+    -->
+</head>
+<body>
+
+    <img id="increment-cookie-img" src="images/cookie.jpg">
+    <p id="cookie-number-p">Antall cookies: 0</p>
+
+    <script>
+
+        var incrementCookieImg = document.getElementById("increment-cookie-img");
+        var cookieNumberP = document.getElementById("cookie-number-p");
+
+        var numberOfCookies = 0;
+
+        function incrementCookie(){
+            numberOfCookies += 10;
+            cookieNumberP.innerHTML = `Antall cookies: ${numberOfCookies}`;
+        }
+
+        incrementCookieImg.onclick = incrementCookie;
+
+    </script>
+
+</body>
+</html>

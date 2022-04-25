@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByTagName</title>
+    <!--
+        getElementsByTagName
+        ---
+        getElementById-metoden er laget for å få tak i ett element.
+        getElementsByTagName-metoden er laget for å få tak i flere elementer.
+        Elementene vi får tak i blir lagt til i et array.
+
+        Bruke function som returnerer tilfeldig rgb-kode?
+    -->
+</head>
+<body>
+
+    <h3>Stilsett div'ene</h3>
+    <input id="style-divs-btn" type="button" value="Stilsett">
+
+    <div id="container">
+        <div>div-1</div>
+        <div>div-2</div>
+        <div>div-3</div>
+        <div>div-4</div>
+        <div>div-5</div>
+        <div>div-6</div>
+        <div>div-7</div>
+        <div>div-8</div>
+        <div>div-9</div>
+        <div>div-10</div>
+        <div>div-11</div>
+        <div>div-12</div>
+        <div>div-13</div>
+        <div>div-14</div>
+        <div>div-15</div>
+        <div>div-16</div>
+        <div>div-17</div>
+        <div>div-18</div>
+        <div>div-19</div>
+        <div>div-20</div>
+        <div>div-21</div>
+        <div>div-22</div>
+        <div>div-23</div>
+        <div>div-24</div>
+        <div>div-25</div>
+        <div>div-26</div>
+        <div>div-27</div>
+        <div>div-28</div>
+        <div>div-29</div>
+        <div>div-30</div>
+        <div>div-31</div>
+        <div>div-32</div>
+        <div>div-33</div>
+        <div>div-34</div>
+        <div>div-35</div>
+        <div>div-36</div>
+        <div>div-37</div>
+        <div>div-38</div>
+        <div>div-39</div>
+        <div>div-40</div>
+        <div>div-41</div>
+        <div>div-42</div>
+        <div>div-43</div>
+        <div>div-44</div>
+        <div>div-45</div>
+        <div>div-46</div>
+        <div>div-47</div>
+        <div>div-48</div>
+        <div>div-49</div>
+        <div>div-50</div>
+        <div>div-51</div>
+        <div>div-52</div>
+        <div>div-53</div>
+        <div>div-54</div>
+        <div>div-55</div>
+        <div>div-56</div>
+        <div>div-57</div>
+        <div>div-58</div>
+        <div>div-59</div>
+        <div>div-60</div>
+        <div>div-61</div>
+        <div>div-62</div>
+        <div>div-63</div>
+        <div>div-64</div>
+        <div>div-65</div>
+        <div>div-66</div>
+        <div>div-67</div>
+        <div>div-68</div>
+        <div>div-69</div>
+        <div>div-70</div>
+        <div>div-71</div>
+        <div>div-72</div>
+        <div>div-73</div>
+        <div>div-74</div>
+        <div>div-75</div>
+        <div>div-76</div>
+        <div>div-77</div>
+        <div>div-78</div>
+        <div>div-79</div>
+        <div>div-80</div>
+        <div>div-81</div>
+        <div>div-82</div>
+        <div>div-83</div>
+        <div>div-84</div>
+        <div>div-85</div>
+        <div>div-86</div>
+        <div>div-87</div>
+        <div>div-88</div>
+        <div>div-89</div>
+        <div>div-90</div>
+        <div>div-91</div>
+        <div>div-92</div>
+        <div>div-93</div>
+        <div>div-94</div>
+        <div>div-95</div>
+        <div>div-96</div>
+        <div>div-97</div>
+        <div>div-98</div>
+        <div>div-99</div>
+        <div>div-100</div>
+    </div><!-- End of #container -->
+    
+    <script>
+        var divArray = document.getElementById('container').getElementsByTagName("div");
+
+        for(var i = 0; i < divArray.length; i++){
+            divArray[i].style.backgroundColor = `rgb(${getRandomCode()}, ${getRandomCode()}, ${getRandomCode()})`;
+        }
+
+        function getRandomCode(){
+            var code = Math.floor(Math.random() * 256);
+            return code;
+            
+            
+        }
+
+
+    </script>
+    
+</body>
+</html>

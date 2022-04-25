@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr. Jason</title>
+</head>
+<body>
+    
+    <div id="output-div"></div>
+    
+    <script>
+    
+        var outputDiv = document.getElementById("output-div");
+        
+        var name = "Mr. Jason";
+        var age = 30;
+        
+        var message = `<p>- Message start -</p>`;
+        
+        if( name.length >= 9 ){
+            
+            message += `<p>Good day mr. Jason!</p>`;
+        
+            if( ( age * 3 ) < 90 ){
+                
+                message += `<p>Is it raining today?</p>`;
+                
+            }else{
+                
+                message += `<p>It seems it's going to snow today!</p>`;
+                
+            }
+            
+        } else{
+            
+            message += `<p>Good night mr. Jason!</p>`;
+            
+            if( age === 30 ){
+                
+                message += `<p>You're 30 years old.</p>`;
+                
+            }
+            
+        }
+        
+        outputDiv.innerHTML = message;        
+        
+    
+    </script>
+    
+</body>
+</html>

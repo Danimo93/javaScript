@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-else</title>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+
+        // Vi tenker oss at verdiene lagt inn i variablene kom fra bruker
+        var numberOfPizzas = 7;
+        var menu = "vegetarian"; // meat, vegetarian eller dessert
+        
+        // Eksempel 1
+        if( numberOfPizzas > 5 ){ // større eller lik: >=, større enn >
+            // gi bruker rabatt
+        }else{
+            // gi bruker vanlig pris
+        }
+
+        // Eksempel 2
+        if( menu === "vegetarian" ){
+            // vis vegetarmeny
+        }else if( menu === "meat" ){
+            // vis kjøttmeny
+        }else{
+            // vis dessertmeny
+        }
+
+        /*
+            = sett det som er på venstre side lik det som er på høyre side
+            var name = "Henriette";
+
+            == sammenligning av to verdier, hvor om nødvendig gjør om teksttall til tall
+            "7" er ikke det samme som 7
+            if("7" == 7){ // true
+
+            }
+
+            === sammenligning av to verdier, men streng på om det er tall eller ikke
+            if("7" === 7){ // false
+
+            }
+        */
+
+
+        if( menu === "vegetarian" ){
+            // vis vegetarmeny
+        }        
+        if( menu === "meat" ){
+            // vis kjøttmeny
+        }
+        if(menu === "dessert") {
+            // vis dessertmeny
+        }
+
+        // Eksempel 3
+        if( menu === "vegetarian" ){
+            if( numberOfPizzas >= 5 ){
+                // gi rabatt
+            }
+        }else if( menu === "dessert"){
+
+        }
+
+        // Eksempel 4
+        if( menu === "vegetarian" || menu === "meat" || menu === "fish"){
+            if( numberOfPizzas >= 5 ){
+                // gi rabatt
+            }else{
+
+            }
+        }else if( menu === "dessert"){
+
+        }else{
+
+        }
+
+    </script>
+</body>
+</html>

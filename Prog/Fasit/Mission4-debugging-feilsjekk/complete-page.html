@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festplanlegger</title>
+</head>
+<body>
+ 
+   	<!--
+   		Festplanlegger
+   		- En applikasjon hvor bruker angir hvor mange gjester hen skal ha og på bakgrunn av det får vite hvor mye pizza, brus og sjokolade som skal kjøpes.
+   	-->
+   
+    <h3>Festplanlegging</h3>
+    <h4 id="output-h4"></h4>
+    <ul id="output-ul"></ul>
+    <!-- ul er HTML for å lage lister -->
+
+    <script>
+
+        /*
+            HTML-objekter
+        */
+        var outputH4 = document.getElementById("output-h4");
+        var outputP = document.getElementById("output-ul");
+
+        /*
+            Variabler
+        */
+        var arranger = "Dan Abramov";
+        var numberOfPizzas;
+        var numberOfSodas;
+        var numberOfChocolates
+        var numberOfGuests;
+
+        /*
+            Beregning av hvor mye som skal kjøpes inn til festen
+        */
+        numberOfGuests = prompt("Hvor mange gjester skal du ha?");
+
+        numberOfPizzaSlices = numberOfGuests * 4;
+        numberOfSodas = numberOfGuests * 2;
+        numberOfChocolates = numberOfGuests * 5;
+
+        /*
+            Utskrift
+        */
+        outputH4.innerHTML = `For ${numberOfGuests} gjester bør du ha:`;
+
+        outputP.innerHTML = `
+            <li>Antall pizzaer: ${numberOfPizzaSlices}</li>
+            <li>Antall brus: ${numberOfSodas}</li>
+            <li>Antall sjokolader: ${numberOfChocolates}</li>
+        `; 
+    </script>
+
+</body>
+</html>

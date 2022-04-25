@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+#number-text {
+    font-size: 72px;
+}

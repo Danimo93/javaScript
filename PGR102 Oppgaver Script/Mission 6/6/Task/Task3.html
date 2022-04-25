@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <h1>How many time can you press</h1>
+    <input id="add-a-up" type="button" value="Add Country">
+    <ul id="box-p"></ul>
+
+    <script>
+        /*
+            Html-elemente
+        */
+       var city = document.getElementById("add-a-up");
+       var numberP = document.getElementById("box-p");
+       var input;
+       city.onclick = addNum;
+
+
+
+       
+        /*
+            Funksjoner
+        */
+
+        function addNum(){
+            input = window.prompt("Skriv naven på city");
+            numberP.innerHTML += `<li> ${input}</li>`
+            
+        }
+
+        /*
+            Event
+        */
+        countUp.onclick = addNum;
+        numberP.onclick = addNum;
+
+    </script>
+</body>
+</html>

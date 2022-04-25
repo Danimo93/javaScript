@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 2 - Dragracing</title>
+    <link rel="stylesheet" href="css/oppgave2.css">
+</head>
+<body>
+    <h1>Dragracing</h1>
+    <div id="road-div"></div>
+
+    <img id="blue-car" src="images/blue-car.png" class="car">
+    <img id="green-car" src="images/green-car.png" class="car">
+    <img id="red-car" src="images/red-car.png" class="car">
+
+    <div id="finish-line"></div>
+
+    <div id="output-div">
+    </div>
+    <p id="start-p" style="position:absolute; top:70vh; width: 100vw; font-size:22px;">START BY PRESSING [SPACE]</p>
+
+    <script>
+        // HTML Elements
+        const outputDiv = document.getElementById("output-div");
+        const pElement = document.getElementById("start-p");
+        const carElements = document.getElementsByClassName("car");
+        const finishLine = document.getElementById("finish-line");
+        const carArray = [...carElements];
+
+        let carStyles = [];
+        let winnerCar = "";
+
+        // The value in which the line has been crossed
+        const finishValue = finishLine.getBoundingClientRect().x;
+
+        let intervalId;
+        // Add eventlistener for space bar input
+        document.addEventListener("keydown", (e) => {
+            if (e.key === " ") {    // <- I found this (" ") one interesting
+                runCars();
+            }
+        });
+
+        // Disables the "Start with space"-text with true and enables with false
+        function disablePElement(disable) {
+            if (disable) {
+                pElement.style.display = "none";
+            } else {
+                pElement.style.display = "block";
+            }
+        }
+
+        // Run the cars
+        function runCars() {
+            disablePElement(true);
+            moveCars();
+            console.log("Run cars");
+        }
+
+        // Return a random value between 0 and 200
+        function getRandomPixelValue() {
+            return Math.floor(Math.random() * 200);
+        }
+
+        // Check the position of the finish line and if one of the cars has crossed it
+        function hasFinished() {
+            return carArray.some(car => car.racedLength >= finishLine);
+            // If a car passes finishLine, hasFinished = true
+        }
+
+
+
+        let interval;
+
+        // Moving cars - first setting some values for each of the cars, then moving them with interval
+        function moveCars() {
+            carArray.forEach((car, index) => {
+                carStyles.push(window.getComputedStyle(car));
+                car.racedLength = 0;
+                car.style.left = "0px";
+            });
+
+            interval = setInterval(() => {
+                console.log(hasFinished());
+                if (carStyles.some(car => car.getPropertyValue('left') >= 700)) {
+                    console.log("END RACE");
+                    endRace();
+                } else {
+                    carArray.forEach((car) => {
+                        car.racedLength += getRandomPixelValue();
+                        car.style.left = `${car.racedLength}px`;
+                        if (car.racedLength >= 700) {
+                            console.log("END RACE");
+                            endRace(car);
+                        }
+                    });
+                }
+            }, 2000);
+        }
+
+        // Sums up the race
+        function endRace(winner) {
+            pElement.innerText = `${winner.id} won!`;
+
+            pElement.style.fontSize = "72px";
+            disablePElement(false);
+            clearInterval(interval);
+        }
+    </script>
+
+</body>
+</html>

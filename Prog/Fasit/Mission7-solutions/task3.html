@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>100 Cats!</title>
+</head>
+<body>
+   
+    <div id="cats-div"></div>
+   
+    <script>
+        
+        var catsDiv = document.getElementById("cats-div");
+        var imageUrl = "cat.png";
+                
+        for(var i = 0; i < 100; i++){
+            catsDiv.innerHTML += `<img src=${imageUrl}>`;
+        }
+        
+    </script>
+    
+</body>
+</html>

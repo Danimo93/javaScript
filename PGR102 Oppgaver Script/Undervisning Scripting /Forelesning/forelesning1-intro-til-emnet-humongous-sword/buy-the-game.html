@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy the game</title>
+</head>
+<body>
+
+    <h1 id="title-h1">Test</h1>
+    <script>       
+
+        // Dette er en 1-linjekommentar
+        /*
+            Dette er en flerlinjekommentar.
+            Man legger til kommentarer for å:
+            - skape struktur
+            - lage kommentarer til seg selv
+            - lage kommentarer til en medutvikler
+        */
+
+        /*
+            HTML-objekter
+            - HTML som vi skal interagere med
+        */
+        var titleH1 = document.getElementById("title-h1"); // Denne linjen med kode får tak i h1-tagen (som er en overskrift på nettsiden).    
+
+        /*
+            Variabler - informasjon om spillet
+        */
+        var title = "Humongous Sword"; // datatype: string
+        var age = 18; // datatype: number
+        var genre = "RPG";
+        var price = 199;
+        var currency = "NOK";
+
+        // Tekster (strings) må omsluttes med fnuttene "", tall omsluttes eller ikke avhengig av hva de skal brukes til.
+        
+        titleH1.innerHTML = title; // Denne linjen med kode fyller h1-tagen med tittelen på spillet. 
+
+    </script>
+    
+</body>
+</html>

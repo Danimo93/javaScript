@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilfeldig bokstavsammensetning</title>
+</head>
+<body>
+    
+    <div>
+        <h1>Tilfeldig bokstavsammensetning</h1>
+        <input id="get-random-word-btn" type="button" value="Gi meg et ord" />
+        <p id="random-word-p"></p>        
+    </div>
+    
+    <script>
+    
+        var getRandomWordBtn = document.getElementById("get-random-word-btn");
+        var randomWordP = document.getElementById("random-word-p");
+        
+        getRandomWordBtn.onclick = showRandomWord;
+        
+        var letterArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "æ", "ø", "å"];
+        
+        
+        var numberOfLetters = letterArray.length;
+         
+        
+        
+        function showRandomWord(){
+            var randomWord = getRandomWord();            
+            randomWordP.innerHTML += randomWord + ", ";
+        }        
+        
+        function getRandomWord(){
+            
+            var word = "";
+            
+            for( var i = 0; i < 4; i++){
+                var randomIndex = Math.floor( Math.random() * numberOfLetters );
+                word += letterArray[ randomIndex ];        
+            }              
+            
+            return word;
+        }
+        
+             
+        
+    </script>
+    
+</body>
+</html>

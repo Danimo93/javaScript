@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Siste programmeringsnytt</title>
+    <style>
+        img{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+   
+    <input id="show-news-article-btn" type="button" value="Vis nyhet">
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        var showNewsArticleBtn = document.getElementById("show-news-article-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        var newsArticle = {
+            title: "Hans og Peter fant bug!",
+            content: [
+                "Hans og Peter fant ut at de hadde en bug i sin kode veldig sent mandag kveld.",
+                "'Trodde ikke dette kunne skje!' sier Hans opprørt.",
+                "I et intervju med deres overordnede, Mette Nielsen, kommer det frem at bugs har oppstått i flere koder i det siste.",
+                "Petter og Hans er optimistiske og er sikre de kommer til å finne siste bugen.",
+            ],
+            image: "programmering.jpg",
+            author: "Marianne Nielsen",
+            date: new Date().toLocaleDateString()
+        };
+        
+        showNewsArticleBtn.onclick = showNewsArticle;
+        
+        function showNewsArticle(){
+            
+            var numberOfParagraphs = newsArticle.content.length;
+            
+            var pHTMLTxt = ``;
+            
+            for( var i = 0; i < numberOfParagraphs; i++){
+                pHTMLTxt += `<p>${newsArticle.content[i]}</p>`;
+            }
+            
+            var htmlTxt = `
+                <article>
+                    <h3>${newsArticle.title}</h3>
+                    <p>Skrevet ${newsArticle.date} av ${newsArticle.author}</p> 
+                    <img src="images/${newsArticle.image}">
+                    ${pHTMLTxt}
+                </article>
+            `;
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+    </script>
+    
+</body>
+</html>

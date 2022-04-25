@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sportsbilder versjon 2</title>
+</head>
+<body>
+
+	<h1>Sportsbilder versjon 2</h1>
+	<label>Skriv boksing, fekting, fotball eller hockey</label>
+	<input id="image-choice-txt" type="text">
+	<input id="show-image-btn" type="button" value="Vis bilde">
+	
+	<img id="image">
+	
+	<p id="error-message-p"></p>
+	
+	
+	<script>
+		
+		/*
+			HTML objects
+		*/
+		var imageChoiceTxt = document.getElementById("image-choice-txt");
+		var showImageBtn = document.getElementById("show-image-btn");
+		var image = document.getElementById("image");
+		var errorMessageP = document.getElementById("error-message-p");
+		
+		/*
+			Variables
+		*/
+		var imageChosen = "";
+		
+		/*
+			Functions
+		*/
+		function showImage(){
+			imageChosen = imageChoiceTxt.value.toLowerCase();	
+			
+			if( imageChosen === "boksing" || imageChosen === "fekting" || imageChosen === "fotball" || imageChosen === "hockey"){
+				image.src = `images/${imageChosen}.jpg`;	
+			}else{
+				errorMessageP.innerHTML = "Du kan bare velge mellom de angitte alternativene!";
+			}
+					
+		}
+		
+		/*
+			Events
+		*/
+		showImageBtn.onclick = showImage;
+		
+	</script>
+	
+</body>
+</html>

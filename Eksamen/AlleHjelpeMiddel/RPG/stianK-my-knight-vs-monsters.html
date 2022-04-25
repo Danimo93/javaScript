@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIN Knights vs. Monsters</title>
+    <link rel="stylesheet" type="text/css" href="css/rpg.css">
+</head>
+<body>
+
+    <div id="container"> 
+        
+        <img id="strength-holder"src="images/strength.png">
+        <p id="strength-value" class="name-font">70</p>
+        
+        <img id="potion1" class="potions" src="images/potion.png">
+        <img id="potion2" class="potions" src="images/potion.png">
+        <img id="potion3" class="potions" src="images/potion.png">
+
+        <img id="knight-img" src="images/knight.png">
+        
+        <!-- Fire monsters -->
+        <img id="fire-monster-1-img" src="images/fire-monster.png">
+        <img id="fire-monster-2-img" src="images/fire-monster.png">
+
+        <!--Goblins-->
+        <img src="images/goblin.png" id="goblins1">
+        <img src="images/goblin.png" id="goblins2">
+        <img src="images/goblin.png" id="goblins3">
+
+        <!--Void Dragon-->
+        <img src="images/voidDragon.png" id="void-dragon">
+        <!-- Life -->
+        <div class="life-container container-1">
+            <div id="knight-life-div">
+                <p id="knight-name" class="name-font">knightNameHere</p>
+                <p id="knight-health-print" class="health-number">100</p>
+            </div>
+        </div>
+
+        <div class="life-container container-2">
+            <div id="fire-monster-1-life-div">
+                <p id="enemy1-name" class="name-font">enemyName1</p>
+                <p id="monster1-print" class="health-number">100</p>
+            </div>
+        </div>
+
+        <div class="life-container container-3">
+            <div id="fire-monster-2-life-div">
+                <p id="enemy2-name" class="name-font">enemyName2</p>
+                <p id="monster2-print" class="health-number">100</p>
+            </div>
+        </div>
+
+        <div class="life-container container-4">
+            <div id="fire-monster-3-life-div">
+                <p id="enemy3-name" class="name-font">enemyName3</p>
+                <p id="monster3-print" class="health-number">100</p>
+            </div>
+        </div>
+
+        <div id="credit">Laget av Stian kvålshagen :)</div>
+
+    </div><!-- end container -->
+    <div id="info-container"></div>
+    
+    <script>
+/*   
+   Knight
+   It is possible to implement more characters! :) Only "Brave knight" is used at the moment.
+*/
+var knight = [{
+    name: "Brave Knight",
+    health: 300,
+    info: "A brave warrior!",
+    strength: 70
+}, {
+    name: "glassCannon",
+    health: 50,
+    info: "She hits like a truck, but breaks fast.",
+    strength: 200
+}, {
+    name: "Fat",
+    health: 500,
+    info: "has layers of fat that defends him. But.. He is also lazy.",
+    strength: 20
+}];
+/*
+        All monsters in game.
+        We can add more if we want to!
+*/
+var monsters = [{
+    name: "BlazeBoy",
+    health: 300,
+    info: "Hot stuff",
+    strength: 30
+}, {
+    name: "BlazeGirl",
+    health: 250,
+    info: "Hotter stuff",
+    strength: 40
+}, {
+    name: "Weakly",
+    health: 250,
+    info: "Weak but angry",
+    strength: 10
+}, {
+    name: "Mr.Avg",
+    health: 250,
+    info: "Hungry for money",
+    strength: 40
+}, {
+    name: "Lifting4Gold",
+    health: 200,
+    info: "Almost dead but strong",
+    strength: 60
+}, {
+    name: "VoidDragon",
+    health: 1000,
+    info: "Quite angry and hungry",
+    strength: 90
+}];
+/*
+        Elements for name printing
+*/
+var playerName = document.getElementById("knight-name");
+var enemyName1 = document.getElementById("enemy1-name");
+var enemyName2 = document.getElementById("enemy2-name");
+var enemyName3 = document.getElementById("enemy3-name");
+/*
+        healthPrint
+*/
+var playerHealth = document.getElementById("knight-health-print");
+var enemy1Health = document.getElementById("monster1-print");
+var enemy2Health = document.getElementById("monster2-print");
+var enemy3Health = document.getElementById("monster3-print");
+
+var strengthValue = document.getElementById("strength-value");
+/*
+        Other Elements
+*/
+var knightHealthBar = document.getElementById("knight-life-div");
+var healthBar1 = document.getElementById("fire-monster-1-life-div");
+var healthBar2 = document.getElementById("fire-monster-2-life-div");
+var healthBar3 = document.getElementById("fire-monster-3-life-div");
+
+var knightImg = document.getElementById("knight-img");
+var fireMonsters = [fireMonster1Btn = document.getElementById("fire-monster-1-img"),fireMonster2Btn = document.getElementById("fire-monster-2-img")]
+
+/*
+        Tried out importing elements with arrays! It worked quite well :)
+*/
+var goblinImg = [
+    document.getElementById("goblins1"),
+    document.getElementById("goblins2"),
+    document.getElementById("goblins3")
+]
+var potions = [
+    document.getElementById("potion1"),
+    document.getElementById("potion2"),
+    document.getElementById("potion3")
+]
+var voidDragon = document.getElementById("void-dragon");
+
+console.log(potions[0])
+//Functions
+//Parameter (element,health etc..) er det samme som en variabel, men i en funksjon.
+function setHealthBar(element, health, backgroundColor) { //Parametisk funksjon
+    element.style.width = `${health}px`;
+    element.style.backgroundColor = backgroundColor;
+}
+/*
+        Set Interval = (Set verdier igjen og igjen..)
+        2000 = 2000 millisekunder.
+*/
+/*
+        The init or "initiator" is things that runs before the game starts.
+*/
+function initGame() {
+    setTimeout(function() {
+        setHealthBar(knightHealthBar, knight[0].health, "red")
+        setHealthBar(healthBar1, monsters[0].health, "yellow")
+        setHealthBar(healthBar2, monsters[1].health, "yellow")
+        setHealthBar(healthBar3, 0, "green")
+        /*
+                    Hide first healthbar
+        */
+        healthBar3.style.opacity = "0%"
+        /*
+                    Print health
+        */
+        playerHealth.innerHTML = `${knight[0].health}`
+        enemy1Health.innerHTML = `${monsters[0].health}`
+        enemy2Health.innerHTML = `${monsters[1].health}`
+        enemy3Health.innerHTML = `${monsters[2].health}`
+        /*
+                    Print strength
+        */
+        strengthValue.innerHTML = `${knight[0].strength}`
+        /*
+                    PrintNames
+        */
+        playerName.innerHTML = `${knight[0].name}`
+        enemyName1.innerHTML = `${monsters[0].name}`
+        enemyName2.innerHTML = `${monsters[1].name}`
+        /*
+                    Hide dragon
+        */
+        voidDragon.style.height = "0px";
+        /*
+                    Hide goblins with arrays and a for loop!
+        */
+        for (i = 0; i < goblinImg.length; i++)
+            goblinImg[i].style.height = "0px";
+        /*
+                    Set the timer to 0 because it spoiled the game.
+        */
+    }, 0000);
+}
+//Firemonster attack!
+// this = elementet hentet i onclick. alert(this.src) = http://127.0.0.1:5500/images/fire-monster.png
+// this = elementet hentet i onclick. alert(this.id) = fire-monster-1-img
+function attackingMonster() {
+    var monsterId = this.id;
+    switch (monsterId) {
+        case "fire-monster-1-img":
+            monsters[0].health -= Math.floor(Math.random() * knight[0].strength);
+            strengthValue.innerHTML = `${knight[0].strength}`
+            if (monsters[0].health <= 0) {
+                /*                        
+                                        If firemonster1 dies..
+                */
+                fireMonster1Btn.style.height = "0px"
+                knight[0].strength += 20;
+                console.log(knight[0].strength)
+                goblinImg[0].style.height = "200px";
+                goblinImg[2].style.height = "200px";
+                setHealthBar(healthBar1, monsters[2].health, "green")
+                enemyName1.innerHTML = `${monsters[2].name}`
+                healthBar3.style.opacity = "100%"
+                enemy1Health.innerHTML = `${monsters[2].health}`
+                setHealthBar(healthBar3, monsters[3].health, "green")
+                enemyName3.innerHTML = `${monsters[3].name}`
+                enemy3Health.innerHTML = `${monsters[3].health}`
+                strengthValue.innerHTML = `${knight[0].strength}`
+            } else {
+                /*
+                                    If fireMonster1 doesnt die.
+                */
+                healthBar1.style.width = `${monsters[0].health}px`
+                enemy1Health.innerHTML = `${monsters[0].health}`
+            }
+            knight[0].health -= Math.floor(Math.random() * monsters[0].strength);
+            if (knight[0].health <= 0) {
+                playerDeath()
+            } else {
+                knightHealthBar.style.width = `${knight[0].health}px`
+                playerHealth.innerHTML = `${knight[0].health}`
+            }
+            break;
+        case "fire-monster-2-img":
+            monsters[1].health -= Math.floor(Math.random() * knight[0].strength);
+            strengthValue.innerHTML = `${knight[0].strength}`
+            if (monsters[1].health <= 0) {
+                /*                        
+                                        If firemonster2 dies..
+                */
+                fireMonster2Btn.style.height = "0px"
+                knight[0].strength += 20;
+                console.log(knight[0].strength)
+                goblinImg[1].style.height = "200px";
+                setHealthBar(healthBar2, monsters[4].health, "green")
+                enemyName2.innerHTML = `${monsters[4].name}`
+                enemy2Health.innerHTML = `${monsters[4].health}`
+                strengthValue.innerHTML = `${knight[0].strength}`
+            } else {
+                /*
+                                    If fireMonster2 doesnt die.
+                */
+                healthBar2.style.width = `${monsters[1].health}px`
+                enemy2Health.innerHTML = `${monsters[1].health}`
+            }
+            knight[0].health -= Math.floor(Math.random() * monsters[1].strength);
+            if (knight[0].health <= 0) {
+                playerDeath()
+            } else {
+                knightHealthBar.style.width = `${knight[0].health}px`
+                playerHealth.innerHTML = `${knight[0].health}`
+            }
+            break;
+    }
+    //Hvis det er "fire-monster-1-img" gjør dette --- til break.
+}
+
+//Goblin angrep!
+function goblin0Attack() {
+    monsters[2].health -= Math.floor(Math.random() * knight[0].strength);
+    strengthValue.innerHTML = `${knight[0].strength}`
+    if (monsters[2].health <= 0) {
+        /*                        
+                                If goblin1 dies..
+        */
+        goblinImg[0].style.height = "0px"
+        knight[0].strength += 10;
+        console.log(knight[0].strength)
+        healthBar1.style.width = `0px`
+        voidDragonSpawn()
+        enemy1Health.innerHTML = `0`;
+        strengthValue.innerHTML = `${knight[0].strength}`
+    } else {
+        /*
+                            If goblin1 doesnt die.
+        */
+        healthBar1.style.width = `${monsters[2].health}px`
+        enemy1Health.innerHTML = `${monsters[2].health}`
+    }
+    knight[0].health -= Math.floor(Math.random() * monsters[2].strength);
+    if (knight[0].health <= 0) {
+        playerDeath()
+    } else {
+        knightHealthBar.style.width = `${knight[0].health}px`
+        playerHealth.innerHTML = `${knight[0].health}`
+    }
+}
+
+function goblin1Attack() {
+    monsters[3].health -= Math.floor(Math.random() * knight[0].strength);
+    strengthValue.innerHTML = `${knight[0].strength}`
+    if (monsters[3].health <= 0) {
+        /*                        
+                                If goblin2 dies..
+        */
+        goblinImg[1].style.height = "0px"
+        knight[0].strength += 10;
+        console.log(knight[0].strength)
+        healthBar3.style.width = `0px`
+        voidDragonSpawn()
+        enemy3Health.innerHTML = `0`;
+        strengthValue.innerHTML = `${knight[0].strength}`
+    } else {
+        /*
+                            If goblin2 doesnt die.
+        */
+        healthBar3.style.width = `${monsters[3].health}px`
+        enemy3Health.innerHTML = `${monsters[3].health}`
+    }
+    knight[0].health -= Math.floor(Math.random() * monsters[4].strength);
+    if (knight[0].health <= 0) {
+        playerDeath()
+    } else {
+        knightHealthBar.style.width = `${knight[0].health}px`
+        playerHealth.innerHTML = `${knight[0].health}`
+    }
+}
+
+function goblin2Attack() {
+    monsters[4].health -= Math.floor(Math.random() * knight[0].strength);
+    strengthValue.innerHTML = `${knight[0].strength}`
+    if (monsters[4].health <= 0) {
+        /*                        
+                                If goblin3 dies..
+        */
+        goblinImg[2].style.height = "0px"
+        knight[0].strength += 10;
+        console.log(knight[0].strength)
+        healthBar2.style.width = `0px`
+        voidDragonSpawn()
+        enemy3Health.innerHTML = `0`;
+        strengthValue.innerHTML = `${knight[0].strength}`
+    } else {
+        /*
+                            If goblin3 doesnt die.
+        */
+        healthBar2.style.width = `${monsters[4].health}px`
+        enemy2Health.innerHTML = `${monsters[4].health}`
+    }
+    knight[0].health -= Math.floor(Math.random() * monsters[4].strength);
+    if (knight[0].health <= 0) {
+        playerDeath()
+    } else {
+        knightHealthBar.style.width = `${knight[0].health}px`
+        playerHealth.innerHTML = `${knight[0].health}`
+    }
+}
+
+function healKnight0() {
+    knight[0].health = 300;
+    knightHealthBar.style.width = `${knight[0].health}px`
+    potions[0].style.height = "0px"
+    playerHealth.innerHTML = `${knight[0].health}`
+}
+
+function healKnight1() {
+    knight[0].health = 300;
+    knightHealthBar.style.width = `${knight[0].health}px`
+    potions[1].style.height = "0px"
+    playerHealth.innerHTML = `${knight[0].health}`
+}
+
+function healKnight2() {
+    knight[0].health = 300;
+    knightHealthBar.style.width = `${knight[0].health}px`
+    potions[2].style.height = "0px"
+    playerHealth.innerHTML = `${knight[0].health}`
+}
+
+function voidDragonSpawn() {
+    /*                        
+                            Conditions for the dragon to spawn.
+                            Will only spawn when the game says all enemies has 0 health at the same time.
+    */
+    if (monsters[2].health <= 0) {
+        if (monsters[3].health <= 0) {
+            if (monsters[4].health <= 0) {
+                setHealthBar(healthBar1, monsters[5].health, "purple")
+                enemyName1.innerHTML = `${monsters[5].name}`
+                voidDragon.style.height = "700px";
+                healthBar2.style.opacity = "0%"
+                healthBar3.style.opacity = "0%"
+                enemy1Health.innerHTML = `${monsters[5].health}`
+            }
+        }
+    }
+}
+
+function VoidDragonAttack() {
+    monsters[5].health -= Math.floor(Math.random() * knight[0].strength);
+    if (monsters[5].health <= 0) {
+        /*                        
+                                If dragon dies.
+        */
+        voidDragon.style.height = "0px"
+        knight[0].strength += 1000;
+        console.log(knight[0].strength)
+    } else {
+        /*
+                            If Dragon doesnt die.. Ouch..
+        */
+        healthBar1.style.width = `${monsters[5].health}px`
+        enemy1Health.innerHTML = `${monsters[5].health}`
+    }
+    knight[0].health -= Math.floor(Math.random() * monsters[5].strength);
+    if (knight[0].health <= 0) {
+        playerDeath()
+    } else {
+        knightHealthBar.style.width = `${knight[0].health}px`
+        playerHealth.innerHTML = `${knight[0].health}`
+    }
+}
+/*                        
+            Player death.
+*/
+function playerDeath() {
+    knightImg.style.height = "0px"
+    knightHealthBar.style.width = `0px`
+    /*                        
+                    Turn of game on death.
+    */
+   for(var i = 0; i < potions.length && goblinImg.length; i++){
+    goblinImg[i].onclick = false;
+    potions[i].onclick = false;
+   }
+    fireMonster1Btn.onclick = false;
+    fireMonster2Btn.onclick = false;
+    voidDragon.onclick = false;
+    playerHealth.innerHTML = `0`
+};
+
+/*                        
+        Events
+*/
+initGame();
+/*                        
+        FireMonsters
+        Here we have the same function! But they are not in a array.. Lets try to turn it into an array.
+        it worked, but we had to give it its old value = "fireMonster2Btn"
+        It worked!!! We mangged to use a for loop on a onlclick!
+*/
+for(var i = 0; i < fireMonsters.length;i++){
+fireMonsters[i].onclick = attackingMonster;
+}
+/*                        
+        Goblins
+*/
+goblinImg[0].onclick = goblin0Attack;
+goblinImg[1].onclick = goblin1Attack;
+goblinImg[2].onclick = goblin2Attack;
+/*                        
+        Voiddragon
+*/
+voidDragon.onclick = VoidDragonAttack;
+/*                        
+        Potions.
+        Can I make a for loop here..?
+        Only if they had the same function it seems.
+*/
+potions[0].onclick = healKnight0;
+potions[1].onclick = healKnight1;
+potions[2].onclick = healKnight2;
+/*
+        Refactoring kode er når du optimaliserer kode som er laget!
+*/
+
+/*
+            Reflection:
+            I am very proud of beeing able to import potions and goblins with arrays, but I wish i could utilize them better.
+            When they player dies, a function is started to stops and freezes the game, and it feels like I could do something
+            like this with the monsters dying as well, instead of having a wall of code on every single death. 
+
+            Got a little lazy and didn't use a switch on the goblins.. My fault :P
+            Because of my lazyness, i cannot make a forloop on the goblin onclicks. Same with the potions. Will keep this in mind
+            next time!
+*/
+    </script>
+
+</body>
+</html>

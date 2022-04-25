@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flytt boksen</title>
+    <style>
+        #div1, #div2{            
+            -webkit-transition: all 2s;
+            transition: all 2s;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        Flytt boksen
+        -- 
+        - stilsette boksen
+        - flytte boksen til hvor det klikkes
+        - pageX og pageY er attributter for å sjekke hvor på siden det er klikket
+        - funksjonen som tar imot click-event blir satt med parameter for å ta imot klikket function doSomething(event){}        
+        Eventuelt:        
+        - funksjon med parametere
+        - visning av andre verdier?
+        - ikke lov å flytte over x antall piksler?
+        - endring av andre verdier?
+    -->
+    
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <script>
+
+        var div1 = document.getElementById("div1");
+        var div2 = document.getElementById('div2');
+
+        var html = document.getElementsByTagName('html')[0];
+
+        html.onclick = moveDiv;
+
+        function moveDiv(event) {
+            div1.style.left = `${event.pageX}px`
+            div2.style.top = `${event.pageY}px`
+        }
+
+        function styleDiv( div, width, height, backgroundColor ){
+            div.style.width = `${width}vw`;
+            div.style.height = `${height}vh`;
+            div.style.backgroundColor = backgroundColor;
+            div.style.left = "0px";
+            div.style.top = "0px";
+        }
+
+        // Kalle på en funksjon
+        
+        styleDiv(div1, 50, 50,"rgb(50,200,100)");
+        styleDiv(div2, 40, 40,"rgb(200,50,50)");
+
+
+
+    </script>
+
+</body>
+</html>

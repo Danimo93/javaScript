@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number of times to run v.2</title>
+</head>
+<body>
+   
+    <div>
+        <label>Hvor mange ganger skal løkken kjøre?</label>  
+        <input id="number-txt" type="text">
+        <input id="run-loop-btn" type="button" value="Kjør løkken">
+        <div id="output-div"></div>
+    </div>
+   
+    <script>       
+        var numberTxt = document.getElementById("number-txt");
+        var runLoopBtn = document.getElementById("run-loop-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        runLoopBtn.onclick = runLoop;
+        
+        var sum;
+        
+        function runLoop(){
+            sum = 0;
+            
+            var htmlTxt = "";
+            var number = parseInt(numberTxt.value);
+            
+            for(var i = 0; i < number; i++){
+                console.log(sum);
+                sum += i;
+                if(i > 0){
+                    htmlTxt += ` + ${i}`;
+                }else{
+                    htmlTxt += `${i}`;
+                }
+            }
+            
+            outputDiv.innerHTML = `${htmlTxt} = ${sum}`;
+        }
+        
+    </script>
+    
+</body>
+</html>

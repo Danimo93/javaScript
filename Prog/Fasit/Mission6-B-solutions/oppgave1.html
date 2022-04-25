@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sportsbilder</title>
+</head>
+<body>
+
+	<h1>Sportsbilder</h1>
+	<label>Skriv boksing, fekting, fotball eller hockey</label>
+	<input id="image-choice-txt" type="text">
+	<input id="show-image-btn" type="button" value="Vis bilde">
+	
+	<img id="image">
+	
+	
+	<script>
+		
+		/*
+			HTML objects
+		*/
+		var imageChoiceTxt = document.getElementById("image-choice-txt");
+		var showImageBtn = document.getElementById("show-image-btn");
+		var image = document.getElementById("image");
+		
+		/*
+			Variables
+		*/
+		var imageChosen = "";
+		
+		/*
+			Functions
+		*/
+		function showImage(){
+			imageChosen = imageChoiceTxt.value;			
+			image.src = `images/${imageChosen}.jpg`;			
+		}
+		
+		/*
+			Events
+		*/
+		showImageBtn.onclick = showImage;
+		
+	</script>
+	
+</body>
+</html>

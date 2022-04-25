@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FancyClothes</title>
+    <link rel="stylesheet" type="text/css" href="css/fancy-clothes.css">
+</head>
+<body>
+   
+    <div id="container">
+
+        <header id="main-page-header">
+            <h1>FancyClothes</h1>
+        </header><!-- end mainPageHeader -->
+
+        <main id="main-content">            
+            
+            <section id="products-section">
+               <article>
+                    <h3>Borbon</h3>
+                    <img src="images/borbon.jpg">
+                    <p>Pris: 1200,-NOK</p>
+                    <input id="buy-borbon-btn" type="button" value="Buy">
+                </article>    
+                <article>
+                    <h3>Emerald</h3>
+                    <img src="images/emerald.jpg">
+                    <p>Pris: 800,-NOK</p>
+                    <input id="buy-emerald-btn" type="button" value="Buy">
+                </article> 
+                <article>
+                    <h3>Pink dreams</h3>
+                    <img src="images/pink-dreams.jpg">
+                    <p>Pris: 2000,-NOK</p>
+                    <input id="buy-pink-dreams-btn" type="button" value="Buy">
+                </article>  
+            </section>
+            
+            <section id="shopping-summary-section">                
+                <header>
+                    <h3>Shopping summary</h3>
+                </header>
+                <div id="shopping-summary-div">
+                    <p>Number of Borbon bought: 0</p>
+                    <p>Number of Emerald bought: 0</p>
+                    <p>Number of Pink Dreams bought: 0</p>
+                    <p>Total: 0,- NOK</p>
+                </div>
+            </section>
+            
+        </main><!-- end main-content -->
+
+    </div><!-- end container -->
+
+    <script>
+        
+        /*
+            Handlekurv
+        */
+        var numberOfBorbonBought = 0;
+        var numberOfEmeraldBought = 0;
+        var numberOfPinkDreamsBought = 0;        
+        
+        /*
+            Priser på kjoler
+        */
+        var borbonPrice = 1200;
+        var emeraldPrice = 800;
+        var pinkDreamsPrice = 2000;
+        
+        /*
+            Totalsum
+        */
+        var total = 0;
+        
+        /*
+            Henter inn knappene
+        */
+        var buyBorbonBtn = document.getElementById("buy-borbon-btn");
+        var buyEmeraldBtn = document.getElementById("buy-emerald-btn");
+        var buyPinkDreamsBtn = document.getElementById("buy-pink-dreams-btn");
+        var shoppingSummaryDiv = document.getElementById("shopping-summary-div");
+        
+        /*
+            Henter inn området hvor kjøpsoppsummering gjøres
+        */
+        
+        
+        /*
+            Setter onclick på knappene
+        */        
+        buyBorbonBtn.onclick = buyBorbon;
+        buyEmeraldBtn.onclick = buyEmerald;
+        buyPinkDreamsBtn.onclick = buyPinkDreams;
+                
+        /*
+            Funksjoner for kjøp
+        */
+        function buyBorbon(){
+            numberOfBorbonBought++;
+            total += borbonPrice;
+            showUpdatedShoppingCart();
+        }
+        
+        function buyEmerald(){
+            numberOfEmeraldBought++;
+            total += emeraldPrice;
+            showUpdatedShoppingCart();
+        }
+        
+        function buyPinkDreams(){
+            numberOfPinkDreamsBought++;
+            total += pinkDreamsPrice;
+            showUpdatedShoppingCart();
+        }
+        
+        function showUpdatedShoppingCart(){
+            var htmlTxt = `
+                <p>Number of Borbon bought: ${numberOfBorbonBought}</p>
+                <p>Number of Emerald bought: ${numberOfEmeraldBought}</p>
+                <p>Number of Pink Dreams bought: ${numberOfPinkDreamsBought}</p>
+                <p>Total: ${total},- NOK</p>
+            `;
+            shoppingSummaryDiv.innerHTML = htmlTxt;
+        }
+        
+    </script> 
+       
+</body>
+</html>

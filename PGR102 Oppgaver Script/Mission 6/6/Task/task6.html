@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <h1>Klikk og få gaver!</h1>
+    <input id="add-a-up" type="button" value="Go for the win"><br><br>
+    <h1>Poengsystem</h1>
+    <ul>
+        <li>5 click: en liten hilsen</li>
+        <li>10 click: en stor hilsen</li>
+        <li>25 click: et Gave</li>
+    </ul>
+    <p>Antall ganger klikket</p>
+    <p id="output">0</p>
+    <script>
+        /*
+            Html-elemente
+        */
+       var add = document.getElementById("add-a-up");
+       var output = document.getElementById("output");
+  
+        /*
+            Funksjoner
+        */
+
+        function addNum(){
+            var number = parseInt(output.innerHTML);
+            number += 1;
+            output.innerHTML = number;
+            var number1 = 5;
+            var number2 = 10;
+            var number3 = 25;
+            var liste;
+            if(number === number1){
+                liste = document.getElementById("listE");
+                liste.innerHTML = `<li>Bra</li>`
+            }
+            else if(number === 10){
+                liste = document.getElementById("listE2");
+                liste.innerHTML = `<li>Meget Bra </li>`
+            }
+            else if(number === 25){
+                liste = document.getElementById("listE3");
+                liste.innerHTML = `<li>Done</li><img src="/Img/trophie.jpeg" alt="Trophie">`
+            }
+        }
+        /*
+            Event
+        */
+        add.onclick = addNum;
+
+    </script>
+    <ul id="listE"></ul>
+    <ul id="listE2"></ul>
+    <ul id="listE3"></ul>
+
+</body>
+</html>

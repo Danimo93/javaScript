@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 2</title>
+</head>
+<body>
+    
+    <!-- Det er lov å endre HTML og id'er -->
+    <h3>Klikk på den du tror har en katt!</h3>
+    <img id="check-person1-img" type="button" src="images/person2.jpg">
+    <img id="check-person2-img" type="button" src="images/person1.jpg">
+    <div id="output-div"></div>
+
+    <script>
+        
+        // HTML Objekter
+
+            /*
+                FORKLARING:
+                    Variablene 1 - 3 er hentet inn fra HTML dokumentet så vi skal kunne bruke dem i JS.
+                    Var 1 og 2: er brukt for å hene bildeknappene fra HTML dokumentet.
+                    Var 3: blir brukt for å hente inn <div> taggen så vi kan bruke den i JS.
+            */
+
+            var checkPerson1Img = document.getElementById("check-person1-img");     // Variabel 1
+            var checkPerson2Img = document.getElementById("check-person2-img");     // Variabel 2
+            var outputDiv = document.getElementById("output-div");      // Variabel 3
+
+        // Variabler
+                
+            /*
+                FORKLARING:
+                    Var 4: Er en variabel som vi gir en tekst verdi som skal bli vist på siden.
+                    Var 5: Er en variabel som vi gir en tekst verdi som skal bli vist på siden.
+                    Var 6: Blir brukt som en tom variabel som vi legger inn verdi i, senere i koden.
+            */
+
+            var animalOne = "Det er feil! Personen har frosk! :O"       // Variabel 4
+            var animalTwo = "Det er riktig! Personen har en katt! :)"   // Variabel 5
+            var randomNum;      // Variabel 6
+
+
+        // Functions (Her er alle funksjonene som skal kjøres på siden.)
+
+            function person(){      // Her oppretter vi en funksjon med navnet person
+                    randomNum = Math.floor(Math.random() * 2 + 1)   // Her lager vi et tilfeldig nummer som enten er en eller to og legger det i en variabel.
+
+                    outputDiv.innerHTML=""; //Dette er en tom streng som refresher siden når bruker trykker på knappen på nytt. 
+
+                    if(randomNum > 1){ //Dette er en if løkke som sier visst randomNum er større enn 1 så skal noe skje
+                        outputDiv.innerHTML += `<img src="images/frog.jpg"/> ${animalOne}`; // Her printes bilde og teksten til bilde ut. 
+                              
+                    }
+                    
+                    else{ //else funksjon som skjer visst if kriteriene ikke oppfylles. 
+                        outputDiv.innerHTML += `<img src="images/cat.jpg"/> ${animalTwo}`; // Her printes bilde og teksten til bilde ut.
+                    }
+            }
+
+        // Events 
+            /*
+                FORKLARING:
+                    Her knytter vi sammen handlingen av at en bruker trykker på et av bildeknappene
+                    og begge bildeknappene er knyttet til funksjonen "person" som da kjører om man enten
+                    har funnet personen som har en katt eller en frosk.
+            */
+
+            checkPerson1Img.onclick = person;
+            checkPerson2Img.onclick = person;
+
+
+    </script>
+
+</body>
+</html>

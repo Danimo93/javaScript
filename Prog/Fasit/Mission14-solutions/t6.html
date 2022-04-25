@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        var outputDiv = document.getElementById("output-div");
+        
+        var numberArray = [ 5, 1, 9, 4 ];
+        
+        var numberOfNumbers = numberArray.length;
+        
+        var numberBox1, numberBox2;
+                
+        for(var i = 0; i < numberOfNumbers; i++){
+            
+			
+			
+            //Alternativ 1: 2-if-løsning
+			/*
+			if( numberArray[ i ] > numberArray[ i + 1] ){
+                numberBox1 = numberArray[ i ];
+                numberBox2 = numberArray[ i + 1 ];
+                
+                numberArray[ i ] = numberBox2;
+                numberArray[ i + 1 ] = numberBox1;
+            }
+            
+            if( numberArray[ i ] < numberArray[ i - 1 ] ){
+                numberBox1 = numberArray[ i ];
+                numberBox2 = numberArray[ i - 1 ];
+                
+                numberArray[ i ] = numberBox2;
+                numberArray[ i - 1 ] = numberBox1;
+            }*/
+            
+			// Alternativ 2: Nøstet for-løkke-løsning
+			/*
+			for(var i2 = (i + 1); i2 < numberOfNumbers; i2++){
+				
+				if( numberArray[ i ] > numberArray[ i2 ] ){
+					
+					var biggestNumber = numberArray[ i ];
+					var smallestNumber = numberArray[ i2 ];
+					
+					numberArray[ i ] = smallestNumber;
+					numberArray[ i2 ] = biggestNumber;
+					
+				}
+				
+			}
+			*/
+			
+        }       
+        
+        outputDiv.innerHTML = numberArray;
+        
+    </script>
+    
+</body>
+</html>

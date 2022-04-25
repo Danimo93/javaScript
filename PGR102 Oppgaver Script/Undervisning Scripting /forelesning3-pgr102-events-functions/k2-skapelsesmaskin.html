@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <input id="add-500-kr-btn" type="button" value="legg til 500 kr">
+    <div id="box-div"></div>
+    
+    <script>
+        /*
+            Html-elemente
+        */
+
+        var add500krBTN = document.getElementById("add-500-kr-btn");
+        var boxDiv = document.getElementById("box-div");
+        
+
+       
+        /*
+            Funksjoner
+        */
+
+        function add500kr(){
+            boxDiv.innerHTML += `
+                <img src="/images/fem-hundre-kroner.png" alt="Dett er 500kr">
+            `;
+        }
+
+        /*
+            Event
+        */
+        add500krBTN.onclick = add500kr;
+        boxDiv.onclick = add500kr;
+
+
+
+    </script>
+
+</body>
+</html>

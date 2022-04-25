@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 2</title>
+</head>
+<body>
+
+    <div id="output-div"></div>
+
+    <script>
+
+        var outputDiv = document.getElementById("output-div");
+
+        // Dette er en parametrisk funksjon som tar imot tre verdier (argumenter)
+        function getHTML(name, image, description){
+
+            /*
+                Her deklareres en variabel og initierer den ved å legge inn en template literal.
+                Template literal inneholder HTML-kode og man legger inn verdiene som ligger i parameterne inn i teksten.
+                alt-attributtet skulle egentlig heller fått description-parameteren i seg
+            */
+            var htmlTxt = `
+                <article>
+                    <h3>${name}</h3>
+                    <img src="images/${image}" alt="${description}" />
+                </article>
+            `;
+
+            // Her returneres variabelen htmlTxt ut fra funksjonen til der hvor den blir kalt. Den inneholder 1 artikkel.
+            return htmlTxt;
+
+        }
+
+        /* 
+            Kaller på funksjonen getHTML. Det den returnerer kommer til å legge seg inn i innerHTML til div'en på nettsiden
+        */
+        outputDiv.innerHTML = getHTML("Mark Simmels", "mark-simmels.JPG", "Bilde av Mark Simmels.");
+
+    </script>
+    
+</body>
+</html>

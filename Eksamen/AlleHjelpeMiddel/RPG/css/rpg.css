@@ -1,0 +1,170 @@
+body{ margin: 0; background-color: rgb(20, 20, 20); }
+
+#strength-holder{
+    height:150px;
+    position: absolute;
+    top:60px;
+    left:180px;
+}
+#strength-value{
+    font-size:30px;
+    position: absolute;
+    z-index: 5;
+    top:100px;
+    left:260px;
+}
+
+#credit{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    top:580px;
+}
+
+.name-font{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.health-number{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#knight-health-print{
+    position: absolute;
+    top:15px;
+    left:270px;
+    z-index: 2;
+}
+#monster1-print{
+    position: absolute;
+    top:15px;
+    left:270px;
+    z-index: 2;
+}
+#monster2-print{
+    position: absolute;
+    top:15px;
+    left:270px;
+    z-index: 2;
+}
+#monster3-print{
+    position: absolute;
+    top:15px;
+    left:270px;
+    z-index: 2;
+}
+#void-dragon{
+    height:700px;
+
+    position:absolute;
+    left:422px;
+    top:-100px;
+}
+
+.potions{
+    width:50px;
+    height:auto;
+
+    position: absolute;
+    top:70px;
+    left:20px;
+}
+#potion2{
+left:80px;
+}
+#potion3{
+left:140px;
+}
+#container{
+    width: 978px;
+    height: 600px;
+    background-color: red;
+    margin: auto;
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    position: relative;
+}
+#goblins1{
+    bottom: 10px;
+    left: 400px; 
+    height:200px; 
+    z-index: 1;
+    opacity: 0.7;
+    cursor: pointer;
+}
+#goblins2{
+    bottom: 50px;
+    left: 300px;  
+    height:200px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+#goblins3{
+    bottom: 100px;
+    left: 400px; 
+    height:200px; 
+    opacity: 0.7;
+    cursor: pointer;
+    z-index: 0.5;
+}
+#goblins3:hover,#goblins1:hover,#goblins2:hover{
+    opacity: 1;
+}
+#container img{
+    position: absolute;
+}
+
+#info-container{
+    width: 978px;
+    color: white;
+    margin: auto;
+}
+
+#knight-img{
+    bottom: 50px;
+    left: 50px;
+}
+
+#fire-monster-1-img, #fire-monster-2-img{
+    opacity: 0.7;
+    cursor: pointer;
+}
+#fire-monster-1-img:hover, #fire-monster-2-img:hover{
+    opacity: 1;
+}
+#fire-monster-1-img{            
+    bottom: 100px;
+    left: 400px;                        
+}
+#fire-monster-2-img{
+    bottom: 10px;
+    left: 600px;
+}
+
+.life-container{
+    height: 50px;
+    width: 300px;
+    background-color: rgba(50, 50, 50, 0.7);
+    position: absolute;     
+    transition: all 3s;       
+}
+.container-1{
+    top: 10px;
+    left: 10px;
+}
+.container-2{
+    top: 10px;
+    right: 10px;
+}
+.container-3{
+    top: 70px;
+    right: 10px;
+}
+.container-4{
+    top: 130px;
+    right: 10px;
+}
+
+#knight-life-div, #fire-monster-1-life-div, #fire-monster-2-life-div,#fire-monster-3-life-div{
+    position: absolute;
+    background-color: green;
+    height: 50px;
+}

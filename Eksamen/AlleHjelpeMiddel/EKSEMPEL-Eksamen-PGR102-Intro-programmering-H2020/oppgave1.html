@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Oppgave 1. Glasset med ananasjuice (25%)</title>
+	<style>
+		/*
+			*******
+				Denne CSS-koden skal ikke endres
+			*******
+		*/
+		#glass-div{
+			width: 150px;
+			height: 350px;
+			border: 1px solid black;
+			border-top: none;
+			margin-top: 50px;
+			position: relative;
+		}		
+		#juice-div{
+			height: 50px;
+			width: 100%;
+			background-color: rgb(230, 230, 50);
+			opacity: 0.5;
+			position: absolute;
+			bottom: 0;
+			transition: height 2s;
+		}		
+		#status-p{
+			color: red;
+		}		
+	</style>
+</head>
+<body>
+		
+	<h3>Ananasjuicedrikking</h3>
+	
+	<label>Juice-mengde</label>
+	<input id="juice-amount-txt" type="text">
+		
+	<input id="pour-more-juice-btn" type="button" value="Hell i mer juice">
+	<input id="drink-juice-btn" type="button" value="Drikk juice">
+	
+	<p id="status-p">Status nå: OK</p>
+	
+	<div id="glass-div">
+		<span id="juice-level-span">50</span>
+		<div id="juice-div"></div>
+	</div>
+		
+	<script>
+		/* Besvarelse her */
+		
+		var juiceDiv = document.getElementById("juice-div");
+		var statusP = document.getElementById("status-p");
+		var glassDiv = document.getElementById("glass-div");
+
+		var juiceLevelSpan = document.getElementById("juice-level-span");
+		var juiceAmountText = document.getElementById("juice-amount-txt");
+
+		var drinkJuiceBtn = document.getElementById("drink-juice-btn");
+		var pourMoreJuiceBtn = document.getElementById("pour-more-juice-btn");
+		
+		var amountOfJuiceGlass = 50;
+
+
+		function pourMoreJuiceBtn(){
+			var	juiceAmountToAdd = checkInput();
+			if( juiceAmountToAdd ){
+				amountOfJuiceGlass += (juiceAmountToAdd );
+				checkLevelOK();
+				updateGUI();
+			}
+		}; 
+
+		function drinkJuice(){
+			var juiceAmountToAdd = checkInput();
+			if( juiceAmountToAdd) {
+				amountOfJuiceGlass -= parseInt ( juiceAmountToAdd );
+				checkLevelOK();
+				updateGUI();
+			}
+		}
+
+		function checkLevelOK() {
+			if (amountOfJuiceInGlass >= 350 ) {
+				amountOfJuiceInGlass = 350;
+				statusP.innerHTML = 'Glasset er	fullr';
+				}else if (amountOfJuiceInGlass <= 0 ) {
+					amountOfJuiceInGlass = 0;
+					statusP.innerHTML = "Glasset er Tomt";
+				}else {
+					statusP.innerHTML = "Status nå: OK";
+				
+				}
+		}
+		function checkInput() {
+			var amountOfJuiceToGlass = juiceAmountText.value.trim();
+			
+		}
+
+
+
+	</script>
+	
+</body>
+</html>

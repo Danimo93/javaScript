@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="denne-mappen-trengs-ikke-roeres/er-du-synsk.css">
+    <title>Er du synsk?</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Er du synsk?</h1>
+    </header>
+
+        <p>Klikk på en av boksene for å begynne spillet</p> 
+
+    <!-- Det er lov å endre HTML og id'er -->
+    <section>
+        <button id="box1-div">Denne?</button>
+        <button id="box2-div">Eller denne?</button>
+    
+    </section>
+
+    <div id="number-of-lives-div"></div>
+    
+    <div id="number-of-right-answers-div">
+    <p>Antall riktige: <span id="number-of-right-span">0</span>
+    </div>
+
+    <div id="number-of-wrong-answers-div">
+        <p>Antall feil: <span id="number-of-wrong-span">0</span></p>
+    </div>    
+
+    <div id="output-div"></div>
+    <p id="results-p"></p>
+
+    <script>
+        
+        //HTML-objekter
+
+            var box1Div = document.getElementById("box1-div")
+            var box2Div = document.getElementById("box2-div")
+
+            var numOfLivesDiv = document.getElementById("number-of-lives-div")
+            var numOfRightAnswersDiv = document.getElementById("number-of-right-answers-div")
+            var numOfRightSpan = document.getElementById("number-of-right-span")
+
+            var numOfWrongAnswersDiv = document.getElementById("number-of-wrong-answers-div")
+            var numOfWrongSpan = document.getElementById("number-of-wrong-span")
+            
+            var outputDiv = document.getElementById("output-div")
+            var resultDiv = document.getElementById("result-p")
+        // Variabler
+            var number;
+            var numOfLivesDiv = 5;
+            var numOfRightSpan = 0;
+            var numOfWrongSpan = 0;
+                  
+        
+        // Funksjoner
+
+            function theNumber(){
+                number = Math.floor(Math.random() * 2 + 1);
+                if(number >1){
+                    numOfWrongSpan++;
+                    numOfWrongAnswersDiv.innerHTML = `<p>Anntall feil: ${numOfWrongSpan}</p>`;
+                }else{
+                    numOfRightSpan++;
+                    numOfRightAnswersDiv.innerHTML = `<p>Anntall Riktige: ${numOfRightSpan}</p>`;
+
+                }
+                if( numOfLivesDiv === 0){}
+
+
+
+            }
+            function right(){
+
+                numOfLivesDiv++;
+                numOfRightAnswersDiv.innerHTML = numOfLivesDiv;
+               
+            }
+            function wrong(){
+                numOfLivesDiv++ 
+                numOfWrongAnswersDiv.innerHTML = numOfLivesDiv;
+
+            }
+
+
+
+
+            /*
+            if( numberOfRightAnswers == Number(10) ){
+                outputDiv.innerhtml = `Gratulerer! Du har vunnet spillet! :) <img src="images/fireworks.jpg" />`;
+            }
+            */
+
+        // Events
+
+            box1Div.onclick = theNumber;
+            box2Div.onclick = theNumber;
+
+
+    </script>
+
+    
+    
+
+</body>
+</html>

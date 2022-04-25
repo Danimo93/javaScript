@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>500 tilfeldige tall</title>
+</head>
+<body>
+    
+    <p id="output-p"></p>
+    
+    <script>
+        
+        var outputP = document.getElementById("output-p");
+        var randomNumber;
+        
+        for(var i = 0; i < 500; i++){
+            
+            randomNumber = Math.floor( Math.random() * 100 );     
+            
+            outputP.innerHTML += ` ${randomNumber} `;    
+            
+        }
+        
+    </script>
+    
+</body>
+</html>

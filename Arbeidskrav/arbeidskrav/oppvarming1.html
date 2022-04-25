@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppvarming 1</title>
+</head>
+<body>
+    
+    <!-- Det er lov å endre HTML og id'er -->
+    <input id="add-images-btn" type="button" value="Legg til bilder">
+
+    <p>Antall bilder: <span id="number-of-images-span">0</span></p>
+
+    <div id="output-div"></div>
+            
+    <script>
+    
+        /*HTML-objekter
+        
+                FORKLARING:
+                    Variablene 1 - 3 er hentet inn fra HTML dokumentet så vi skal kunne bruke dem i JS.
+                    Var 1: Blir brukt for å hente knappen.
+                    Var 2: Blir brukt for å hente inn tallet "0" fra <span> taggen som er inni <p> taggen.
+                    Var 3: Er for å hente <div> taggen.
+                    
+                    Var 4 + 5: Er tomme variabler som vi fyller med informasjon senere i koden. 
+        */
+            
+            var addImagesBtn = document.getElementById("add-images-btn");   // Variabel 1 
+            var numberOfImagesSpan = document.getElementById("number-of-images-span");  // Variabel 2
+            var outputDiv = document.getElementById("output-div");   // Variabel 3
+
+            var numberOfImagesSpan;     // Variabel 4
+            var randomNumber;       // Variabel 5 
+            
+        // Funksjoner (Under er alle funksjonene til siden)
+
+            function showImages (){                                 //Dette er funskjonen for å vise bilder og i tekst hvor mange det er
+                randomNumber = Math.floor(Math.random() * 101)      //Denne genererer et tilfeldig nummer mellom 0 og 100 og setter den inn variabelen randomNumber.
+                numberOfImagesSpan.innerHTML = `${randomNumber} `;  // Denner gir variabelen numberOfImagesSpan verdien vi får fra randomNumber. 
+                
+                outputDiv.innerHTML=""; //Dette er en tom streng som refresher siden når bruker trykker på knappen på nytt. 
+
+                for(var i = 0; i < randomNumber; i++){                              // En for løkke som sier at i=0 og visst i < randomNumber så skal det skje noe, i++ legger til en på i sin verdi.
+                    outputDiv.innerHTML += `<img src="images/person1.jpg"/>`;       // Dette er det som skal skje dersom i < randomnumber, som er at et bilde skal vises.
+
+                }
+
+            }
+        
+        // Events 
+        
+            addImagesBtn.onclick = showImages;
+                /*
+                    Denne eventen blir brukt til å knytte handlingen av at brukeren trykker på knappen sammen
+                    med funksjonen som kjører at bildene skal komme opp og at tallet i <span> taggen 
+                    skal endre seg.
+                */
+                                                    
+    
+            
+    </script>
+
+</body>
+</html>

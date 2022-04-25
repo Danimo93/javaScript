@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skapelsesmaskin</title>
+    <!-- 
+        En nettside som kan skape ting
+    -->
+</head>
+<body>
+    <input id="add-a-story" type="button" value="Tell me a story">
+    <div id="box-div"></div>
+    
+    <script>
+        /*
+            Html-elemente
+        */
+
+        var Tellme = document.getElementById("add-a-story");
+        var boxDiv = document.getElementById("box-div");
+        
+
+       
+        /*
+            Funksjoner
+        */
+
+        function addStory(){
+            boxDiv.innerHTML = 
+                Tellme.innerHTML = "What has no body and no noise. Nobody knows"
+            ;
+        }
+
+        /*
+            Event
+        */
+        Tellme.onclick = addStory;
+        boxDiv.onclick = addStory;
+
+    </script>
+</body>
+</html>

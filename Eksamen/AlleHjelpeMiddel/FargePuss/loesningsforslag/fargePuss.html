@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FargePuss</title>
+    <style>
+        .boxSvar{
+            background-color: red;
+            position:absolute;
+            height:70px;
+            width:8vw;
+            top:75vh;
+            transform:translateX(-50%)
+        }
+        #svar1{
+            left:25vw;
+        }
+        #svar2{
+            left:35vw;
+        }
+        #svar3{
+            left:45vw;
+        }
+        #svar4{
+            left:55vw;
+        }
+        #svar5{
+            left:65vw;
+        }
+        #svar6{
+            left:75vw;
+        }
+
+
+        #color{
+            left:50vw;
+            transform:translateX(-50%);
+
+            position: absolute;
+            width:300px;
+            height:300px;
+            background-color: red;
+
+            text-align:center;
+            font-size: 60px;
+        }
+        #plass{
+                position: absolute;
+                left:70vw;
+                top: -4vh;
+                width:25vw;
+                
+            }
+    </style>
+</head>
+<body>
+    
+    <div id="color" class="box" type="button"></div>
+
+    <div id="alleSvar">
+        <div id="svar1" class="boxSvar"></div>
+        <div id="svar2" class="boxSvar"></div>
+        <div id="svar3" class="boxSvar"></div>
+        <div id="svar4" class="boxSvar"></div>
+        <div id="svar5" class="boxSvar"></div>
+        <div id="svar6" class="boxSvar"></div>
+    </div>
+    <div id="testPrint">Poeng:<div id="poeng">0</div></div>
+    <div id="testPrint">Feil:<div id="feil">0</div></div>
+    
+    <div id="plass">
+        <h1>Regler</h1>
+        <li>Trykk på fargen til teksten!:D</li>
+        <li>Er teksten borte, er det samme farge.</li>
+        <li>Trykk på den store firkanten om riktig farge ikke er et valg.</li>
+        <li>Hvor mange klarer du på 1min?</li>
+        <li>Trykk på den store boksen for å begynne!</li>
+    </div>
+    <script>
+
+        //HTML elementer
+var color = document.getElementById("color");
+var svarBoxer = document.getElementById("alleSvar").getElementsByTagName("div");
+var poengBox = document.getElementById("poeng");
+var feilbox = document.getElementById("feil");
+
+var svar1 = document.getElementById("svar1");
+var svar2 = document.getElementById("svar2");
+var svar3 = document.getElementById("svar3");
+var svar4 = document.getElementById("svar4");
+var svar5 = document.getElementById("svar5");
+var svar6 = document.getElementById("svar6");
+
+
+//Variabler & Arrays
+var theAnswer = Math.floor(Math.random() * 2);
+var colorArray = ["32,169,212", "125,16,201", "243,157,207", "17,163,109", "181,34,57", "241,150,40"]
+var textArray = ["blå", "lilla", "rosa", "grønn", "rød", "oransje"]
+var poeng = 0;
+var feil = 0;
+
+
+//Alle funksjoner
+function randomice() {
+	riktig = Math.floor(Math.random() * colorArray.length);
+	tilfeldig1 = Math.floor(Math.random() * colorArray.length);
+	tilfeldig2 = Math.floor(Math.random() * colorArray.length);
+	tilfeldig3 = Math.floor(Math.random() * colorArray.length);
+	tilfeldig4 = Math.floor(Math.random() * colorArray.length);
+	tilfeldig5 = Math.floor(Math.random() * colorArray.length);
+	tilfeldig6 = Math.floor(Math.random() * colorArray.length);
+
+	color.style.backgroundColor = `rgb(${colorArray[Math.floor(Math.random()*colorArray.length)]})`;
+	color.innerHTML = `${textArray[Math.floor(Math.random()*textArray.length)]}`;
+	color.style.color = `rgb(${colorArray[riktig]})`;
+
+	svar1.style.backgroundColor = `rgb(${colorArray[tilfeldig1]})`;
+	svar2.style.backgroundColor = `rgb(${colorArray[tilfeldig2]})`;
+	svar3.style.backgroundColor = `rgb(${colorArray[tilfeldig3]})`;
+	svar4.style.backgroundColor = `rgb(${colorArray[tilfeldig4]})`;
+	svar5.style.backgroundColor = `rgb(${colorArray[tilfeldig5]})`;
+	svar6.style.backgroundColor = `rgb(${colorArray[tilfeldig6]})`;
+}
+
+function click1() {
+	if (tilfeldig1 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		feilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+function click2() {
+	if (tilfeldig2 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		feilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+function click3() {
+	if (tilfeldig3 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		feilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+function click4() {
+	if (tilfeldig4 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		feilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+function click5() {
+	if (tilfeldig5 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		dfeilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+function click6() {
+	if (tilfeldig6 === riktig) {
+		poengBox.innerHTML += "Kek";
+		poeng++;
+		poengBox.innerHTML = `${poeng}`;
+	} else {
+		feil++;
+		feilbox.innerHTML = `${feil}`;
+	}
+	randomice();
+}
+
+//Eventer
+color.onclick = randomice;
+
+svar1.onclick = click1;
+svar2.onclick = click2;
+svar3.onclick = click3;
+svar4.onclick = click4;
+svar5.onclick = click5;
+svar6.onclick = click6;
+
+    </script>
+</body>
+</html>

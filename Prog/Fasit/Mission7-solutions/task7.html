@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Antall li</title>
+</head>
+<body>
+    
+    <ul id="output-ul"></ul>
+    
+    <script>
+    
+        var outputUl = document.getElementById("output-ul");
+        
+        var numberOfLi = parseInt( prompt("Hvor mange <li> ønsker du?") );
+        
+        for(var i = 0; i < numberOfLi; i++){
+            
+            outputUl.innerHTML += `<li>${i}</li>`;
+            
+        }
+        
+    </script>
+    
+</body>
+</html>

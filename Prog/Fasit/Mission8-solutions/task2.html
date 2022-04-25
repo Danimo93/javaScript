@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    
+    <h3>Ord som begynner med m</h3>
+    <p id="number-of-words-p"></p>
+    <ul id="output-ul"></ul>
+    
+    <script>
+        var outputUl = document.getElementById("output-ul");
+                
+        var wordsArray = ["Mann", "Mage", "Maske", "Magi", "Maling", "Matematikk", "Meter"];
+        var numberOfWords = wordsArray.length;
+                
+        for(var i = 0; i < numberOfWords; i++){
+            outputUl.innerHTML += `<li>${wordsArray[i]}</li>`;
+        }
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tilfeldig farge</title>
+</head>
+<body>
+	
+	<div id="my-box"></div>
+	
+	<p id="color-code-output"></p>
+	
+	<script>
+		
+		/*
+			HTML OBJECTS
+		*/
+		var myBox = getHTMLObject("my-box");
+		var colorCodeOutput = getHTMLObject("color-code-output");
+		
+		/*
+			FUNCTIONS
+		*/
+		function getHTMLObject(id){
+			return document.getElementById(id);
+		}
+		
+		function setDefaultStyle(){
+			myBox.style.width = "300px";
+			myBox.style.height = "300px";
+			myBox.style.backgroundColor = "rgb(230, 230, 230)";
+		}
+		
+		function setRandomColor(){
+			var r = getRandomNumber();
+			var g = getRandomNumber();
+			var b = getRandomNumber();
+			
+			var rgbCode = `rgb(${r}, ${g}, ${b})`;
+			
+			myBox.style.backgroundColor = rgbCode;
+			colorCodeOutput.innerHTML = rgbCode;
+		}
+		
+		function getRandomNumber(){
+			return Math.floor( Math.random() * 256 );
+		}
+		
+		/*
+			EVENTS
+		*/
+		myBox.onclick = setRandomColor;
+		setDefaultStyle();
+		
+		
+	</script>
+	
+</body>
+</html>

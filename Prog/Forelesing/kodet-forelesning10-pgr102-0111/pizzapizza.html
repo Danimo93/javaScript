@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaPizza</title>
+</head>
+<body>
+    <!--
+        PizzaPizza
+        ---
+        Pizzaer trenger følgende info:
+        - navn (string)
+        - kagegori (Kjøtt, Sjømat eller Vegetar)        
+        - bilde (string)
+        - ingredienser (array)
+        - glutenfri (boolean)
+        - pris (number)
+
+        Mulig funksjonalitet:
+        - Vise alle
+        - Vise etter kategori
+        - Vise / Skjule informasjon
+
+        Teknikker:
+        - variabler
+        - array
+        - object literal
+        - for loop
+        - function
+        - onclick
+        - value
+        - m.m.
+    -->
+    <div>
+
+        <header>
+            <h1>PizzaPizza</h1>
+            <h2>Velkommen til byens beste pizza!</h2>
+        </header>
+
+        <section>
+            <label>Søk</label>
+            <input id="search-txt" size="25" placeholder="sjømat, kjøtt eller vegetar" type="text">
+            <input id="search-pizza-by-category-btn" type="button" value="Søk"/>
+        </section>
+
+        <div id="output-div"></div>
+
+    </div>  
+
+    <script>
+
+        var searchTxt = document.getElementById("search-txt");
+        var searchPizzaByCategoryBtn = document.getElementById("search-pizza-by-category-btn");
+        var outputDiv = document.getElementById("output-div");
+
+        var pizzaArray = [
+            { name: "Feta Heaven", category: "Vegetar", image: "pizza1.jpg", ingredients: ["Feta", "Oliven"] },
+            { name: "Pepperoni", category: "Kjøtt", image: "pizza3.jpg", ingredients: ["Pepperoni", "Basilikum"] },
+            { name: "Shrimpy", category: "Sjømat", image: "pizza4.jpg", ingredients: ["Reke", "Paprika"] }
+        ];
+
+        function showAllPizzas(){
+            outputDiv.innerHTML = ""; // nullstiller innhold
+            for(var i = 0; i < pizzaArray.length; i++){                
+                outputPizza( pizzaArray[i] ); 
+            }
+        }
+
+        function showByCategory(){
+            outputDiv.innerHTML = ""; // nullstiller innhold
+            var search = searchTxt.value;
+
+            for(var i = 0; i < pizzaArray.length; i++){   
+                if( pizzaArray[i].category.toLowerCase() === search.toLowerCase() ){             
+                    outputPizza( pizzaArray[i] ); 
+                }
+            }
+        }
+
+        function outputPizza( pizza ){
+            //Oppgave: legg til switch for å sjekke kategori og sette farge etter kategori
+            outputDiv.innerHTML += `
+                <article>
+                    <h3>${ pizza.name }</h3>
+                    <img src="images/${ pizza.image }">
+                    <p style="color: red">Kategori: ${ pizza.category }</p>    
+                </article>
+            `;
+        }
+
+        showAllPizzas(); // kjører ved sidelast
+
+        searchPizzaByCategoryBtn.onclick = showByCategory;
+
+    </script>
+
+</body>
+</html>

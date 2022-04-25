@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="no">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Caesar Cipher Encoder-Decoder</title>
+    <link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+    <section id="cipher">
+
+      <div id="input-wrapper">
+        <div id="shifter">
+          <label for="shift">Shift by</label>
+          <select name="shift" id="shift">
+          </select>
+        </div>
+
+        <section id="input-boxes">
+          <textarea style="margin: 10px;"
+            name="encode"
+            cols="100"
+            rows="6"
+            placeholder="Encode.."
+            id="encode-input"></textarea>
+          <textarea style="margin: 10px;"
+            name="encode"
+            cols="100"
+            rows="6"
+            placeholder="Decode.."
+            id="decode-input"></textarea>
+        </section>
+      </div>
+
+      <button type="button" id="copy-btn" onclick="copyToClipboard()">Kopiér siffertekst</button>
+    </section>
+
+    <section id="display">
+      <h1 id="output-text"></h1>
+    </section>
+
+  </body>
+
+	<script>
+    // Kode
+  </script>
+  <script src="ignore.js"></script>
+</html>

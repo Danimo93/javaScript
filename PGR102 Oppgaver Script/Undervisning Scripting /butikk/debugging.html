@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butikk - debugging</title>
+</head>
+<body>
+    
+    <h1>Butikk - debugging</h1>
+    <p id="welcome-p"></p>
+
+    <script>
+        /*
+            HTML-elementer
+        */
+        var welcomeP = document.getElementById("welcome-p");
+
+        /*
+            Variabler
+        */
+        var name; // deklarere name-variabelen
+
+        /*
+            Innhenting av navn
+        */
+        name = window.prompt("Hei, kan du skrive ditt navn?");
+
+        /*
+            Utskrift til brukeren
+        */
+        welcomeP.innerHTML = name; 
+
+    </script>
+
+
+</body>
+</html>

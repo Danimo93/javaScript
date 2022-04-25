@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottorekken</title>
+    <!-- 
+        Lottorekken 
+        - Må lage et array med tilfeldige tall. 
+        - Arrayet skal være tomt til å begynne med
+        - Bruker .push() for å legge til nytt tall
+        - En for-løkke gjør at man kan fylle flere tall i arrayet
+        - Annet: sørge for at vi bare får forskjellige tall med .includes()?
+    -->
+</head>
+<body>
+
+    <h1>Lottorekke</h1>
+    <input id="show-lotto-numbers-btn" type="button" value="Vis lottorekke">
+    <ul id="numbers-ul"></ul>
+
+    <script>
+
+        // HTML objects
+        var showLottoNumbersBtn = document.getElementById("show-lotto-numbers-btn");
+        var numbersUl = document.getElementById("numbers-ul");
+                
+        // Variables
+        var lottoArray = [];
+        
+        // Functions
+        function setLottoArray(){
+            lottoArray = []; // For å nullstille array før vi legger til
+            for(var i = 0; i < 7; i++){
+                var newRandomNumber = Math.floor( Math.random() * 34 + 1 );
+                if( lottoArray.includes(newRandomNumber) === true ){ // Hvis arrayet allerede innholder dette tallet så skal vi ikke legge det til, og må få løkken til å kjøre en ekstra gang
+                    i--;    
+                }else{
+                    lottoArray.push( newRandomNumber );
+                }                
+            }
+        }
+
+        function showLottoNumbers(){
+            numbersUl.innerHTML = ""; // For å nullstille innholdet før vi legger til på nytt            
+            for(var i = 0; i < lottoArray.length; i++){
+                numbersUl.innerHTML += `<li>${lottoArray[i]}</li>`;
+            }
+        }
+        
+        function initApplication(){
+            setLottoArray();
+            showLottoNumbers();
+        }
+
+        // Events
+        showLottoNumbersBtn.onclick = initApplication;
+        
+    </script>
+    
+</body>
+</html>

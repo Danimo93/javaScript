@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication</title>
+</head>
+<body>
+    
+    <div>
+        <label>Number 1</label>        
+        <input id="number1-txt" type="text">
+        
+        <label>Number 2</label>        
+        <input id="number2-txt" type="text">
+        
+        <input id="get-multiplication-btn" type="button" value="Multiply numbers">
+        
+        <p id="output-p"></p>
+    </div>
+    
+    <script>
+        
+        var number1Txt = document.getElementById("number1-txt");
+        var number2Txt = document.getElementById("number2-txt");
+        
+        var getMultiplicationBtn = document.getElementById("get-multiplication-btn");
+        getMultiplicationBtn.onclick = showResult;
+        
+        var outputP = document.getElementById("output-p");
+        
+        function showResult(){
+            var number1 = number1Txt.value;
+            var number2 = number2Txt.value;
+            
+            var result = getMultiplication( number1, number2 )
+            outputP.innerHTML = `${number1} * ${number2} = ${result}`;
+        }
+        
+        function getMultiplication( number1, number2 ){
+            var result = number1 * number2;
+            return result;
+        }
+    
+    </script>
+    
+</body>
+</html>

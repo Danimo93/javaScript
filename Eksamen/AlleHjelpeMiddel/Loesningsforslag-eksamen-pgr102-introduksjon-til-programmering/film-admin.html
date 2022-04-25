@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Filmadmin</title>
+</head>
+<body>
+	<div>
+		<h1>Filmadmin</h1>				
+			
+		<div>
+			<h3>Øk / senk pris alle filmer</h3>	
+			<label>Prosent som alle prisene skal økes/senkes med</label>
+			<input id="percentage-txt" type="text">
+			<input id="increase-price-btn" type="button" value="Øk pris">
+			<input id="decrease-price-btn" type="button" value="Senk pris">	
+		</div>
+		
+		<div>
+			<h3>Øk / senk pris på en film</h3>
+			<label>Id</label>
+			<input id="id-txt" type="text">
+			<label>Prosent</label>
+			<input id="percentage-id-txt" type="text">
+			<input id="increase-price-id-btn" type="button" value="Øk pris">
+			<input id="decrease-price-id-btn" type="button" value="Senk pris">
+		</div>
+		
+		<h3>Filmliste</h3>
+		<div id="output-div"></div>			
+	</div>
+	
+	<script>
+	
+		//HTML OBJECTS
+		var percentageTxt = document.getElementById("percentage-txt");
+		var increasePriceBtn = document.getElementById("increase-price-btn");
+		var decreasePriceBtn = document.getElementById("decrease-price-btn");
+		
+		var idTxt = document.getElementById("id-txt");
+		var percentageIdTxt = document.getElementById("percentage-id-txt");
+		var increasePriceIdBtn = document.getElementById("increase-price-id-btn");
+		var decreasePriceIdBtn = document.getElementById("decrease-price-id-btn");
+		
+		var outputDiv = document.getElementById("output-div");
+		
+		// ARRAYS		
+		var movieArray = [
+			{ id: 1000, title: "Godfather", image: "godfather.jpg", year: 1972, price: 99 },
+			{ id: 1001, title: "Frihetens regn", image: "frihetens-regn.jpg", year: 1994, price: 39 },
+			{ id: 1002, title: "The Dark Knight", image: "the-dark-knight.jpg", year: 2008, price: 59 },
+			{ id: 1003, title: "Schindlers liste", image: "schindlers-list.jpg", year: 1993, price: 79 },
+			{ id: 1004, title: "Ringenes herre: Atter en konge", image: "ringenes-herre-atter-en-konge.jpg", year: 2003, price: 99 },
+			{ id: 1005, title: "Pulp Fiction", image: "pulp-fiction.jpg", year: 1994, price: 59 },
+			{ id: 1006, title: "The good, the bad and the ugly", image: "the-good-the-bad-and-the-ugly.jpg", year: 1966, price: 39 }
+		];
+		
+		// VARIABLES
+		var numberOfMovies = movieArray.length;		
+		
+		// FUNCTIONS
+		function showAllMovies(){
+			var htmlTxt = "";
+			for(var i = 0; i < numberOfMovies; i++){
+				var movie = movieArray[i];
+				htmlTxt += `
+					<article>
+						<h3>${ movie.title } (id: ${ movie.id })</h3>
+						<img src="images/${ movie.image }">
+						<p>År: ${ movie.year }</p>
+						<p>Pris kjøp: ${ movie.price }</p>
+					</article>
+				`;
+			}
+			outputDiv.innerHTML = htmlTxt;
+		}
+
+		/*
+			Merknad: en del av koden i funksjonene kunne fint vært modularisert, men blitt beholdt i sin fulle form for å være lettere å forstå.
+			Å få på plass funksjonaliteten er i fokus.
+		*/
+		
+		function increasePrice(){
+			var percentage = percentageTxt.value;
+			for(var i = 0; i < numberOfMovies; i++){
+				var price = movieArray[i].price;
+				price += (price * percentage / 100);
+				movieArray[i].price = price;
+			}
+			showAllMovies();
+		}
+		
+		function decreasePrice(){
+			var percentage = percentageTxt.value;
+			for(var i = 0; i < numberOfMovies; i++){
+				var price = movieArray[i].price;
+				price -= (price * percentage / 100);
+				movieArray[i].price = price;
+			}
+			showAllMovies();
+		}
+		
+		function increasePriceId(){
+			var id = parseInt( idTxt.value );
+			var percentage = percentageIdTxt.value;
+			
+			for(var i = 0; i < numberOfMovies; i++){
+				if( movieArray[i].id === id ){
+					var price = movieArray[i].price;
+					price += (price * percentage / 100);
+					movieArray[i].price = price;
+				}
+			}
+			showAllMovies();
+		}
+		
+		function decreasePriceId(){
+			var id = parseInt( idTxt.value );
+			var percentage = percentageIdTxt.value;
+			
+			for(var i = 0; i < numberOfMovies; i++){
+				if( movieArray[i].id === id ){
+					var price = movieArray[i].price;
+					price -= (price * percentage / 100);
+					movieArray[i].price = price;
+				}
+			}
+			showAllMovies();
+		}
+		
+		// EVENTS
+		increasePriceBtn.onclick = increasePrice;
+		decreasePriceBtn.onclick = decreasePrice;
+		increasePriceIdBtn.onclick = increasePriceId;
+		decreasePriceIdBtn.onclick = decreasePriceId;
+		showAllMovies();
+	</script>
+	
+</body>
+</html>

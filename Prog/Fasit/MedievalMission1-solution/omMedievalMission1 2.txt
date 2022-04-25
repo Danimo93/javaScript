@@ -1,0 +1,2 @@
+Dette er en litt større oppgave, dvs. som krever flere kodelinjer, som er ment å løses etter Mission 6.
+Her vil du måtte bruke blant annet løkker.

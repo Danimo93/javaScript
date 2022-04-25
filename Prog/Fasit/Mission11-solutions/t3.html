@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient i gråtoner og rødtoner</title>
+</head>
+<body>
+    
+    <div>
+        
+        <header>
+            <h1>Gradient i gråtoner og rødtoner</h1>
+        </header>
+       
+        <section id="menu">
+            <input id="add-divs-btn" type="button" value="Steg 1: Skape 256 div'er">
+            <input id="style-divs-grey-btn" type="button" value="Stilsett gråtoner">
+            <input id="style-divs-red-btn" type="button" value="Stilsett rødtoner">
+        </section>
+
+        <div id="output-div"></div>
+        
+    </div>
+    
+    <script>       
+        var addDivsBtn = document.getElementById("add-divs-btn");
+        var styleDivsGreyBtn = document.getElementById("style-divs-grey-btn");
+        var styleDivsRedBtn = document.getElementById("style-divs-red-btn");
+        var outputDiv = document.getElementById("output-div");
+        
+        addDivsBtn.onclick = addDivs;
+        
+        styleDivsGreyBtn.onclick = function(){
+            styleDivs("grey");
+        };
+        
+        styleDivsRedBtn.onclick = function(){
+            styleDivs("red")
+        };
+            
+        function addDivs(){
+            var htmlTxt = "";
+            for(var i = 0; i < 256; i++){
+                htmlTxt += `<div>${i}</div>`;
+            }
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+        function styleDivs(color){
+            var divArray = document.getElementById("output-div").getElementsByTagName("div");
+            var numberOfDivs = divArray.length;
+            var r, g, b;
+            
+            for(var i = 0; i < numberOfDivs; i++){
+                divArray[i].style.width = "50px";
+                divArray[i].style.height = "50px";
+                
+                if( color === "grey" ){
+                    r = g = b = i;
+                }else if( color === "red" ){
+                    r = i;
+                    g = b = 0;
+                }
+                
+                divArray[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                divArray[i].style.display = "inline-block";
+                if(i < 100){
+                    divArray[i].style.color = "white";
+                }
+            }            
+        }
+        
+        
+    </script>
+    
+</body>
+</html>

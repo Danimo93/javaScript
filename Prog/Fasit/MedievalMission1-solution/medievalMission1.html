@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>        
+        <title>Medieval Mission 1</title>
+    </head>
+    
+    <body>        
+        
+        <h1>Din middelalderhær</h1>
+
+        <h3 id="number-of-knights-h3"></h3>
+        <div id="knights-div"></div>
+        <h3 id="number-of-giants-h3"></h3>
+        <div id="giants-div"></div>
+        <h3 id="number-of-knights-on-horse-h3"></h3>
+        <div id="knights-on-horses-div"></div>
+
+        <script>
+
+            /*
+                Info til brukeren
+            */
+            alert("Info: du skal nå få bygge opp din middelalderhær. \nDu kommer til å bli spurt om antall krigere du ønsker av hvert slag.");
+
+            /*
+                Innhenting av <div>
+            */
+            var knightsDiv = document.getElementById("knights-div");
+            var giantsDiv = document.getElementById("giants-div");
+            var knightOnHorsesDiv = document.getElementById("knights-on-horses-div");
+
+            /*
+                Innhenting av <h3> for å skrive ut antallet som er valgt
+            */
+            var numberOfKnightsH3 = document.getElementById("number-of-knights-h3");
+            var numberOfGiantsH3 = document.getElementById("number-of-giants-h3");
+            var numberOfKnightsOfHorsesH3 = document.getElementById("number-of-knights-on-horse-h3");
+
+            /*
+                Spør hærføreren hvor mange av hver slag kriger som hun/han ønsker
+            */
+            var numberOfKnights = parseInt( prompt("Hvor mange riddere ønsker du?") );
+            var numberOfGiants = parseInt( prompt("Hvor mange kjemper ønsker du?") );
+            var numberOfKnightsOnHorses = parseInt( prompt("Hvor mange riddere til hest ønsker du?") ); 
+
+
+            numberOfKnightsH3.innerHTML = `Antall riddere: ${numberOfKnights}`;
+            numberOfGiantsH3.innerHTML = `Antall kjemper: ${numberOfGiants}`;
+            numberOfKnightsOfHorsesH3.innerHTML = `Antall riddere til hest: ${numberOfKnightsOnHorses}`;
+
+            /*
+                Gjør istand koden for bildene
+            */
+            var knight = `<img src="images/knight.png">`;
+            var giant = `<img src="images/giant.png">`;
+            var knightHorse = `<img src="images/knight-horse.png">`;
+
+            /*
+                Generering av knights
+            */
+            for(var teller1 = 0; teller1 < numberOfKnights; teller1++){
+                knightsDiv.innerHTML += knight;
+            }
+
+            /*
+                Generering av giants
+            */
+            for(var teller2 = 0; teller2 < numberOfGiants; teller2++){
+                giantsDiv.innerHTML += giant;
+            }
+
+            /*
+                Generering av knights on horses
+            */
+            for(var teller3 = 0; teller3 < numberOfKnightsOnHorses; teller3++){
+                knightOnHorsesDiv.innerHTML += knightHorse;
+            }    
+
+        </script>
+        
+    </body>
+    
+</html>
+
+

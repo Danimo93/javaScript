@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/oppgave4_1.css">
+    <title>Oppgave 4 - Student 1</title>
+</head>
+<body >
+
+    <h1 id="title">Welcome to Bank of Kristiania</h1>
+
+    <button id="login-button">Login</button>
+    <div id="logged-in-div">
+
+        <h3>Welcome!</h3>
+
+        <div id="amount-in-bank-wrapper">
+
+        </div>
+
+        <button id="log-out-button">Log out</button>
+
+        <button id="withdraw-cash-button">Get cash</button>
+
+    </div>
+
+
+
+    <h3 id="cash-amount-h3"></h3>
+    <div id="money-div"></div>
+    <p id="status-p"></p>
+    <script>
+        var loginButton = document.getElementById("login-button");
+        var logOutButton = document.getElementById("log-out-button");
+        var widthDrawButton = document.getElementById("withdraw-cash-button");
+        const amountInBankWrapper = document.getElementById("amount-in-bank-wrapper");
+
+        var loggedInWrapper = document.getElementById("logged-in-div")
+
+        loginButton.onclick = login;
+        logOutButton.onclick = logout;
+        widthDrawButton.onclick = widthDrawMoney;
+
+        var statusP = document.getElementById('status-p')
+        var numberOfMoneyH3 = document.getElementById("number-of-money-h3");
+        var MoneyDiv = document.getElementById("money-div");
+
+
+        var moneyInBank = 2000;
+        var numberOfNotes = moneyInBank / 500;
+
+        var PIN = 1;
+        var number = 4;
+        var message;
+
+        function displayAmountInBankToUser() {
+
+            var element = document.createElement("h2");
+            element.innerText = `You have ${moneyInBank}kr`;
+
+            let bankNotes = document.createElement("img");
+            element.innerHTML = `<img src="images/fem-hundre-kroner.png>`;
+            bankNotes.src = "images/fem-hundre-kroner.png";
+            bankNotes.width = "300px";
+            bankNotes.height = "100px";
+            bankNotes.style.display = "flex";
+            element.appendChild(bankNotes);
+            for (var i = 0; i < getAmountOfNotes(); i++) {
+            }
+            amountInBankWrapper.appendChild(element);
+
+        }
+
+        function getAmountOfNotes() {
+            return moneyInBank / 500;
+        }
+
+        function widthDrawMoney() {
+            amountToWidthdraw = prompt("How much do you want to withdraw?");
+            console.log(amountToWidthdraw % 5);
+            if (amountToWidthdraw % 5 != 0) {
+                alert("You can only widthdraw 500 notes")
+                return;
+            }
+            if (amountToWidthdraw > moneyInBank) {
+                alert("Not enough money!");
+                return;
+            } else {
+                moneyInBank -= amountToWidthdraw;
+                displayAmountInBankToUser();
+            }
+        }
+
+        function logout() {
+            loginButton.style.display = "flex";
+            loggedInWrapper.style.display = "none";
+            amountInBankWrapper.removeChild();
+        }
+
+        function login() {
+            var userInput = prompt("Enter your PIN");
+            if (userInput == PIN) {
+                loginButton.style.display = "none";
+                loggedInWrapper.style.display = "flex";
+                displayAmountInBankToUser();
+            }
+            else {
+                alert("Wrong PIN, try again! - PIN is 1");
+            }
+        }
+
+        // Get the amount from the user
+        // var amounToWidthDraw = parseInt( prompt("How much would like you take out") );
+
+
+        // bank2 = prompt("Please Enter your pin-Code? ")
+
+        //     if(moneyInBank < amounToWidthDraw){
+        //         alert = `You have less than ${amounToWidthDraw}`;
+        //     }
+        //     else {
+        //         moneyInBank -= amounToWidthDraw;
+        //     }
+
+        // var bank = `<img src="images/fem-hundre-kroner.png">`;
+
+        // numberOfMoneyH3.innerHTML = `Antall Penger: ${moneyInBank} kr`;
+        // numberOfNotes = moneyInBank / 500;
+        // console.log(moneyInBank / 500)
+        // for(var i = 0; (moneyInBank / 500) < (amounToWidthDraw / 500); i++){
+        //     MoneyDiv.innerHTML += bank;
+        // }
+
+    </script>
+
+    <!-- <label>Ønsker du å ta ut mer?</label>
+    <input id="number-txt" type="number"/>
+    <input id="kroner-btn" type="button" value="kr"/>
+    <div id="output"></div> -->
+    <!-- <script>
+        var numberTXt = document.getElementById("number-txt");
+        var kronerBtn = document.getElementById("kroner-btn");
+        var outDiv = document.getElementById("output");
+
+        var bank3;
+        var money;
+        var bank = `<img src="images/fem-hundre-kroner.png">`;
+
+        function kroner(){
+            bank3 = bank.value;
+            money = money.value;
+
+            //outDiv.innerHTML = "";
+
+            for(var teller1 = 0; teller1 < money; teller1++){
+            outDiv.innerHTML += bank;
+        }
+        }
+        kronerBtn.onclick = kroner;
+        </script> -->
+
+</body>
+</html>

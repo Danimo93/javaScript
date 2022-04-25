@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradienter</title>
+</head>
+<body>
+    
+    <div>
+        
+        <header>
+            <h1>Gradienter og tilfeldige farger</h1>
+        </header>
+       
+        <section id="menu">
+            <input id="add-divs-btn" type="button" value="Steg 1: Skape 256 div'er">
+            <input id="style-divs-grey-btn" type="button" value="Stilsett gråtoner">
+            <input id="style-divs-red-btn" type="button" value="Stilsett rødtoner">
+            <input id="style-divs-green-btn" type="button" value="Stilsett grønntoner">
+            <input id="style-divs-blue-btn" type="button" value="Stilsett blåtoner">
+            <input id="style-divs-random-btn" type="button" value="Stilsett tilfeldige fargetoner">
+        </section>
+
+        <div id="output-div"></div>
+        
+    </div>
+    
+    <script>       
+        var addDivsBtn = document.getElementById("add-divs-btn");
+        
+        /*
+            *******
+            Knapper for å fargelegge div'ene
+            *******
+        */
+        var styleDivsGreyBtn = document.getElementById("style-divs-grey-btn");
+        var styleDivsRedBtn = document.getElementById("style-divs-red-btn");
+        var styleDivsGreenBtn = document.getElementById("style-divs-green-btn");
+        var styleDivsBlueBtn = document.getElementById("style-divs-blue-btn");
+        var styleDivsRandomBtn = document.getElementById("style-divs-random-btn");
+        
+        var outputDiv = document.getElementById("output-div");
+        
+        /*
+            *******
+            Setting av events på knapper
+            *******        
+        */
+        addDivsBtn.onclick = addDivs;
+                    
+        styleDivsGreyBtn.onclick = function(){
+            styleDivs("grey");
+        };
+        
+        styleDivsRedBtn.onclick = function(){
+            styleDivs("red");
+        };
+        
+        styleDivsGreenBtn.onclick = function(){
+            styleDivs("green");
+        }
+        
+        styleDivsBlueBtn.onclick = function(){
+            styleDivs("blue");
+        }
+        
+        styleDivsRandomBtn.onclick = function(){
+            styleDivs("random");
+        }
+            
+        /*
+            *******
+            Funksjon for å legge til div'ene på nettsiden
+            *******
+        */
+        function addDivs(){
+            var htmlTxt = "";
+            for(var i = 0; i < 256; i++){
+                htmlTxt += `<div>${i}</div>`;
+            }
+            outputDiv.innerHTML = htmlTxt;
+        }
+        
+        /*
+            *******
+            Funksjon for å stilsette div'ene som er på nettsiden
+            *******
+        */
+        function styleDivs(color){
+            var divArray = document.getElementById("output-div").getElementsByTagName("div");
+            var numberOfDivs = divArray.length;
+            var r, g, b;
+            
+            for(var i = 0; i < numberOfDivs; i++){
+                divArray[i].style.width = "50px";
+                divArray[i].style.height = "50px";
+                
+                if( color === "grey" ){
+                    r = g = b = i;
+                }else if( color === "red" ){
+                    r = i;
+                    g = b = 0;
+                }else if( color === "green" ){
+                    g = i;
+                    r = b = 0;                    
+                }else if( color === "blue" ){
+                    r = g = 0;
+                    b = i;
+                }else if( color === "random" ){
+                    r = getRandomNumber();
+                    g = getRandomNumber();
+                    b = getRandomNumber();
+                }
+                
+                divArray[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                divArray[i].style.display = "inline-block";
+                if(i < 125){
+                    divArray[i].style.color = "white";
+                }
+            }            
+        }        
+        
+        /*
+            *******
+            Funksjon for å hente et tilfeldig tall mellom 0 og 255
+            *******
+        */
+        
+        function getRandomNumber(){
+            return Math.floor( Math.random() * 256 );
+        }
+        
+    </script>
+    
+</body>
+</html>

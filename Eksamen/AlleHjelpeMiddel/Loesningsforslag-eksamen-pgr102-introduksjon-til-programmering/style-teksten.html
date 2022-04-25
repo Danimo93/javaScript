@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Style teksten</title>
+</head>
+<body>
+	<div>		
+		<div>
+			<h3>Tekststørrelse</h3>
+			<input id="make-text-bigger-btn" type="button" value="Gjør tekst 10px større"> 
+			<input id="make-text-smaller-btn" type="button" value="Gjør tekst 10px mindre"> 
+		</div>
+		<div>	
+			<h3>Farge</h3>
+			<label>Farge</label>
+			<input id="color-txt" type="text">
+			<input id="set-color-btn" type="button" value="Sett farge">
+		</div>
+		<div>
+			<h3>Font-family</h3>
+			<label>Font-family</label>
+			<input id="font-family-txt" type="text">
+			<input id="set-font-family-btn" type="button" value="Sett font-family">
+		</div>
+		<p id="the-text-p">Jeg er en tekst; style meg!</p>		
+	</div>
+	
+	<script>
+		// HTML OBJECTS
+		var theTextP = document.getElementById("the-text-p");
+		var makeTextBiggerBtn = document.getElementById("make-text-bigger-btn");
+		var makeTextSmallerBtn = document.getElementById("make-text-smaller-btn");
+		var colorTxt = document.getElementById("color-txt");
+		var setColorBtn = document.getElementById("set-color-btn");
+		var fontFamilyTxt = document.getElementById("font-family-txt");
+		var setFontFamilyBtn = document.getElementById("set-font-family-btn");
+		
+		// VARIABLES
+		var fontSize = 14;
+		var color;
+		var fontFamily;
+		
+		// FUNCTIONS
+		function makeTextBigger(){
+			fontSize+=10;
+			theTextP.style.fontSize = fontSize + "px";
+		}
+		
+		function makeTextSmaller(){
+			if( fontSize > 5 ){
+				fontSize-=10;
+				theTextP.style.fontSize = fontSize + "px";
+			}else{
+				alert("5 er minimumsstørrelsen");
+			}
+		}
+				
+		function setColor(){
+			color = colorTxt.value;
+			// Ideelt sjekker man også at bruker har tastet noe inn
+			if( color.length > 0 ){
+				theTextP.style.color = color;
+			}else{
+				alert("Du må taste inn noe i fargetekstboksen");
+			}
+		}
+		
+		function setFontFamily(){
+			fontFamily = fontFamilyTxt.value;
+			theTextP.style.fontFamily = fontFamily;
+		}
+		
+		// EVENTS
+		makeTextBiggerBtn.onclick = makeTextBigger;
+		makeTextSmallerBtn.onclick = makeTextSmaller;
+		setColorBtn.onclick = setColor;
+		setFontFamilyBtn.onclick = setFontFamily;
+		
+		
+	</script>
+</body>
+</html>

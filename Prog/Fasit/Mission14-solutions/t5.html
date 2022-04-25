@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nested loop</title>
+    <!--
+        Hovedmomenter:
+        - Object initializer
+        - Array
+        - for
+        - nøstede for-løkker
+    -->
+</head>
+<body>
+    
+    <div>
+        
+        <header>
+            <h1>Cat Heaven</h1>
+        </header>        
+        
+        <div id="output-div"></div>
+        
+    </div>
+    
+    <script>
+        
+        var outputDiv = document.getElementById("output-div");
+    
+        var catOwnerArray = [          
+            { 
+                name: "Gunnar Gundersen",
+                cats: [ 
+                    {
+                        name: "Fluffy"
+                    },
+                    {
+                        name: "Mr. Catsy"
+                    }
+                ]                
+            },
+            { 
+                name: "Nina Antonsen",
+                cats: [ 
+                    {
+                        name: "El Gato"
+                    },
+                    {
+                        name: "Lady Potato"
+                    },
+                    {
+                        name: "Sugar"
+                    }
+                ]                
+            },
+            { 
+                name: "Rita Pedersen",
+                cats: [ 
+                    {
+                        name: "Tiger"
+                    },
+                    {
+                        name: "Pippi"
+                    },
+                    {
+                        name: "Loopie"
+                    },
+                    {
+                        name: "Miaosy Lu"
+                    }
+                ]                
+            }  
+        ];
+        
+        var numberOfOwners = catOwnerArray.length;
+        
+        function createCatOutput(){
+            
+            var htmlTxt = "";
+            
+            for(var i = 0; i < numberOfOwners; i++){
+                
+                var numberOfCats = catOwnerArray[i].cats.length;
+                
+                var catsLiHTMLTxt = "";                
+                for(var i2 = 0; i2 < numberOfCats; i2++){                    
+                    catsLiHTMLTxt += `<li>${catOwnerArray[i].cats[i2].name}</li>`;                    
+                }
+                
+                htmlTxt += `
+                    <article>
+                        <h3>${catOwnerArray[i].name}</h3>
+                        <ul>${catsLiHTMLTxt}</ul>
+                    </article>
+                `;
+                
+            }
+            
+            outputDiv.innerHTML = htmlTxt;
+            
+        } 
+        
+        createCatOutput();
+        
+    </script>
+    
+</body>
+</html>

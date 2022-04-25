@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funksjon med parametere</title>
+    <!--
+        Funksjon med parametere
+        ---
+        Man man sende verdier inn til funksjoner som har parametere.
+        På den måten kan man redusere koderepetisjon betraktelig.
+    -->
+</head>
+<body>
+    
+    <!-- Disse boksene skal stilsettes -->
+    <div id="box-div-1">Jeg er en boks :)</div>
+    <div id="box-div-2">Jeg også!</div>
+    <div id="box-div-3">Tredje boksen her</div>
+    <div id="box-div-4">Fjerde boks</div>
+    <div id="box-div-5">Sist, men ikke minst: femte boks :D</div>
+    
+    <script>
+
+        // Hmmm... hvordan kan vi stilsette boksene uten å måtte gjenta for mye kode per div? :o
+
+        function styleBox(boxId, left, top, backgroundColor){ // boxId = 1 parameter, kan ha flere parametere
+            var box = document.getElementById(boxId);
+            box.style.position = "absolute";
+            box.style.left = left;
+            box.style.top = top;
+            box.style.backgroundColor = backgroundColor;
+        }
+
+        styleBox("box-div-3", "200px", "300px", "red"); // boxId = "box-div-3"
+        styleBox("box-div-1", "900px", "900px", "green");
+        styleBox("box-div-2", "0px", "1000px", "yellow");
+
+
+
+    </script>
+
+</body>
+</html>

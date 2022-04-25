@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summering av tallene</title>
+</head>
+<body>
+   
+    <div>
+        <h1>Summering av tall</h1>
+        <ul id="numbers-ul"></ul>
+        <p id="sum-p"></p>
+    </div>
+   
+    <script>
+        
+        var numbersUl = document.getElementById("numbers-ul");
+        var sumP = document.getElementById("sum-p");
+        
+        var numberArray = [75, 125, 50, 100, 150, 125];
+        var numberOfNumbers = numberArray.length;
+        
+        var totalSum = 0;
+        
+        for(var i = 0; i < numberOfNumbers; i++){
+            totalSum += numberArray[i];
+            numbersUl.innerHTML += `<li>${numberArray[i]}</li>`;
+        }
+        
+        sumP.innerHTML = `Totalsum av tallene: ${totalSum}`;
+        
+    </script>
+    
+</body>
+</html>

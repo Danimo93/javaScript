@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knight vs. Fire monsters</title>
+    <link rel="stylesheet" type="text/css" href="css/rpg.css">
+</head>
+<body>
+
+    <!--
+        Knights vs. Fire monsters
+        ---
+        Et turn based rpg-spill hvor bruker klikker på monstrene for å angripe dem. 
+        For hver gang bruker angriper monstrene angriper de tilbake.
+        Livet til ridderen og monstrene går ned og det vises visuelt gjennom div'ene med element.style.propert-teknikken        
+    -->
+
+    <div id="container">   
+
+        <img id="knight-img" src="images/knight.png">
+        
+        <!-- Fire monsters -->
+        <img id="fire-monster-1-img" src="images/fire-monster.png">
+        <img id="fire-monster-2-img" src="images/fire-monster.png">
+
+        <!-- Life -->
+        <div class="life-container container-1">
+            <div id="knight-life-div"></div>
+        </div>
+
+        <div class="life-container container-2">
+            <div id="fire-monster-1-life-div"></div>
+        </div>
+
+        <div class="life-container container-3">
+            <div id="fire-monster-2-life-div"></div>
+        </div>
+
+    </div><!-- end container -->
+    <div id="info-container"></div>
+    
+    <script>
+        var knightLifeDiv = document.getElementById('knight-life-div');
+        var fireMonster1LifeDiv = document.getElementById('fire-monster-1-life-div');
+        var fireMonster2LifeDiv = document.getElementById('fire-monster-2-life-div');
+        
+        var fireMonster1Img = document.getElementById('fire-monster-1-img');
+        var fireMonster2Img = document.getElementById("fire-monster-2-img");
+
+        /*
+        
+            Variabler 
+        
+        */
+
+
+        var knightLife = 300;
+        var monster1Life = 300;
+        var monster2Life = 200;
+
+
+        var knightStrength = 70;
+        var fireMonsterStrength = 30;
+
+
+
+        function setLifeBar(element, life, backgroundColor) { // parametrisk funksjon 
+            element.style.width = `${life}px`;
+            element.style.backgroundColor = backgroundColor;
+       }
+
+
+
+        function initGame(){
+            setTimeout( function(){ 
+                setLifeBar( knightLifeDiv, knightLife, "red");
+                setLifeBar(fireMonster1LifeDiv, monster1Life, "yellow" );
+                setLifeBar(fireMonster2LifeDiv, monster2Life, "yellow");
+             }, 2000  ); // setInterval
+        }
+
+        function beginAttack(){
+            
+            var mosterId = this.id;
+
+            switch ( mosterId ){
+                case "fire-monster-1-img":
+                    monster1Life -= Math.floor(Math.random() * knightStrength);
+                    if(monster1Life <= 0){
+                        fireMonster1Img.style.height = "0px";
+                    }else{
+                        fireMonster1LifeDiv.style.width = `${monster1Life}px`;
+                    }
+
+                break;
+                case "fire-monster-2-img":
+                    monster2Life -= Math.floor(Math.random() * knightStrength);
+                    fireMonster2LifeDiv.style.width = `${monster2Life}px`;
+
+                break;
+            }
+        }
+        /*
+            Event setting
+        */
+       
+        fireMonster1Img.onclick = beginAttack;
+        fireMonster2Img.onclick = beginAttack;
+       
+       
+       /*
+
+        init
+       */
+       
+        initGame();
+
+
+    </script>
+
+</body>
+</html>

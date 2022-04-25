@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multiplisering-quiz</title>
+</head>
+<body>
+	<div>		
+		<h3>Multiplisering-quiz</h3>
+		<p id="task-p"></p>
+		<input id="answer-txt" type="text">
+		<input id="check-answer-btn" type="button" value="Send svar">
+		<ul>
+			<li id="points-right-li">Antall riktige: 0</li>
+			<li id="points-wrong-li">Antall feil: 0</li>
+		</ul>												
+	</div>
+	
+	<script>
+		//HTML OBJECTS
+		var taskP = document.getElementById("task-p");
+		var answerTxt = document.getElementById("answer-txt");
+		var checkAnswerBtn = document.getElementById("check-answer-btn");
+		var pointsRightLi = document.getElementById("points-right-li");
+		var pointsWrongLi = document.getElementById("points-wrong-li");
+		
+		// VARIABLES
+		var pointsRight = 0;
+		var pointsWrong = 0;
+		var result;
+		var task;
+		
+		// FUNCTIONS 
+		function createTask(){
+			var number1 = Math.floor( Math.random() * 10 ); // Det er bra hvis man bruker en funksjon som returnerer tilfeldig tall istedenfor å repetere Math.floor( Math.random() * 10 ) slik det gjøres her
+			var number2 = Math.floor( Math.random() * 10 );			
+			result = number1 * number2;
+			task = `${ number1 } * ${ number2 } = ?`;			
+			taskP.innerHTML = task;			
+		}
+		
+		function checkAnswer(){
+			var answer = answerTxt.value;
+			if( answer == result ){
+				pointsRight++;
+				pointsRightLi.innerHTML = `Antall riktige: ${ pointsRight }`;
+			}else{
+				pointsWrong++;
+				pointsWrongLi.innerHTML = `Antall feil: ${ pointsWrong }`;
+			}			
+			createTask();
+		}
+		
+		// EVENTS
+		createTask();
+		checkAnswerBtn.onclick = checkAnswer;
+		
+	</script>
+</body>
+</html>

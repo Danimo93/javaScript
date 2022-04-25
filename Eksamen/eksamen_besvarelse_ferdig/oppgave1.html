@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 1</title>
+    <link rel="stylesheet" type="text/css" href="css/oppgave1.css">
+    </head>
+<body>
+    <!-- Det er lov å endre/legge til HTML -->
+
+    <h1>Modern Art Maker</h1>
+    <form id="form1">
+        <label>Bredde</label>
+        <input id="width-txt" type="text" name= "width-txt">
+
+        <label>Høyde</label>
+        <input id="height-txt" type="text" name ="height-txt">
+
+        <input id="add-box-btn" type="submit" value="Legg til">
+
+        <hr>
+
+        <label>Farge</label>
+        <input id="background-color-txt" type="text">
+
+        <hr>
+
+        <label>Posisjon fra venstre (left)</label>
+        <input id="left-txt" type="text">
+
+        <label>Posisjon fra toppen (top)</label>
+        <input id="top-txt" type="text">
+
+        <hr>
+
+    </form>
+
+    <hr>
+    <p id="status-p">Antall bokser lagt til: 0</p>
+    <div id="output-div"></div>
+
+    <script>
+        var form = document.getElementById("form1");
+        var output = document.getElementById("output-div");
+
+        var amountOfBoxes = document.getElementById("status-p");
+        var amount = 0;
+        // document.body.appendChild(box);
+        form.addEventListener("submit", function(e){
+            var box = document.createElement("div");
+            var width = form.elements["width-txt"].value;
+            var height = form.elements["height-txt"].value;
+            var backgroundColor = form.elements["background-color-txt"].value;
+            var top = form.elements["top-txt"].value;
+            var left = form.elements["left-txt"].value;
+            
+            box.style.width = width + "px";
+            box.style.height = height + "px";
+            box.style.backgroundColor = backgroundColor;
+            box.style.left = left + "px";
+            box.style.top = top + "px";
+
+            amountOfBoxes.innerText = amount += 1;
+            output.appendChild(box);
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

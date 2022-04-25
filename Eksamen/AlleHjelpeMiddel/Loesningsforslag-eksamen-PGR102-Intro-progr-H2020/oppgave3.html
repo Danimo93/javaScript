@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Matlageret</title>
+</head>
+<body>
+
+	<h3>Matlageret</h3>
+	<label>Produktnavn</label>
+	<input id="name-txt" type="text"><br>
+	<label>Antall på lager</label>
+	<input id="number-in-stock-txt" type="text"><br>
+	<input id="add-to-array-btn" type="button" value="Legg til produkt i array">
+	<input id="show-products-btn" type="button" value="Vis produkter du har lagt til">
+	<div id="output-div"></div>
+	<script>	
+	
+		/*
+			HTML OBJECTS
+		*/
+		var nameTxt = document.getElementById("name-txt");
+		var numberInStockTxt = document.getElementById("number-in-stock-txt");
+		var addToArrayBtn = document.getElementById("add-to-array-btn");
+		var showProductsBtn = document.getElementById("show-products-btn");
+		var outputDiv = document.getElementById("output-div");
+					
+		var productArray = [];
+				
+		/*
+			FUNCTIONS
+		*/	
+		function showProducts(){
+			sortArray();
+			var numberOfProducts = productArray.length;
+			var htmlTxt = "";
+			for( var i = 0; i < numberOfProducts; i++ ){
+				htmlTxt += `
+					<article>
+						<h3>${ productArray[i].name }</h3>
+						<p>${ productArray[i].amount }</p>
+					</article>
+				`;
+			}
+			outputDiv.innerHTML = htmlTxt;
+		}
+
+		function addToArray(){
+			var name = nameTxt.value;
+			var numberInStock = numberInStockTxt.value;
+			
+			var newProduct = { name: name, amount: numberInStock };
+			
+			productArray.push( newProduct );
+
+			// Denne koden er for å visuelt på nettsiden se at noe skjer, eller i console
+			outputDiv.innerHTML = `Antall produkter i array: ${ productArray.length }`;
+			console.log( productArray.length );
+			console.log( productArray );
+		}
+
+		/*
+			Bør kunne forklare at det er to objekter (navngitt a og b) som sendes inn til funksjonen og at det er deres amount-attributter som sammenlignes.
+			Deretter at det returneres et tall, 0, 1 eller -1 avhengig av utfallet av sammenligningen.
+			Hvis a-objektet har mindre antall (amount) enn b-objektet blir 1 returnert.
+			Hvis a-objektet har større antall enn b-objektet blir -1 returnert
+			Hvis ingen av if'ene slår til vil 0 returneres			
+		*/		
+		function sortByAmount(a, b) {
+		  if (a.amount < b.amount) {
+			return 1;
+		  }
+		  if (a.amount > b.amount) {
+			return -1;
+		  }
+		  return 0;
+		}
+		
+		/*
+			I denne eksamenen er ikke nødvendigvis målet at arrayet sorteres perfekt.
+			Målet er at man viser at man forstår hvordan man tar i bruk en parametrisk funksjon og forstår hvordan den fungerer.
+			Man ønsker å ha en kode som gjør noe sortering.
+		*/
+		function sortArray(){
+			var numberOfProducts = productArray.length;
+			for( var i = 0; i < ( numberOfProducts - 1 ); i++ ){				
+				
+				/*
+					Får tak i to produkter her.
+					Det første produktet er det som ligger på index-plassen til i (0 første gangen løkken kjører).
+					Det andre produktet er det som ligger en plass frem (i + 1) i forhold til det første.
+				*/
+				var product1 = productArray[ i ];
+				var product2 = productArray[ i + 1 ];
+				
+				/* 
+					Sender inn product1 og product2 til funksjonen sortByAmount. 
+					Sjekker om retur fra funksjonen er 1. 
+					1 betyr at product1.amount er mindre enn product2.amount.
+					Hvis det er slik bytter vi plass på de to produktene; i dette tilfellet ønsker vi å sortere fra størst til minst
+				*/
+				if( sortByAmount( product1, product2 ) == 1 ){
+					productArray[i] = product2;
+					productArray[ i + 1 ] = product1;
+				}
+			}
+		}
+		
+		/*
+			EVENTS
+		*/
+		addToArrayBtn.onclick = addToArray;
+		showProductsBtn.onclick = showProducts;
+	
+	
+</script>
+</body>
+</html>
+
+

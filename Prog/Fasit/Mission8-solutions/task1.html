@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    
+    <ul id="output-ul"></ul>
+    
+    <script>
+        
+        var outputUl = document.getElementById("output-ul");
+        
+        var numberArray = [30, 79, 50, 60, 36, 40, 80];
+        var numberOfNumbers = numberArray.length;
+                
+        for(var i = 0; i < numberOfNumbers; i++){
+            outputUl.innerHTML += `<li>${numberArray[i]}</li>`;
+        }
+        
+    </script>
+    
+</body>
+</html>

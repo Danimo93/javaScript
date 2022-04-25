@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="denne-mappen-trengs-ikke-roeres/er-du-synsk.css" type="text/css">
+    <title>Er du synsk?</title>
+</head>
+<body>
+    
+    <div id="output-div">
+
+    <header>
+        <h1>Er du synsk?</h1>
+    </header>
+    
+        <p>Klikk på en av boksene for å begynne spillet</p> 
+
+    <section>
+
+        <div id="box1-div">Denne?</div>
+        <div id="box2-div">Eller denne?</div>
+        
+    </section>
+
+    <div id="number-of-lives-div"></div>
+
+    <div id="number-of-right-answers-div">
+        <p>Antall riktige: 0 </p>
+    </div>
+
+    <div id="number-of-wrong-answers-div">
+        <p>Antall feil: 0 </p>
+    </div>
+    
+    <button id="reset-button" value="Reset">Reset</button>
+
+    </div>
+
+    <script>
+        
+        /*HTML-objekter
+
+        FORKLARING:
+
+            Under ser du en rekke variabler, alle er henten inn fra HTML via document.getElementById("").
+            De to første variablene er selve knappene "Denne?" og "Eller denne?".
+
+            De to neste variablene er hvor mange liv og antall riktige svar.
+            etter dem igjen er det antall feil svar og outputDiv som går til den div taggen der vi viser om du har vunnet eller tapt spillet.
+        */
+            var buttonOne = document.getElementById("box1-div");
+            var buttonTwo = document.getElementById("box2-div");
+            var resetButton = document.getElementById("reset-button")
+
+            var numOfLivesDiv = document.getElementById("number-of-lives-div");
+            var numOfRightAnswersDiv = document.getElementById("number-of-right-answers-div");
+        
+            var numOfWrongAnswersDiv = document.getElementById("number-of-wrong-answers-div");
+            var outputDiv = document.getElementById("output-div");
+            
+        /* Variabler
+
+            FORKLARING:
+
+                Under Variabler så ligger alle variablene som har tall verdier i seg.
+                de tre første variablene er brukt til hvor mange liv man starter med, 
+                og så har vi de to neste som teller opp hor mange riktige og feil svar man har.
+        */
+            var howManyLives = 5;
+
+            var numOfRightAnw = 0;
+            var numOfWrongAnw = 0;
+            
+            var randomNum;
+
+            var buttonOne;
+            var buttonTwo;
+            
+        // Funksjoner
+        
+        // Bruker klikker på knappen
+        function ifButtonClick(){
+            randomNum = Math.floor(Math.random() * 2 + 1); // Det tilfeldige taller er enten 1 eller 2
+
+            if(randomNum > 1){
+                numOfRightAnw++;
+                numOfRightAnswersDiv.innerHTML =`<p> Antall riktige: ${numOfRightAnw}</p>`;
+                numOfLivesDiv.innerHTML = `${howManyLives}`;
+                extraLife();
+                
+            }
+            else{
+                numOfWrongAnw++;
+                numOfWrongAnswersDiv.innerHTML = `<p> Antall feil: ${numOfWrongAnw} </p>`;
+                howManyLives--;
+                numOfLivesDiv.innerHTML = `${howManyLives}`;
+                    
+            }
+            if(howManyLives === 0){
+                outputDiv.innerHTML = `<h1>GAME OVER! :( <br> <br> Prøv på nytt!</h1>`;
+            }
+            else if(numOfRightAnw === 10){
+                outputDiv.innerHTML = `<h1>Gratulerer du har vunnet!</h1> <br> <br> <img src="images/fireworks.jpg" />`;
+            }
+            allTheLife();
+            }
+        
+            /*
+                Under allTheLife ligger alle bildene / livene som brukeren har 
+            */
+        function allTheLife(){
+                    if(howManyLives === 1){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 2){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 3){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 4){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 5){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 6){
+                        numOfLivesDiv.innerHTML =`<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 7){
+                        numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 8){
+                        numOfLivesDiv.innerHTML =`<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+                    }else if(howManyLives === 0){
+                        numOfLivesDiv.innerHTML = "";
+                    }
+                }
+
+        function extraLife (){
+            if(numOfRightAnw === 3){
+                howManyLives++
+            }
+            if(numOfRightAnw === 5){
+                howManyLives++
+            }
+            if (numOfRightAnw === 7){
+                howManyLives++
+            }
+        }
+
+        function ifResetClick(){
+            location.reload();
+        }
+        
+        // Events
+            
+            buttonOne.onclick = ifButtonClick;
+            buttonTwo.onclick = ifButtonClick;
+            resetButton.onclick = ifResetClick;
+
+            allTheLife();
+            
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro for</title>
+    <!--
+        Intro til for-løkke
+        Forstå de tre argumentene i parantesen til for-løkken: teller, betingelse, inkrementering
+        Skrive ut x antall bilder med for-løkke        
+    -->
+</head>
+<body>
+
+    <div id="output-div"></div>
+    <script>    
+        var outputDiv = document.getElementById("output-div");
+
+        // 1. variabel / teller, 2. betingelse, 3. inkrementering av teller
+        // Så lenge variabelen som heter (i er mindre enn 100) utfør det i krøllparanteser
+        // Så lenge variabelen som heter (i er mindre eller lik enn 100) utfør det i krøllparanteser
+        
+        // i--
+
+        for(var i = 1; i <= 100; i++){
+            outputDiv.innerHTML += `i: ${i}, `;
+        }
+
+        for(var teller = 0; teller < 100; teller++){
+            outputDiv.innerHTML += `<img src="images/robot.jpg">`;
+        }
+
+        // så lenge i2 er større eller lik 0 fortsett
+        for(var i2 = 100; i2 >= 0; i2--){
+            outputDiv.innerHTML += `${i2}`;
+        }
+
+    </script>
+    
+</body>
+</html>

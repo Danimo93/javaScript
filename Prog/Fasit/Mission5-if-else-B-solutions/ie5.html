@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if else</title>
+</head>
+<body>
+
+   <script>
+       
+       var password = "123";
+       var account = 50000;
+       
+       var userInputPassword = prompt("Tast inn passordet!");
+       
+       if(password === userInputPassword){
+           
+           var withdrawal = prompt(`Du har ${account} på konto. Hvor mye vil du ta ut?`);
+           
+           account -= withdrawal;
+           
+           alert(`Du har nå etter uttak ${account} igjen på konto`);
+           
+       }else{
+           alert("Passordet er feil!");
+       }
+       
+   </script>
+    
+</body>
+</html>

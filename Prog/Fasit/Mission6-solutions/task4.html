@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Superheltene</title>
+</head>
+<body>
+   
+    <h3>Klikk på superheltene for å få informasjon om dem.</h3>
+    
+    <img id="boy-hero-btn" src="boy-hero.jpg">
+    <img id="thinking-man-btn" src="think-man.jpg">
+    
+    <p id="superhero-info-p"></p>
+    
+    <script>
+        
+        var boyHeroInfo = "Boy Hero is a 65 year old superhero which has the creativity of a 10 year old boy."
+        var thinkingManInfo = "Thinking Man is able to focus on a problem for days without breaking his concentration." 
+        
+        var boyHeroBtn = document.getElementById("boy-hero-btn");
+        var thinkingManBtn = document.getElementById("thinking-man-btn");
+        
+        boyHeroBtn.onclick = showBoyHeroInfo;
+        thinkingManBtn.onclick = showThinkingManInfo;
+        
+        var superHeroInfoP = document.getElementById("superhero-info-p");
+                    
+        function showBoyHeroInfo(){
+            superHeroInfoP.innerHTML = boyHeroInfo;    
+        }
+        
+        function showThinkingManInfo(){
+            superHeroInfoP.innerHTML = thinkingManInfo;
+        }
+        
+    </script>
+    
+</body>
+</html>

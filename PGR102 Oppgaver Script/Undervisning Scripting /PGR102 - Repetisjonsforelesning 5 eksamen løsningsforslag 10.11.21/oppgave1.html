@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Oppgave 1. Glasset med ananasjuice (25%)</title>
+	<style>
+		/*
+			*******
+				Denne CSS-koden skal ikke endres
+			*******
+		*/
+		#glass-div{
+			width: 150px;
+			height: 350px;
+			border: 1px solid black;
+			border-top: none;
+			margin-top: 50px;
+			position: relative;
+		}		
+		#juice-div{
+			height: 50px;
+			width: 100%;
+			background-color: rgb(230, 230, 50);
+			opacity: 0.5;
+			position: absolute;
+			bottom: 0;
+			transition: height 2s;
+		}		
+		#status-p{
+			color: red;
+		}		
+	</style>
+</head>
+<body>
+		
+	<h3>Ananasjuicedrikking</h3>
+	
+	<label>Juice-mengde</label>
+	<input id="juice-amount-txt" type="text">
+		
+	<input id="pour-more-juice-btn" type="button" value="Hell i mer juice">
+	<input id="drink-juice-btn" type="button" value="Drikk juice">
+	
+	<p id="status-p">Status nå: OK</p>
+	
+	<div id="glass-div">
+		<span id="juice-level-span">50</span>
+		<div id="juice-div"></div>
+	</div>
+		
+	<script>
+		
+        
+        
+        // VARIABLER
+        
+        // variabler som inneholder relevante html-elementer
+
+        // input-feltet hvor bruker skriver inn mengde juice
+        var juiceAmountTxt = document.getElementById("juice-amount-txt");
+
+        // knappen for å helle mer juice
+        var pourMoreJuiceBtn = document.getElementById("pour-more-juice-btn");
+
+        // knappen for å drikke juice
+        var drinkJuiceBtn = document.getElementById("drink-juice-btn");
+
+        // rød tekst med status
+        var statusP = document.getElementById("status-p");
+
+        // mengden juice (står inne i "glasset")
+        var juiceLevelSpan = document.getElementById("juice-level-span");
+
+        // den lysegule div-taggen som representerer mengden juice i "glasset"
+        var juiceDiv = document.getElementById("juice-div");        
+        
+        
+        
+        
+        
+        // FUNKSJONER
+        
+        // endrer mengden juice i "glasset"
+        function changeJuiceLevel() {
+            
+            // gjør om input-teksten fra bruker til tall
+            var juiceAmount = parseInt(juiceAmountTxt.value);
+            
+            // sjekker om i det hele tatt kan leses som tall, og ber bruker skrive inn på nytt hvis nødvendig
+            // Number.isNaN(variabelnavn) sjekker om det som er skrevet inn er av datatypen NaN (Not a Number)
+            // denne datatypen får vi hvis vi prøver å gjøre om ren tekst uten siffre (f.eks. "tekst") til tall via parseInt()
+            if (Number.isNaN(juiceAmount)) {
+                statusP.innerHTML = "Skriv inn et tall";
+            } else {
+                // legger til eller trekker fra menge juice, utifra hvilken knapp som blir klikket på
+                // i dette tilfellet refererer `this` til knappen som blir klikket på
+                // man kan se på denne sjekken som "hvis dette er knappen for å drikke juice, kjør denne koden"
+                if (this == drinkJuiceBtn) {
+                    juiceLevelSpan.innerHTML = parseInt(juiceLevelSpan.innerHTML) - juiceAmount;
+                }
+                if (this == pourMoreJuiceBtn) {
+                    juiceLevelSpan.innerHTML = parseInt(juiceLevelSpan.innerHTML) + juiceAmount;
+                }
+                
+                // skriver ut statusmelding
+                statusP.innerHTML = "Status nå: OK";
+            }
+            
+            // setter nedre grense på 0
+            // sjekker om tallet som bestemmer juicemengden er under 0, og setter det til 0 hvis det er det
+            if (parseInt(juiceLevelSpan.innerHTML) <= 0) {
+                juiceLevelSpan.innerHTML = 0;
+                statusP.innerHTML = "Glasset er tomt";
+            }
+            
+            //setter øvre grense på 350
+            // sjekker om tallet som bestemmer juicemengden er over 350, og setter det til 350 hvis det er det
+            if (parseInt(juiceLevelSpan.innerHTML) >= 350) {
+                juiceLevelSpan.innerHTML = 350;
+                statusP.innerHTML = "Glasset er fullt";
+            }
+            
+            // stilsetter juiceDiv etter mengden juice
+            // vi kan gjøre det på denne måten fordi div-taggen som inneholder juicemengden er akkurat 350 piksler høy (se linje 14)
+            // derfor kan juicemengden tilsvare tallet som står inne i juiceLevelSpan uten at vi får feil.
+            // prøv gjerne å kommentere ut sjekken for minimum- og maksimumverdi (linjer 111-114 og 118-121), og se hva som skjer
+            juiceDiv.style.height = `${juiceLevelSpan.innerHTML}px`;
+
+            // tømmer input-feltet:
+            juiceAmountTxt.value = "";
+        }
+        
+        
+        // EVENTS
+        
+        // setter samme funksjon på begge knappene, siden sjekken for hvilken knapp som blir klikket på skjer inne i funksjonen
+        pourMoreJuiceBtn.onclick = changeJuiceLevel;
+        
+        drinkJuiceBtn.onclick = changeJuiceLevel;
+        
+        
+	</script>
+	
+</body>
+</html>

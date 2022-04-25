@@ -1,0 +1,62 @@
+* {
+    margin: 0px;
+}
+
+html { 
+    font-family: monospace; 
+}
+
+body {
+    display: flex; 
+    flex-direction: column;
+}
+
+textarea {
+    font-size: 18px;
+}
+
+#shift {
+    display: flex;
+    font-size: 18px;
+}
+
+#shifter {
+    display: flex;
+    align-self: center;
+}
+
+#cipher {
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 70vh;
+    background-color: lightgray;
+    justify-content: center;
+    align-items: center;
+}
+
+#display {
+    display: flex;
+
+    color: white;
+    height: 30vh;
+    flex-direction: column;
+    background-color: rgb(35, 36, 35);
+}
+
+#input-wrapper {
+    flex-direction: column;
+}
+
+#output-text {
+    display: flex;
+    margin-left: 10px;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+#input-boxes {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    
+    <div id="output-div"></div>
+    
+    <script>
+        var outputDiv = document.getElementById("output-div");
+        
+        var shouldContinue = true;
+        var shouldContinueAnswer = "";
+        var counter = 0;
+        
+        while(shouldContinue){
+            
+            shouldContinueAnswer = prompt("Vil du fortsette?");
+            
+            counter++;
+            
+            alert(`Antall ganger denne alerten har blitt vist: ${counter}`);
+            
+            if(shouldContinueAnswer != "ja"){
+                shouldContinue = false;
+                outputDiv.innerHTML = `<p>Antall ganger while-løkken ble kjørt: ${counter}</p>`;
+            }
+            
+        }
+        
+    </script>
+    
+</body>
+</html>

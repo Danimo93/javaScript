@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+</head>
+<body>
+    
+    <div id="output-div"></div>
+    
+    <script>
+        
+        var outputDiv = document.querySelector("#output-div");
+        var moreWords = true;
+        var wordArray = [];
+        
+        while(moreWords){
+            
+            var newWord = prompt("Legg til et ord i arrayet");
+            
+            wordArray.push(newWord);
+            
+            var wantToContinue = prompt("Legge til et ord til? (ja / nei)");
+            
+            if(wantToContinue === "nei"){
+                moreWords = false;
+            }            
+            
+        }
+        
+        var numberOfWords = wordArray.length;
+        
+        for(var i = 0; i < numberOfWords; i++){
+            outputDiv.innerHTML += `<p>${wordArray[i]}</p>`;
+        }                
+        
+    </script>
+    
+</body>
+</html>

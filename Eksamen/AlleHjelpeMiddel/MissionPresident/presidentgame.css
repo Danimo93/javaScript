@@ -1,0 +1,420 @@
+.container {
+    position: relative;
+    width: 500px;
+    height: 10px;
+    margin: 0 auto;
+    top: 100px;
+    content: inherit;
+    transform: translateX(30px);
+    transition: linear;
+    transform-style: preserve-3d;
+   
+}
+
+h1 {
+    font-family: 'sans-serif';
+    text-align: center;
+    left: 10px;
+    width: 0em;
+    min-height: 4em;
+    background-position: center;
+    position: center;
+    content: inherit;
+    text-transform: capitalize;
+    text-emphasis-style: filled;
+    font-size: 75px;
+    position: absolute;
+
+}
+
+
+header{
+    position: relative;
+    text-orientation: sideways-right;
+    background-image: unset;
+    height: 300px;
+    width: 300px;
+
+}
+
+body{
+    width: 400px;
+    height: 400px;
+    
+}
+
+
+
+
+#theBigDiv {
+    content: center;
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+
+}
+
+.myP {
+     
+    content: center;
+    position: sticky;
+    text-decoration: center;
+    text-transform: center;
+    text-size-adjust: center;
+    content: top;
+    top: 550px;
+    bottom: 120px;
+    left: 250px;
+    right: -100px;
+    justify-items: center;
+    font-style: italic;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: auto;
+    bottom: 120px;
+    align-items: stretch;
+    font-size: 25px;
+    text-decoration-style: wavy;
+    text-orientation: center;
+    position: center;
+    display: block;
+    color: black;
+    font-size: 25px;
+    
+
+}
+
+
+}
+
+
+#fosterPeople{
+    position: center;
+    margin: center;
+    background-image: inherit;
+    height: 300px;
+    width: 300px;
+
+}
+
+
+
+.foster_child {
+    position: center;
+    margin-top: 150px;
+    margin-left: 350px;
+    margin-bottom: 150px;
+    margin-right: 150px;
+    align-content: center;
+    background-image: inherit;
+    background-position-x: inherit;
+    background-position-y: inherit;
+    background-origin: border-box;
+    border-radius: 10px;
+    background-color: turquoise;
+    height: 300px;
+    width: 300px;
+     
+
+}
+
+#imageParent {
+    position: relative;
+    top: -10px;
+    left: -100px;
+    right: -10px;
+    background-image: inherit;
+    bottom: 0px;
+
+}
+
+
+#patienceBar1, #patienceBar2 {
+    position: absolute;
+    margin: center;
+    content: "Loading Patience";
+    text-orientation: inherit;
+    height: 30px;
+    border-radius: 10px;
+    animation: linear 20s backwards;
+}
+
+#patienceBar1 {
+    background-color: lightpink;
+    width: 100px;
+    height: 2%;
+    left: 100px;
+
+}
+
+#patienceBar2 {
+    background-color: lightgray;    
+    width: 99.9%;
+    color: ivory;
+    animation-fill-mode: backwards;
+    animation-delay: 6s;
+    position: top;
+    animation: bar2 4s backwards cubic-bezier(0,0,0,0) ;
+    animation-fill-mode: backwards;
+    animation-direction: linear;
+    justify-content: center;
+    align-items: center;
+    left: 100px;
+    text-align: center;
+
+
+}
+
+#patienceBar2::before{
+    content: attr(data-label);
+    align-items: center;
+    position: inherit;
+    left: 20px;
+    top: 20px;
+    bottom: .10em;
+    width: calc(bar(--width, 0) * 100%);
+    min-width: 2rem;
+    max-width: calc(100% - 1em);
+    background-color: none;
+    padding: 10em;
+    display: block;
+    background-position: right;
+    text-align: center;
+    content: inherit;
+
+}
+
+div#hungerGame {
+    background-position: center;
+    margin: initial;
+    background-position: content;
+    width: 500px;
+    height: 500px;
+    display: block;
+    clear: both;
+}
+
+
+@keyframes bar2{
+    0%{
+        width: -99.99%;
+    }
+    25%{
+        width: -75%;
+    }
+    50%{
+        width: -50%
+    }
+    75%{
+        width: -25%;
+    }
+    99.99%{
+        width: 0%;
+    }
+}
+
+
+#patienceStatus {
+    position: center;
+    align-content: center;
+    shape-rendering: crispEdges;
+    justify-content: center;
+    direction: 100px;
+    animation: whyMe 5s linear ease-out 2 reverse backwards;
+}
+
+
+@keyframes whyMe{
+     0% { top: 0; left: 0; }
+    30% { top: 50px; }
+    68%, 72% { left: 50px; }
+    100% { top: 100px; left: 100%; }
+}
+
+
+
+#patienceStatBar{
+    position: relative;
+    text-align: center;
+    align-content: center;
+    top: 100px;
+    bottom: -60px;
+    left: 150px;
+    mask-position: top;
+}
+
+#gameStatus {
+    object-position: bottom;
+
+}
+
+.index1 {
+    position: center;
+    justify-content: left;
+    left: 10px;
+    right: 10px;
+    margin-top: 10px;
+
+}
+
+
+.child {
+      
+  margin: 50px;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  background-position: center;
+  align-content:space-between;
+  top: 500px;
+  position: relative;
+  right: 10px;
+  left: 10px;
+  text-orientation: sideways-right;
+
+   
+}
+
+
+#pChild{
+    justify-content: space-evenly;
+    position: relative;
+    text-orientation: center;
+}
+
+
+.president {
+    top: 250px;
+    right: 20px;
+    left: 250px;
+    position: center;
+}
+
+ 
+
+.imageParent {
+    top: 50px;
+    bottom: 50px;
+    left: 150px;
+    right: 250px;
+    position: relative;
+    background-size: initial;
+    margin: 550px;
+    top: 50px;
+}
+
+section.imageParent {
+    background-position: center center;
+    margin: 100px;
+}
+
+
+
+p#pChild{
+    position: absolute;
+    text-orientation: top;
+    pointer-events: painted;
+    top: 100px;
+    bottom: 100px;
+    left: -150px;
+    text-orientation: upright;
+
+
+
+}
+
+div.flexbox-container{
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    margin-left: 150px;
+    margin-right: 150px;    
+}
+
+div#theMessageArray span{
+    position: absolute;
+    top: -10px;
+}
+
+
+
+.flexbox-container {
+    width: 300px;
+    height: 300px;
+    position: align;
+
+
+}
+
+
+#foster_child {
+    align-self: center;
+    align-content: center;
+    content: center;
+    align-content: left;
+
+}
+
+div#levelPatience{
+   align-self: center;
+   top: -100px;
+   right: 1px;
+   bottom: 0px;
+   right: -60px;
+   left: -60px;
+   text-align: start;
+   margin: top;
+   text-align: start;
+   text-orientation: upright;
+ 
+
+
+}
+
+#trackingPatience {
+    top: 1px;
+    width: auto;
+    height: fit-content;
+    align-content: center;
+    text-orientation: sideways;
+    content: sticky;
+   
+
+}
+
+section{
+    width: 800px;
+    height: 500px;
+    content: initial;
+ 
+
+
+}
+
+p.index1 {
+    text-orientation: center;
+    left: 100px;
+    top: 50px;
+    justify-content: space-evenly;
+    
+     
+
+}
+
+#corruptPresidents{
+    justify-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 5px;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: -2rem;
+    margin-left: 10rem;
+    margin-bottom: -10rem;
+    margin-top: -12rem;
+
+}
+

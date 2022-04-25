@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ananasjuice</title>
+	<style>
+		
+		#glass-div{
+			width: 150px;
+			height: 350px;
+			border: 1px solid black;
+			border-top: none;
+			margin-top: 50px;
+			position: relative;
+		}
+		
+		#juice-div{
+			height: 50px;
+			width: 100%;
+			background-color: rgb(230, 8, 8);
+			opacity: 0.5;
+			position: absolute;
+			bottom: 0;
+			transition: height 2s;
+		}
+		
+		#status-p{
+			color: red;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<h3>Ananasjuicedrikking</h3>
+	
+	<label>Juice-mengde</label>
+	<input id="juice-amount-txt" type="text">
+		
+	<input id="pour-more-juice-btn" type="button" value="Hell i mer juice">
+	<input id="drink-juice-btn" type="button" value="Drikk juice">
+	
+	<p id="status-p">Status nå: OK</p>
+	
+	<div id="glass-div">
+		<span id="juice-level-span">50</span>
+		<div id="juice-div"></div>
+	</div>
+		
+	<script>
+		/*
+			HTML objects
+		*/
+		var juiceAmountTxt = document.getElementById("juice-amount-txt");
+		var drinkJuiceBtn = document.getElementById("drink-juice-btn");
+		var statusP = document.getElementById("status-p");
+		var pourMoreJuiceBtn = document.getElementById("pour-more-juice-btn");
+		var juiceLevelSpan = document.getElementById("juice-level-span");
+		var juiceDiv = document.getElementById("juice-div");
+		
+		/*
+			Variables
+		*/
+		var amountOfJuiceInGlass = 50;
+		
+		/*
+			Functions
+			
+			MERKNAD: Denne koden er mer modularisert enn det 
+			vi kan forvente av mesteparten av studentene. 
+			Man bør få nærmest fullt med poeng selv om de ikke har 
+			modularisert koden sin.
+		*/
+
+		function pourMoreJuice(){
+			var juiceAmountToAdd = checkInput();
+			if( juiceAmountToAdd ){
+				amountOfJuiceInGlass += parseInt( juiceAmountToAdd );				
+				checkIfLevelOK();				   
+				updateGUI();		
+			}
+		}	
+		
+		function drinkJuice(){		
+			var juiceAmountToAdd = checkInput();
+			if( juiceAmountToAdd ){
+				amountOfJuiceInGlass -= parseInt( juiceAmountToAdd );
+				checkIfLevelOK();
+				updateGUI();		
+			}
+		}
+		
+		function checkIfLevelOK(){
+			if( amountOfJuiceInGlass >= 350 ){
+				amountOfJuiceInGlass = 350;
+				statusP.innerHTML = "Glasset er fullt";
+			}else if(amountOfJuiceInGlass <= 0){
+				amountOfJuiceInGlass = 0;
+				statusP.innerHTML = "Glasset er tomt";
+			}else{
+				statusP.innerHTML = "Status nå: OK";
+			}
+		}
+		
+		function checkInput(){
+			var juiceAmountToAdd = juiceAmountTxt.value.trim();	
+			if( juiceAmountToAdd.length > 0 ){
+				return juiceAmountToAdd;
+			}else{
+				statusP.innerHTML = "Du må skrive inn et tall!"
+				return false;
+			}
+		}
+		
+		function updateGUI(){
+			juiceDiv.style.height = `${ amountOfJuiceInGlass }px`;
+			juiceLevelSpan.innerHTML = amountOfJuiceInGlass;
+		}
+		
+		/*
+			Events
+		*/
+		pourMoreJuiceBtn.onclick = pourMoreJuice;
+		drinkJuiceBtn.onclick = drinkJuice;
+		
+	</script>
+	
+</body>
+</html>

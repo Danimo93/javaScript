@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adder to tall</title>
+</head>
+<body>
+    
+    <h3>Adder to tall</h3>    
+    <input id="add-two-numbers-btn" type="button" value="Adder to tall">
+    <p id="sum-p"></p>
+    
+    <script>
+    
+        var addTwoNumbersBtn = document.getElementById("add-two-numbers-btn");
+        addTwoNumbersBtn.onclick = addTwoNumbers;
+        
+        var sumP = document.getElementById("sum-p");
+        
+        function addTwoNumbers(){
+            
+            var number1 = prompt("Tast inn tall 1");
+            var number2 = prompt("Tast inn tall 2");
+            var result = parseInt(number1) + parseInt(number2);
+            
+            sumP.innerHTML = `${number1} + ${number2} = ${result}`;
+        }
+        
+    </script>
+    
+</body>
+</html>

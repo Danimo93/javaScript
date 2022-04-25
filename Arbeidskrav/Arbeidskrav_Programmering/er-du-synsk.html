@@ -1,0 +1,158 @@
+<!DOCTYPE html>  <!-- Dette definerer at det er et HTML5 dokument -->
+<html lang="en"> <!-- Her er html taggen som er konteineren for alle andre HTML elementer. Språket vi bruker er engelsk. -->
+<head>  <!-- Head tagen innehloder meta data som ikke blir vist på siden. Data som finnes her er tittel som du ser  -->
+
+    <meta charset="UTF-8"> <!-- I denne meta taggen sier vi at dokumentet / koden skal kunne lese de fleste tegn i tillegg til Æ, Ø og Å -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport er den synlige delen av siden og vi bruker width til brukerens skjermstørrelse.
+        Initial scale til hvor langt den skal være zoomet inn når siden blir lastet inn -->
+    <link rel="stylesheet" href="denne-mappen-trengs-ikke-roeres/er-du-synsk.css" type="text/css"> <!-- Dette taggen kobles til CSS filen. -->
+    <title> Er du synsk? </title> <!-- her er tittelen på nettsiden -->
+
+</head> <!-- Her er slutten på hodet til nettsiden -->
+
+<body>
+    
+    <div id="output-div"> <!-- Denne div taggen bruker vi til å skrive innhold ut til nettsiden -->
+
+    <header> <!-- Dette er en seksjon som vi har lagt til en <h1> overskrift i -->
+        <h1> Er du synsk? </h1> <!-- Tittelen / Overskriften til spillet vårt  -->
+    </header> <!-- Slutten på overskrifts seksjonen -->
+    
+        <p> Klikk på en av boksene for å begynne spillet </p> <!-- En paragraf med tekstverdi --> 
+
+    <section> <!-- En seksjon for å samle begge knappene vi skal bruke i spillet -->
+
+        <div id="box1-div"> Denne? </div> <!-- Dette er knapp nummer 1 -->
+        <div id="box2-div"> Eller denne? </div> <!-- Dette er knapp nummer 2 -->
+        
+    </section> <!-- Slutt på seksjonen der vi samler begge knappene -->
+
+    <div id="number-of-lives-div"></div> <!-- Div taggen vi bruker for å skrive ut antall liv til nettsiden -->
+
+    <div id="number-of-right-answers-div"> <!-- Div taggen vi bruker for å skrive ut antall riktig svar til nettsiden -->
+        <p> Antall riktige: 0 </p> <!-- En paragraf som inneholder antall riktige svar -->
+    </div> <!-- Slutt på div taggen for antall riktige svar -->
+
+    <div id="number-of-wrong-answers-div"> <!-- Div taggen vi bruker for å skrive ut antall feil svar til nettsiden -->
+        <p> Antall feil: 0 </p> <!-- En paragraf som inneholder antall feil svar -->
+    </div> <!-- Slutt på div tagg for antall feil svar -->
+    
+    
+    </div> <!-- Slutt på output div tagg -->
+
+    <button id="reset-button" value="Reset">Reset</button> <!-- Dette er knappen vi bruker for å resette spillet om man har tapt
+     eller om man bare vil resette underveis -->
+
+    <script> // Begynnelsen på JavaScript
+        
+        /*HTML-objekter
+
+        FORKLARING:
+
+            Under ser du en rekke variabler, alle er henten inn fra HTML via document.getElementById("").
+            De to første variablene er selve knappene "Denne?" og "Eller denne?".
+
+            De to neste variablene er hvor mange liv og antall riktige svar.
+            etter dem igjen er det antall feil svar og outputDiv som går til den div taggen der vi viser om du har vunnet eller tapt spillet.
+        */
+            var buttonOne = document.getElementById("box1-div"); // Dette gjør at variabelen buttonOne samsvarer med box1-div.
+            var buttonTwo = document.getElementById("box2-div"); // Dette gjør at variabelen buttonTwo samsvarer med box2-div.    
+            var resetButton = document.getElementById("reset-button") // Dette gjør at variabelen resetButton samsvarer med reset-button. 
+
+            var numOfLivesDiv = document.getElementById("number-of-lives-div"); // Dette gjør at variabelen buttonOne samsvarer med number-of-right-answers-div.
+            var numOfRightAnswersDiv = document.getElementById("number-of-right-answers-div"); // Dette gjør at variabelen buttonOne samsvarer med number-of-right-answers-div.
+        
+            var numOfWrongAnswersDiv = document.getElementById("number-of-wrong-answers-div"); // Dette gjør at variabelen buttonOne samsvarer med number-of-wrong-answers-div.
+            var outputDiv = document.getElementById("output-div"); // Dette gjør at variabelen buttonOne samsvarer med output-div.
+            
+        /* Variabler
+
+            FORKLARING:
+
+                Under Variabler så ligger alle variablene som har tall verdier i seg.
+                de tre første variablene er brukt til hvor mange liv man starter med, 
+                og så har vi "randomNum;" som står som en tom variabel der vi setter inn verdi selv.
+        */
+            var howManyLives = 5; // En variabel som heter howManyLives og har en verdi på 5
+
+            var numOfRightAnw = 0; // En variabel som heter numOfRightAnw og har en verdi på 0 
+            var numOfWrongAnw = 0; // En variabel som heter numOfWrongAnw og har en verdi på 0
+            
+            var randomNum; // Dette er en tom variabel med navn randomNum, denne skal etterhvert holde styr på de tilfeldige tallene
+            
+        // Funksjoner
+        
+        // Bruker klikker på knappen
+        function ifButtonClick(){ // Dette er en funksjon som heter ifButtonClick
+            randomNum = Math.floor(Math.random() * 2 + 1); // Det tilfeldige taller er enten 1 eller 2
+
+            if(randomNum > 1){ // Denne if funksjonen sier at om tallet er større en 1 så er svaret riktig
+                numOfRightAnw++; // Adderer med én(1) dersom du får riktig svar
+                numOfRightAnswersDiv.innerHTML = `<p> Antall riktige: ${numOfRightAnw} </p>`; // Her skriver vi ut til siden hvor mange riktige svar man har
+                extraLife(); // Dette er en funksjon som gir deg ekstra liv basert på hvor mange riktige svar du har
+            }
+
+            else{
+                numOfWrongAnw++; // Adderer med én(1) for hvert feil svar du får 
+                numOfWrongAnswersDiv.innerHTML = `<p> Antall feil: ${numOfWrongAnw} </p>`; // Her skriver vi ut hvor mange feil svar man får til nettsiden
+                howManyLives--; // Denne brukes for å subtrahere antall liv med én(1)      
+            }
+            
+            if(howManyLives === 0){ // Hvis antall feil svar blir 0 så taper man spillet
+                outputDiv.innerHTML = `<h1> GAME OVER! :( <br> <br> Prøv på nytt! </h1>`; // Skriver ut at man har tapt til nettsiden
+            }
+            
+            else if(numOfRightAnw === 10){ // Hvis antall riktig svar er 10 så har du vunnet spillet
+                outputDiv.innerHTML = `<h1> Gratulerer du har vunnet! </h1> <br> <br> <img src="images/fireworks.jpg" />`; // Skriver ut at man har vunnet til nettsiden
+            }
+            
+            allTheLife(); //Starter funksjonen allTheLife
+            }
+
+        function allTheLife(){ //allTheLife er den som printer ut antall liv spilleren har. Den er bygd opp av if og flere if else, som dekker hvor mange liv det er mulig å få.
+            if(howManyLives === 1){ 
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" />`;
+            }else if(howManyLives === 2){
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 3){
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 4){
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 5){
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 6){
+                numOfLivesDiv.innerHTML =`<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 7){
+                numOfLivesDiv.innerHTML = `<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 8){
+                numOfLivesDiv.innerHTML =`<img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" /> <img src="images/person1.jpg" />`;
+            }else if(howManyLives === 0){
+            }
+        }
+
+        function extraLife (){ //Dette er funskjonen som gir spiller et ekstra liv, avhengig av hvor mange rette h*n får.
+            if(numOfRightAnw === 3){ //Denne if funksjonen gir et ekstra liv om antall riktige er tre. Denne blir repetert for 5 og 7 også.
+                howManyLives++ // Adderer med én(1) til howManyLives
+            }
+            if(numOfRightAnw === 5){
+                howManyLives++
+            }
+            if (numOfRightAnw === 7){
+                howManyLives++
+            }
+        }
+
+        function ifResetClick(){ //Denne funksjonen starter i det en klikker på resetbutton. Denne vil laste inn siden på nytt ved bruk av location.reload.
+            location.reload();
+        }
+        
+        // Events
+        
+        buttonOne.onclick = ifButtonClick; // Trykknapp en
+        buttonTwo.onclick = ifButtonClick; // Trykknapp to
+        resetButton.onclick = ifResetClick; // Resetknapp
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flagg</title>
+</head>
+<body>
+   
+    <div>
+        <h1>Søk etter tegn/ord for å vise flagg</h1>
+        
+        <label>Søkestreng</label>               
+        <input id="search-term-txt" type="text">
+        <input id="get-flags-btn" type="button" value="Vis flagg">
+            
+        <h3>Land i Afrika</h3>
+        <ul id="african-countries-ul"></ul>   
+        
+        <div id="search-output-div">Du har ikke søkt enda</div>
+        
+    </div>
+   
+    <script>
+        
+        var searchTermTxt = document.getElementById("search-term-txt");
+        var getFlagsBtn = document.getElementById("get-flags-btn");
+        var searchOutputDiv = document.getElementById("search-output-div");
+        var africanCountriesUl = document.getElementById("african-countries-ul");
+        
+        var countryNameArray = ["Algeria", "Uganda", "Swaziland", "Benin", "Angola", "Botswana"];
+        var numberOfCountries = countryNameArray.length;
+            
+        getFlagsBtn.onclick = showCountriesResult;
+        
+        function showCountriesResult(){
+            
+            var countries = document.getElementsByTagName("li");
+            var searchTerm = searchTermTxt.value.toLowerCase();
+            
+            var htmlTxt = ``;
+            
+            for(var i = 0; i < numberOfCountries; i++){
+                
+                var country = countries[i].innerHTML.toLowerCase();
+                
+                if( country.includes( searchTerm ) ){
+                
+                    htmlTxt += `<img src='images/${ country }.png'>`
+                        
+                }
+                
+            }
+            
+            searchOutputDiv.innerHTML = htmlTxt;
+            
+        }
+        
+        function showAllCountries(){
+            
+            var htmlTxt = ``;
+            
+            for( var i = 0; i < numberOfCountries; i++ ){
+                htmlTxt += `<li>${ countryNameArray[i] }</li>`;
+            }
+            
+            africanCountriesUl.innerHTML = htmlTxt;
+            
+        }
+        
+        showAllCountries()
+        
+    </script>
+    
+</body>
+</html>

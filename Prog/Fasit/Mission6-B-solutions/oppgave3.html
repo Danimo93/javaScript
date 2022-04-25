@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste to betingelser med ||</title>
+</head>
+<body>
+
+	<h1>Teste to betingelser med ||</h1>
+	
+	<label>Du får kun lov til å skrive banan ELLER (||) eple</label>	
+	<input id="word-txt" type="text">
+	<input id="check-input-btn" type="button" value="Sjekk inntastet">
+	
+	<p id="output-p"></p>
+	
+	<script>
+	
+		/*
+			HTML objects
+		*/
+		var wordTxt = document.getElementById("word-txt");
+		var checkInputBtn = document.getElementById("check-input-btn");
+		var outputP = document.getElementById("output-p");
+		
+		/*
+			Variables
+		*/
+		var word;
+		
+		/*
+			Functions
+		*/
+		function checkInput(){
+			word = wordTxt.value;
+			
+			if( word === "banan" || word === "eple" ){
+				outputP.innerHTML = `Hurra! Du valgte noe som er sunt! Du skrev ${word} og er dermed ${word}-kongen! :)`;
+			}else{
+				outputP.innerHTML = "Ehem! Det er ikke lov å skrive annet enn banan eller eple! :o"
+			}
+		}
+		
+		/*
+			Events
+		*/
+		checkInputBtn.onclick = checkInput;
+		
+		
+	</script>
+	
+</body>
+</html>

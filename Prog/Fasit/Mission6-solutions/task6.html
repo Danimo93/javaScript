@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click maniac Versjon 2!</title>
+</head>
+<body>
+    
+    <h3>Klikk og få gaver!</h3>
+    <input id="increment-counter-btn" type="button" value="Go for the win!">
+    
+    <h3>Poengsystem</h3>
+    <ul>
+        <li>5 click: en liten hilsen</li>
+        <li>10 click: en stor hilsen</li>
+        <li>25 click: et bilde</li>        
+    </ul>
+    
+    <p id="number-of-clicks-p">Antall ganger klikket: 0</p>
+    
+    <ul id="prizes-ul">
+        
+    </ul>
+    
+    <script>
+        var counter = 0;
+        
+        var incrementCounterBtn = document.getElementById("increment-counter-btn");
+        incrementCounterBtn.onclick = incrementCounter;
+        
+        var numberOfClicksP = document.getElementById("number-of-clicks-p");
+        
+        var prizesUl = document.getElementById("prizes-ul");
+        
+        function incrementCounter(){
+            counter++;                                 
+            numberOfClicksP.innerHTML = `Antall ganger klikket: ${counter}`;                   
+            if( counter === 5 ){
+                prizesUl.innerHTML = "<li>5 klikk: Godt jobbet så langt.</li>";            
+            }else if( counter === 10){
+                prizesUl.innerHTML += "<li>10 klikk: Du begynner å komme deg oppover i verden!</li>";      
+            }else if( counter === 25){
+                prizesUl.innerHTML += "<li>25 klikk: <img src='crown.jpg'></li>"; 
+            }
+        }
+    </script>
+    
+</body>
+</html>

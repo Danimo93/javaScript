@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sortering</title>
+</head>
+<body>
+   
+    <div id="output-div"></div>
+   
+    <script>
+        
+        var outputDiv = document.getElementById("output-div");
+                
+        var numberBox;
+        var numberBox2;
+        
+        var numberArray = [5, 1, 7, 2];
+        
+        outputDiv.innerHTML += `<p>Usortert: ${numberArray}</p`;
+        
+        /* Din kode fortsetter her. */
+        
+        // Sorteringsrunde 1
+        numberBox = numberArray[0];
+        numberBox2 = numberArray[1];
+        
+        numberArray[0] = numberBox2;
+        numberArray[1] = numberBox;
+        
+        outputDiv.innerHTML += `<p>Sortering runde 1: ${numberArray}</p`;
+        
+        // Sorteringsrunde 2
+        numberBox = numberArray[2];
+        numberBox2 = numberArray[3];
+        
+        numberArray[2] = numberBox2;
+        numberArray[3] = numberBox;
+        
+        outputDiv.innerHTML += `<p>Sortering runde 2: ${numberArray}</p`;
+        
+        // Sorteringsrunde 3
+        numberBox = numberArray[1];
+        numberBox2 = numberArray[2];
+        
+        numberArray[1] = numberBox2;
+        numberArray[2] = numberBox;
+        
+        outputDiv.innerHTML += `<p>Sortering runde 3 (ferdig): ${numberArray}</p`;
+        
+    </script>
+    
+</body>
+</html>

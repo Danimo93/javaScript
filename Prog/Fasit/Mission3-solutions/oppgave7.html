@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 7</title>
+</head>
+<body>
+    
+    <!--Husk å legge til id på p for å kunne få tak i den fra JS-->
+    <p id="todays-poem-output"></p>
+        
+    <script>
+        //her kommer JS-koden din    
+        var todaysPoemOutput = document.getElementById("todays-poem-output");
+        
+        var todaysPoem = "To, ikke én, personer sitter og skriver JS-dikt sammen mens det regner utenfor og, de regner med å skrive om regn og skriving.";        
+        
+        todaysPoemOutput.innerHTML = todaysPoem;
+    </script>
+    
+</body>
+</html>

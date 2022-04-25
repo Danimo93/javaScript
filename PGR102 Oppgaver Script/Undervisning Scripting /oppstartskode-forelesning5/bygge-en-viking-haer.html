@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bygg en vikinghær</title>
+    <style>img{height: 100px;}</style>
+    <!--
+        Har en tekstboks som bruker kan angi hvilken type kriger brukeren ønsker og antallet
+        Bruker klikker på knapp
+        for-løkke som skriver ut antallet av den typen kriger bruker ønsker        
+    -->
+</head>
+<body>
+
+    <h3>Bygg din vikinghær</h3>
+    <label>Hvilken type kriger ønsker du?</label>
+    <select id="warrior-select">
+        <option value="warrior-1.jpg">Valkyrie</option>
+        <option value="warrior-2.jpg">Storsverd</option>
+        <option value="warrior-5.jpg">Tanks</option>
+    </select>
+    
+    <label>Hvor mange ønsker du?</label>
+    <input id="number-txt" type="number"/>
+    <input id="create-army-btn" type="button" value="Skap vikinghær"/>
+   <div id="output"></div>
+    <script>   
+    var warriorSelect = document.getElementById("warrior-select"); 
+    var numberTXt = document.getElementById("number-txt");
+    var createArmyBtn = document.getElementById("create-army-btn");
+    var outDiv = document.getElementById("output");
+    
+    var typeofwar;
+    var numberOFwarrior;
+
+    function createArmy(){
+        typeofwar = warriorSelect.value;
+        numberOFwarrior = numberTXt.value;
+
+        //outDiv.innerHTML = "";
+
+        for(var i =0; i < numberOFwarrior; i++){
+            outDiv.innerHTML += `
+                <img src="images/${typeofwar}"/>
+            `
+        }
+    }
+    createArmyBtn.onclick = createArmy;
+    </script>
+
+</body>
+</html>
